@@ -4,12 +4,18 @@ TYPE
 		PowerOffAfterStop : BOOL; (*Powerstage will be switched off after group is stopped*)
 	END_STRUCT;
 
+	McGroupBlendingInfoType : STRUCT
+		IsPossible : BOOL; (*Starting a blended movement is possible*)
+		NeedsImmediateStart  : BOOL; (*A blended movement needs to be started now otherwise the axes group will plan a stopp*)
+	END_STRUCT;
+
 	McAddGroupReadInfoType : 	STRUCT
 		InMotion : BOOL; (*Axis of group is moving*)
 		GroupInterrupted : BOOL; (*Group movement interrupted*)
 		WaitForContinue : BOOL; (*Command "Continue" is expected*)
 		PLCopenState :  McGroupPLCopenStateEnum; (*Extended PLCopen state*)
 		Quickstop : McGroupQuickstopInfoType;  (*Quickstop information*)
+		Blending : McGroupBlendingInfoType; (*Blending information*)
 	END_STRUCT;
 
 	McAdvGroupHome_15_Type : 	STRUCT

@@ -444,6 +444,27 @@ TYPE
 		mcAT_INDUCTION_MOTOR := 9, (* Auto tuning for induction motor is active*)
 		mcAT_SYNCHRON_MOTOR := 10 (* Auto tuning for synchronous motor is active*)
 	);
+	
+	McSdoDataTypeEnum  :
+	(
+		mcSDO_PARTYPE_BOOL := 1,  (*Data type: Digital information, 1 bit (1 byte)*)
+		mcSDO_PARTYPE_SINT,  (*Data type: Whole number, 1 byte*)
+		mcSDO_PARTYPE_INT,  (*Data type: Whole number, 2 bytes*)
+		mcSDO_PARTYPE_DINT,  (*Data type: Whole number, 4 bytes*)
+		mcSDO_PARTYPE_USINT,  (*Data type: Whole number, 1 byte, positive numbers only*)
+		mcSDO_PARTYPE_UINT,  (*Data type: Whole number, 2 bytes, positive numbers only*)
+		mcSDO_PARTYPE_UDINT,  (*Data type: Whole number, 4 bytes, positive numbers only*)
+		mcSDO_PARTYPE_REAL,  (*Data type: Floating point, 4 bytes*)
+		mcSDO_PARTYPE_VOID := 65535   (*General data type*)
+	);
+
+	McProcessSdoModeEnum :
+	(
+		mcSDO_GET := 0,  (*Read SDO(s)*)
+		mcSDO_SET,     (*Write SDO(s)*)
+		mcSDO_GET_NO_NCT,  (*Read SDO(s) without entry in the NCT*)
+		mcSDO_GET_NO_LOG  (*Read SDO(s) without NCT and logger entry. If an error occurs while reading, an entry is still created*)
+	);
 
 	McCamDefineType : STRUCT
 		DataObjectName : STRING[12]; (*Name of the cam data object*)
@@ -980,5 +1001,14 @@ TYPE
 		LimitsExceeded : BOOL := FALSE; (*Logical result of the Check or Calculate function.*)
 		CalculatedValue : LREAL := 0.0; (*Calculated Master or Slave compensation distance value [Measurement units of master] or [Measurement units of slave].*)
 	END_STRUCT;
+	
+	McProcessSdoType : STRUCT
+	        Index : UINT; (*Index of the SDO parameter to be read or written*)
+	        SubIndex : USINT; (*Subindex of the SDO parameter to be read or written*)
+	        VariableAddress : UDINT; (*Address of the variable that receives the read value or the corresponding value to be written*)
+	        DataType : McSdoDataTypeEnum; (*Data type of the variable*)
+	        Valid : BOOL; (*Output: Parameter was successfully written or read value can be used*)
+	        ErrorInfo : UDINT; (*Output: Error information if 'Valid' is false (see SDO Abort Code)*)
+    	END_STRUCT;
 
 END_TYPE

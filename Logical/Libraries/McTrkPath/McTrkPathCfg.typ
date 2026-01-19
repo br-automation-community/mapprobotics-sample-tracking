@@ -247,7 +247,7 @@ TYPE
 		TriggerBased : McTPLinAutCrtTrgType; (*Type mcTPLinAutCrtC_TRG_BASED settings*)
 	END_STRUCT;
 	McTPLinAutCrtType : STRUCT (*The TrackingPath component generates TrackingFrames automatically based on the configured conditions*)
-		Condition : McCfgUnboundedArrayType;
+		Condition : McCfgUnboundedArrayType; (*Connect array of type McTPLinAutCrtCondType*)
 	END_STRUCT;
 	McTPLinAutDelCondEnum :
 		( (*Condition 1-N selector setting*)
@@ -280,7 +280,7 @@ TYPE
 		Confirmation : McTPLinAutDelDelayedDelCfrmType; (*Type mcTPLinAutDelDD_CFRM settings*)
 	END_STRUCT;
 	McTPLinAutDelType : STRUCT (*The TrackingPath component deletes TrackingFrames automatically based on the configured conditions*)
-		Condition : McCfgUnboundedArrayType;
+		Condition : McCfgUnboundedArrayType; (*Connect array of type McTPLinAutDelCondType*)
 		DelayedDeletion : McTPLinAutDelDelayedDelType;
 	END_STRUCT;
 	McTPLinFrmDatSzEnum :

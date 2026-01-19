@@ -3,7 +3,7 @@ TYPE
 		AxisReference : McCfgReferenceType; (*Name of the axis reference from mapp axis configuration (e.g. gAxis1)*)
 	END_STRUCT;
 	McAGAPhsAxType : STRUCT (*Defines the axes which are part of the axes group*)
-		Axis : McCfgUnboundedArrayType;
+		Axis : McCfgUnboundedArrayType; (*Connect array of type McAGAPhsAxAxType*)
 	END_STRUCT;
 	McAGSRQSPwrOnAStopEnum :
 		( (*Power on after stop selector setting*)
@@ -53,7 +53,7 @@ TYPE
 		PowerOffAfterStop : McAGSRQSPwrOffAStopType; (*Controller is switched off after stop reaction*)
 	END_STRUCT;
 	McAGAGFType : STRUCT
-		FeatureReference : McCfgUnboundedArrayType; (*Name of the axes group feature reference*)
+		FeatureReference : McCfgUnboundedArrayType; (*Name of the axes group feature reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McCfgAxGrpAdminType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AXGRP_ADMIN*)
 		ProcessingTaskClass : McPTCEnum; (*Cyclic task class for command processing*)
@@ -61,29 +61,29 @@ TYPE
 		AxesGroupFeatures : McAGAGFType;
 	END_STRUCT;
 	McAGFHOTogGrpType : STRUCT
-		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McCfgAxGrpFeatHomeOrdType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AXGRP_FEAT_HOME_ORD*)
-		TogetherGroup : McCfgUnboundedArrayType;
+		TogetherGroup : McCfgUnboundedArrayType; (*Connect array of type McAGFHOTogGrpType*)
 	END_STRUCT;
 	McAGFPOOTogGrpType : STRUCT
-		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McCfgAxGrpFeatPwrOnOrdType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AXGRP_FEAT_PWR_ON_ORD*)
-		TogetherGroup : McCfgUnboundedArrayType;
+		TogetherGroup : McCfgUnboundedArrayType; (*Connect array of type McAGFPOOTogGrpType*)
 	END_STRUCT;
 	McAGFESAGrpStopExType : STRUCT (*Group stop command will have no effect on the axes referenced in this list*)
-		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McAGFESAGrpOvrExType : STRUCT (*Group axis override will have no effect on the axes referenced in this list*)
-		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McCfgAxGrpFeatExSngAxType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AXGRP_FEAT_EX_SNG_AX*)
 		GroupStopExclusion : McAGFESAGrpStopExType; (*Group stop command will have no effect on the axes referenced in this list*)
 		GroupOverrideExclusion : McAGFESAGrpOvrExType; (*Group axis override will have no effect on the axes referenced in this list*)
 	END_STRUCT;
 	McAGFSBSBCAxType : STRUCT
-		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the axis reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McAGFSBSBCErrBxEnum :
 		( (*Error behavior selector setting*)
@@ -128,7 +128,7 @@ TYPE
 		Feedback : McAGFSBSBCFdbkType; (*Status intformation of the brake*)
 	END_STRUCT;
 	McCfgAxGrpFeatShrBrkSigType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AXGRP_FEAT_SHR_BRK_SIG*)
-		BrakeComposite : McCfgUnboundedArrayType;
+		BrakeComposite : McCfgUnboundedArrayType; (*Connect array of type McAGFSBSBCType*)
 	END_STRUCT;
 	McAGFModalDatBxEnum :
 		( (*Modal data behaviour selector setting*)

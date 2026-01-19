@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpFile 6.0.0 */
+/* MpFile 6.3.2 */
 
 #ifndef _MPFILE_
 #define _MPFILE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpFile_VERSION
-#define _MpFile_VERSION 6.0.0
+#define _MpFile_VERSION 6.3.2
 #endif
 
 #include <bur/plctypes.h>
@@ -18,18 +18,18 @@ extern "C"
 #define _BUR_PUBLIC
 #endif
 #ifdef _SG3
-		#include "MpBase.h"
 		#include "FileIO.h"
+		#include "MpBase.h"
 #endif
 
 #ifdef _SG4
-		#include "MpBase.h"
 		#include "FileIO.h"
+		#include "MpBase.h"
 #endif
 
 #ifdef _SGC
-		#include "MpBase.h"
 		#include "FileIO.h"
+		#include "MpBase.h"
 #endif
 
 

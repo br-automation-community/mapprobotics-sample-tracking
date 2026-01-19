@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxGroup 6.4.0 */
+/* McAxGroup 6.6.0 */
 
 #ifndef _MCAXGROUP_
 #define _MCAXGROUP_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxGroup_VERSION
-#define _McAxGroup_VERSION 6.4.0
+#define _McAxGroup_VERSION 6.6.0
 #endif
 
 #include <bur/plctypes.h>
@@ -21,11 +21,11 @@ extern "C"
 #ifdef _SG4
 #include <McBase.h>
 #endif
- 
+
 #ifdef _SG3
 #include <McBase.h>
 #endif
- 
+
 #ifdef _SGC
 #include <McBase.h>
 #endif
@@ -225,12 +225,18 @@ typedef struct McGroupQuickstopInfoType
 	plcbit PowerOffAfterStop;
 } McGroupQuickstopInfoType;
 
+typedef struct McGroupBlendingInfoType
+{	plcbit IsPossible;
+	plcbit NeedsImmediateStart;
+} McGroupBlendingInfoType;
+
 typedef struct McAddGroupReadInfoType
 {	plcbit InMotion;
 	plcbit GroupInterrupted;
 	plcbit WaitForContinue;
 	enum McGroupPLCopenStateEnum PLCopenState;
 	struct McGroupQuickstopInfoType Quickstop;
+	struct McGroupBlendingInfoType Blending;
 } McAddGroupReadInfoType;
 
 typedef struct McAdvGroupHome_15_Type

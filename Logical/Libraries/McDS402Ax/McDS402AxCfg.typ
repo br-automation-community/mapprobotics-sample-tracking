@@ -34,7 +34,7 @@ TYPE
 		CyclicVelocityMode : McDACSVMCycVelModEnum; (*Cyclic velocity mode on drive when using MC_BR_VelocityControl*)
 	END_STRUCT;
 	McDAAFType : STRUCT (*Features for an axis*)
-		FeatureReference : McCfgUnboundedArrayType; (*Name of the axis feature reference*)
+		FeatureReference : McCfgUnboundedArrayType; (*Name of the axis feature reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McCfgDS402AxType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_DS402_AX*)
 		AxisReference : McCfgReferenceType; (*Name of the referenced axis component*)

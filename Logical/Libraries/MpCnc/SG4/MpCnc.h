@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpCnc 6.4.0 */
+/* MpCnc 6.6.0 */
 
 #ifndef _MPCNC_
 #define _MPCNC_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpCnc_VERSION
-#define _MpCnc_VERSION 6.4.0
+#define _MpCnc_VERSION 6.6.0
 #endif
 
 #include <bur/plctypes.h>
@@ -19,17 +19,17 @@ extern "C"
 #endif
 
 #ifdef _SG4
-#include <McAxGroup.h> 
+#include <McAxGroup.h>
 #include <MpBase.h>
 #endif
- 
+
 #ifdef _SG3
-#include <McAxGroup.h> 
+#include <McAxGroup.h>
 #include <MpBase.h>
 #endif
- 
+
 #ifdef _SGC
-#include <McAxGroup.h> 
+#include <McAxGroup.h>
 #include <MpBase.h>
 #endif
 
@@ -46,7 +46,8 @@ typedef enum MpCncErrorEnum
 	mcCNC_ERR_MPLINK_CHANGED = -1064239100,
 	mcCNC_ERR_MPLINK_CORRUPT = -1064239099,
 	mcCNC_ERR_MPLINK_IN_USE = -1064239098,
-	mcCNC_ERR_PAR_NULL = -1064239097
+	mcCNC_ERR_PAR_NULL = -1064239097,
+	mcCNC_ERR_POWERED_OFF = -1067212540
 } MpCncErrorEnum;
 
 typedef struct MpCncStatusIDType
