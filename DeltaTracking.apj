@@ -8,9 +8,9 @@
   <Project StoreRuntimeInProject="false" />
   <Variables DefaultInitValue="0" DefaultRetain="false" DefaultVolatile="true" />
   <TechnologyPackages>
-    <mappCockpit Version="6.0.0" />
-    <mappMotion McAcpDrv="6.4.0" McAcpSim="6.4.0" McAcpSys="6.4.0" McDriveLog="6.4.0" McMechSys="6.4.0" McProfGen="6.4.0" Version="6.4.0" />
-    <mappView Version="6.0.0" />
+    <mappCockpit Version="6.3.1" />
+    <mappMotion McAcpDrv="6.6.0" McAcpSim="6.6.0" McAcpSys="6.6.0" McDriveLog="6.6.0" McMechSys="6.6.0" McProfGen="6.6.0" Version="6.6.0" />
+    <mappView Version="6.3.0" />
     <OpcUaCs Version="6.0.0" />
   </TechnologyPackages>
 </Project>

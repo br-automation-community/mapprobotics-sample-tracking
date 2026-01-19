@@ -95,7 +95,8 @@ TYPE
 		( (*Mode of the axis controller*)
 		mcAXB_FF_MODE_STD := 0, (*Standard*)
 		mcAXB_FF_MODE_PRED_SPD := 1, (*Predictive speed*)
-		mcAXB_FF_MODE_TWO_MASS_MDL := 2 (*Two mass model*)
+		mcAXB_FF_MODE_TWO_MASS_MDL := 2, (*Two mass model*)
+		mcAXB_FF_MODE_FRICT_COMP := 3 (*Friction compensation*)
 		);
 	MpAXBDrvCtrlFFwdType : STRUCT (*Torque feed-forward control parameters*)
 		Mode : MpAXBDrvCtrlFFwdModEnum; (*Mode of the axis controller*)
@@ -106,6 +107,9 @@ TYPE
 		Inertia : REAL; (*Mass moment of inertia [kgm²]*)
 		AccelerationFilterTime : REAL; (*Acceleration filter time constant [s]*)
 		PredictionTime : REAL; (*Prediction time [s]*)
+		ActivationSpeed : REAL; (*Activation speed. Only for mode mcAXB_FF_MODE_FRICT_COMP [measurement units/s]*)
+		DeactivationLagError : REAL; (*Deactivation position error. Only for mode mcAXB_FF_MODE_FRICT_COMP [measurement unit]*)
+		TimeConstant : REAL; (*Time constant. Only for mode mcAXB_FF_MODE_FRICT_COMP [s]*)
 	END_STRUCT;
 	MpAXBDrvCtrlFdbkModEnum :
 		( (*Mode of the axis controller*)
@@ -272,18 +276,26 @@ TYPE
 		mcAXB_QSTOP_RCT_DEC_LIM := 0, (*Deceleration limit*)
 		mcAXB_QSTOP_RCT_DEC_LIM_W_JERK := 1, (*Deceleration limit with jerk*)
 		mcAXB_QSTOP_RCT_TORQ_LIM := 2, (*Torque limit*)
-		mcAXB_QSTOP_RCT_INDUCT_HALT := 3 (*Induction halt*)
+		mcAXB_QSTOP_RCT_INDUCT_HALT := 3, (*Induction halt*)
+		mcAXB_QSTOP_RCT_TORQ_LIM_W_JERK := 4, (*Torque limit with jerk*)
+		mcAXB_QSTOP_RCT_VEL_CTRL := 5 (*Velocity control*)
 		);
 	MpAXBDrvStopReacDrvErrEnum :
 		( (*Reaction in case of an error stop which is caused by a drive error*)
 		mcAXB_ERR_RCT_DEC_LIM := 0, (*Deceleration limit*)
 		mcAXB_ERR_RCT_INDUCT_HALT := 1, (*Induction halt*)
 		mcAXB_ERR_RCT_COAST_STANDSTILL := 2, (*Coast standstill*)
-		mcAXB_ERR_RCT_CYC_DEC_AXESGROUP := 3 (*Cyclic deceleration AxesGroup*)
+		mcAXB_ERR_RCT_CYC_DEC_AXESGROUP := 3, (*Cyclic deceleration AxesGroup*)
+		mcAXB_ERR_RCT_TORQ_LIM := 4, (*Torque limit*)
+		mcAXB_ERR_RCT_TORQ_LIM_W_JERK := 5, (*Torque limit with jerk*)
+		mcAXB_ERR_RCT_VEL_CTRL := 6 (*Velocity control*)
 		);
 	MpAXBDrvStopReacType : STRUCT (*Reactions of the axis in case of certain stop conditions*)
 		Quickstop : MpAXBDrvStopReacQstopEnum; (*Reaction in case of a quickstop which is caused by an active quickstop input*)
 		DriveError : MpAXBDrvStopReacDrvErrEnum; (*Reaction in case of an error stop which is caused by a drive error*)
+		DriveErrorJerkTime : REAL; (*Used for drive error stop reactiion type mcAXB_ERR_RCT_TORQ_LIM_W_JERK [s]*)
+		QuickstopJerkTime : REAL; (*Used for quickstop stop reactiion type: mcAXB_QSTOP_RCT_DEC_LIM_W_JERK,mcAXB_QSTOP_RCT_TORQ_LIM_W_JERK [s]*)
+		FilterTime : REAL; (*Movement stop: Monitoring: Filter time [s]*)
 	END_STRUCT;
 	MpAXBDrvMovVelErrMonEnum :
 		( (*Velocity error monitoring mode*)
@@ -559,7 +571,7 @@ TYPE
 	MpAXBEncLinkEncExtPosFltrType : STRUCT (*Filter for the encoder position. Used for StpAc, PureVax external encoder source or by AcpAx external encoder*)
 		Type : MpAXBEncLinkEncExtPosFltrTypEnum; (*Position filter type*)
 		TimeConstant : REAL; (*Time constant for actual position filter*)
-		ExtrapolationTime : REAL; (*Extrapolation time for actual position filter*)
+		ExtrapolationTime : REAL; (*Extrapolation time for actual position filter [s]*)
 	END_STRUCT;
 	MpAXBDrvEncLinkPosEncExtType : STRUCT (*Settings for external encoder. Only used for PureVax and StpAx*)
 		LinesPerEncoderRevolution : UDINT; (*Absolute number of lines of an encoder revolution [lines/revolutions]*)

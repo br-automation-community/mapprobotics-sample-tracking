@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpRobotics 6.4.0 */
+/* MpRobotics 6.6.0 */
 
 #ifndef _MPROBOTICS_
 #define _MPROBOTICS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpRobotics_VERSION
-#define _MpRobotics_VERSION 6.4.0
+#define _MpRobotics_VERSION 6.6.0
 #endif
 
 #include <bur/plctypes.h>
@@ -19,17 +19,17 @@ extern "C"
 #endif
 
 #ifdef _SG4
-#include <McAxGroup.h> 
+#include <McAxGroup.h>
 #include <MpBase.h>
 #endif
- 
+
 #ifdef _SG3
-#include <McAxGroup.h> 
+#include <McAxGroup.h>
 #include <MpBase.h>
 #endif
- 
+
 #ifdef _SGC
-#include <McAxGroup.h> 
+#include <McAxGroup.h>
 #include <MpBase.h>
 #endif
 
@@ -46,7 +46,8 @@ typedef enum MpRoboticsErrorEnum
 	mcROBOTICS_ERR_MPLINK_CHANGED = -1064239100,
 	mcROBOTICS_ERR_MPLINK_CORRUPT = -1064239099,
 	mcROBOTICS_ERR_MPLINK_IN_USE = -1064239098,
-	mcROBOTICS_ERR_PAR_NULL = -1064239097
+	mcROBOTICS_ERR_PAR_NULL = -1064239097,
+	mcROBOTICS_ERR_POWERED_OFF = -1067211004
 } MpRoboticsErrorEnum;
 
 typedef struct MpDelta2AxisJogType

@@ -13,6 +13,7 @@ TYPE
 		mcROBOTICS_ERR_MPLINK_CHANGED := -1064239100, (* MpLink modified [Error: 4, 0xc0910004] *)
 		mcROBOTICS_ERR_MPLINK_CORRUPT := -1064239099, (* Invalid MpLink contents [Error: 5, 0xc0910005] *)
 		mcROBOTICS_ERR_MPLINK_IN_USE := -1064239098, (* MpLink already in use [Error: 6, 0xc0910006] *)
-		mcROBOTICS_ERR_PAR_NULL := -1064239097 (* Parameters structure is a null pointer [Error: 7, 0xc0910007] *)
+		mcROBOTICS_ERR_PAR_NULL := -1064239097, (* Parameters structure is a null pointer [Error: 7, 0xc0910007] *)
+		mcROBOTICS_ERR_POWERED_OFF := -1067211004 (* Axes group was powered off [Error: 42756, 0xc063a704] *)
 		);
 END_TYPE

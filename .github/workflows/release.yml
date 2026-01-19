@@ -1,32 +1,32 @@
+# GitHub Actions Workflow: Create Release with Changelog and ZIP Artifact
+# Trigger: When a new tag is pushed (e.g., v1.2.3)
+
 name: Create release
 
 on:
   push:
-    # Pattern matched against refs/tags
-    tags:        
-      - 'v[0-9]+.[0-9]+.[0-9]+'
-      
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'  # Matches tags like v1.0.0, v2.3.4
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  release:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
     steps:
-      - uses: actions/checkout@v1
-      
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 50  # Fetch enough history for changelog generation
+
+      # Step 2: Create a ZIP archive of the repository contents
       - name: Zip Folder
         run: zip -r release.zip .
-        
-      - name: Update CHANGELOG
-        id: changelog
-        uses: requarks/changelog-action@v1
+
+      # Step 3: Create a GitHub Release with Changelog and attach the ZIP file
+      - name: Create GitHub Release with Changelog
+        uses: fregante/release-with-changelog@v3  # Verified GitHub Action
         with:
-          token: ${{ github.token }}
-          tag: ${{ github.ref_name }}
-        
-      - name: Upload Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "release.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: ${{ steps.changelog.outputs.changes }}
-          name: Release ${{ github.ref_name }}
-        
+          token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+          artifacts: release.zip              # Attach the ZIP file to the release
+          title: "Release ${{ github.ref_name }}"  # Optional: Custom release title
