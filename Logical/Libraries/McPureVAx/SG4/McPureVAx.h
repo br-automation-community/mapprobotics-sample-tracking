@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McPureVAx 6.4.0 */
+/* McPureVAx 6.6.0 */
 
 #ifndef _MCPUREVAX_
 #define _MCPUREVAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McPureVAx_VERSION
-#define _McPureVAx_VERSION 6.4.0
+#define _McPureVAx_VERSION 6.6.0
 #endif
 
 #include <bur/plctypes.h>
@@ -19,17 +19,17 @@ extern "C"
 #endif
 
 #ifdef _SG4
-#include <McBase.h> 
+#include <McBase.h>
 #include <McAxis.h>
 #endif
- 
+
 #ifdef _SG3
-#include <McBase.h> 
+#include <McBase.h>
 #include <McAxis.h>
 #endif
- 
+
 #ifdef _SGC
-#include <McBase.h> 
+#include <McBase.h>
 #include <McAxis.h>
 #endif
 
@@ -75,6 +75,11 @@ typedef enum McPVAHModStartDirEnum
 {	mcPVAHMSD_POS = 0,
 	mcPVAHMSD_NEG = 1
 } McPVAHModStartDirEnum;
+
+typedef enum McPVAHPVAxParCkEnum
+{	mcAHMRPPVAPC_NOT_USE = 0,
+	mcAHMRPPVAPC_USE = 1
+} McPVAHPVAxParCkEnum;
 
 typedef enum McPVAJFEnum
 {	mcPVAJF_NOT_USE = 0,
@@ -456,9 +461,14 @@ typedef struct McPVAHModType
 	struct McPVAHModBlkLagErrType BlockLagError;
 } McPVAHModType;
 
+typedef struct McPVAHPVAxParCkType
+{	enum McPVAHPVAxParCkEnum Type;
+} McPVAHPVAxParCkType;
+
 typedef struct McPVAHType
 {	struct McPVAHModType Mode;
 	plcstring RestorePositionVariable[251];
+	struct McPVAHPVAxParCkType PVAxParCk;
 } McPVAHType;
 
 typedef struct McPVAJFUseType

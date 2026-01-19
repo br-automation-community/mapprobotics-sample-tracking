@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McDS402Ax 6.4.0 */
+/* McDS402Ax 6.6.0 */
 
 #ifndef _MCDS402AX_
 #define _MCDS402AX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McDS402Ax_VERSION
-#define _McDS402Ax_VERSION 6.4.0
+#define _McDS402Ax_VERSION 6.6.0
 #endif
 
 #include <bur/plctypes.h>
@@ -19,17 +19,17 @@ extern "C"
 #endif
 
 #ifdef _SG4
-#include <McBase.h> 
+#include <McBase.h>
 #include <McAxis.h>
 #endif
- 
+
 #ifdef _SG3
-#include <McBase.h> 
+#include <McBase.h>
 #include <McAxis.h>
 #endif
- 
+
 #ifdef _SGC
-#include <McBase.h> 
+#include <McBase.h>
 #include <McAxis.h>
 #endif
 

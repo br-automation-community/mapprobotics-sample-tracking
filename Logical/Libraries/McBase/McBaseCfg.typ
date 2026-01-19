@@ -45,12 +45,15 @@ TYPE
 		mcCFG_MOT_SYN := 10500, (*Associated with data type McCfgMotSynType*)
 		mcCFG_MOT_INDUCT := 10501, (*Associated with data type McCfgMotInductType*)
 		mcCFG_MOT_SYN_AMC := 10502, (*Associated with data type McCfgMotSynAmcType*)
+		mcCFG_MOT_BLDC := 10503, (*Associated with data type McCfgMotBLDCType*)
+		mcCFG_MOT_STEP := 10504, (*Associated with data type McCfgMotStepType*)
 		mcCFG_ACP_PL_IN_CARD_ENC := 10510, (*Associated with data type McCfgAcpPlInCrdEncType*)
 		mcCFG_ACP_MUL_PL_IN_CARD_ENC := 10511, (*Associated with data type McCfgAcpMulPlInCrdEncType*)
 		mcCFG_ACP_P3_PL_IN_CARD_ENC := 10512, (*Associated with data type McCfgAcpP3PlInCrdEncType*)
 		mcCFG_ACP_P3_SNG_PL_IN_CARD_ENC := 10513, (*Associated with data type McCfgAcpP3SngPlInCrdEncType*)
 		mcCFG_ACP_PL_IN_CARD_IO := 10514, (*Associated with data type McCfgAcpPlInCrdIOType*)
 		mcCFG_BRK_RES := 10530, (*Associated with data type McCfgBrkResType*)
+		mcCFG_VIBR_UNIT := 10540, (*Associated with data type McCfgVibrUnitType*)
 		mcCFG_ACP_AX := 11000, (*Associated with data type McCfgAcpAxType*)
 		mcCFG_ACP_AX_REF := 11011, (*Associated with data type McCfgAcpAxRefType*)
 		mcCFG_ACP_MECH_ELM := 11012, (*Associated with data type McCfgAcpMechElmType*)
@@ -85,7 +88,7 @@ TYPE
 		mcCFG_AX_FEAT_A_IN := 11103, (*Associated with data type McCfgAxFeatAInType*)
 		mcCFG_AX_FEAT_ACP_PAR_TBL := 11104, (*Associated with data type McCfgAxFeatAcpParTblType*)
 		mcCFG_AX_FEAT_ACP_SPT_CHART := 11105, (*Associated with data type McCfgAxFeatAcpSptChartType*)
-		mcCFG_ACP_SPT_CHART := 11120, (*Associated with data type McCfgAcpSptChartType*)
+		mcCFG_ACP_SPT_CHART := 11120, (**)
 		mcCFG_PURE_V_AX := 12000, (*Associated with data type McCfgPureVAxType*)
 		mcCFG_PURE_V_AX_REF := 12011, (*Associated with data type McCfgPureVAxRefType*)
 		mcCFG_PURE_V_AX_HOME := 12012, (*Associated with data type McCfgPureVAxHomeType*)
@@ -136,6 +139,9 @@ TYPE
 		mcCFG_ACP_INV_AX := 13600, (*Associated with data type McCfgAcpInvAxType*)
 		mcCFG_ACP_INV_AX_REF := 13611, (*Associated with data type McCfgAcpInvAxRefType*)
 		mcCFG_ACP_INV_AX_MECH_ELM := 13612, (*Associated with data type McCfgAcpInvAxMechElmType*)
+		mcCFG_ACP_INV2_AX_REF := 14611, (*Associated with data type McCfgAcpInv2AxRefType*)
+		mcCFG_ACP_INV2_AX_MECH_ELM := 14612, (*Associated with data type McCfgAcpInv2MechElmType*)
+		mcCFG_ACP_INV2_HOME := 14016, (*Associated with data type McCfgAcpInv2HomeType*)
 		mcCFG_AXGRP_ADMIN := 20000, (*Associated with data type McCfgAxGrpAdminType*)
 		mcCFG_AXGRP_FEAT_HOME_ORD := 20101, (*Associated with data type McCfgAxGrpFeatHomeOrdType*)
 		mcCFG_AXGRP_FEAT_PWR_ON_ORD := 20102, (*Associated with data type McCfgAxGrpFeatPwrOnOrdType*)
@@ -171,6 +177,7 @@ TYPE
 		mcCFG_AXGRP_FEAT_TRK := 21126, (*Associated with data type McCfgAxGrpFeatTrkType*)
 		mcCFG_AXGRP_FEAT_PIPE_CUT := 21127, (*Associated with data type McCfgAxGrpPipeCutType*)
 		mcCFG_AXGRP_FEAT_TRKFRM_SEL := 21128, (*Associated with data type McCfgAxGrpFeatTrkFrmSelType*)
+		mcCFG_AXGRP_FEAT_TRKFRM_SEL_AREA := 21129, (*Associated with data type McCfgAxGrpFeatTrkFrmSelAreaType*)
 		mcCFG_ASM := 31000, (*Associated with data type McCfgAsmType*)
 		mcCFG_ASM_COGG_COMP := 31001, (*Associated with data type McCfgAsmCoggComp*)
 		mcCFG_ASM_ELONG_COMP := 31002, (*Associated with data type McCfgAsmElongComp*)
@@ -178,12 +185,15 @@ TYPE
 		mcCFG_ASM_ADD_CTRL_PARAM := 31004, (*Associated with data type McCfgAsmAddCtrlParam*)
 		mcCFG_ASM_STOP_REACTION := 31005, (*Associated with data type McCfgAsmStopReaction*)
 		mcCFG_ASM_SPEED_FILTER := 31006, (*Associated with data type McCfgAsmSpeedFilt*)
+		mcCFG_ASM_MAGNET_PLATE := 31007, (*Associated with data type McCfgAsmMagnetPlate*)
 		mcCFG_ASM_SCOPE_OF_ERR_REAC := 31008, (*Associated with data type McCfgAsmScopeOfErrReaction*)
 		mcCFG_ASM_SH_IDENT_TIME := 31009, (*Associated with data type McCfgAsmShIdentTime*)
 		mcCFG_ASM_POS_CTRL_LAG_MON := 31010, (*Associated with data type McCfgAsmPosCtrlLagMonitor*)
 		mcCFG_ASM_DIVERTER := 31011, (*Associated with data type McCfgAsmDiverter*)
 		mcCFG_ASM_STRATEGY := 31012, (*Associated with data type McCfgAsmColAvoidStrategy*)
 		mcCFG_ASM_ADJUSTMENT_MODE := 31013, (*Associated with data type McCfgAsmColAvoidAdjustMode*)
+		mcCFG_ASM_DIST_RESERVES := 31014, (*Associated with data type McCfgAsmDistReserves*)
+		mcCFG_ASM_VIRT_SH_SCOPE := 31015, (*Associated with data type McCfgAsmColAvoidVirtShScope*)
 		mcCFG_ASM_FEAT_CPLG := 31101, (*Associated with data type McCfgAsmFeatCplgType*)
 		mcCFG_ASM_FEAT_SIM_SH_DEF := 31102, (*Associated with data type McCfgAsmFeatSimShDefType*)
 		mcCFG_ASM_FEAT_SEC_TRACE := 31103, (*Associated with data type McCfgAsmFeatSecTraceType*)
@@ -202,6 +212,7 @@ TYPE
 		mcCFG_SH_STATE_TRANS := 31402, (*Associated with data type McCfgShStateTransType*)
 		mcCFG_SH_ZERO_VIB_FILTER := 31403, (*Associated with data type McCfgShZeroVibFilterType*)
 		mcCFG_SEG := 31500, (*Associated with data type McCfgSegType*)
+		mcCFG_VIRT_SEG := 31501, (*Associated with data type McCfgVirtSegType*)
 		mcCFG_MS_CUS_STD := 50001, (*Associated with data type McCfgMSCusStdType*)
 		mcCFG_MS_2AX_CNC_XY := 51201, (*Associated with data type McCfgMS2AxCncXYType*)
 		mcCFG_MS_2AX_CNC_XZ := 51202, (*Associated with data type McCfgMS2AxCncXZType*)
@@ -216,6 +227,7 @@ TYPE
 		mcCFG_MS_5AX_CNC_XYZBC := 51503, (*Associated with data type McCfgMS5AxCncXYZBCType*)
 		mcCFG_MS_5AX_CNC_XYZCA := 51504, (*Associated with data type McCfgMS5AxCncXYZCAType*)
 		mcCFG_MS_6AX_CNC_ZXYBCA := 51603, (*Associated with data type McCfgMS6AxCncZXYBCAType*)
+		mcCFG_MS_3AX_SCARA_A := 52042, (*Associated with data type McCfgMS3AxScaraAType*)
 		mcCFG_MS_4AX_SCARA_A := 52041, (*Associated with data type McCfgMS4AxScaraAType*)
 		mcCFG_MS_2AX_DELTA_A := 52121, (*Associated with data type McCfgMS2AxDeltaAType*)
 		mcCFG_MS_2AX_DELTA_B := 52122, (*Associated with data type McCfgMS2AxDeltaBType*)
@@ -259,10 +271,10 @@ TYPE
 		mcMMCPECOA_USE := 1 (*Used - Explicit computation order of axes is used*)
 		);
 	McMMCPECOAUseAxCompB4AllOthType : STRUCT (*Explicit computation order for axis components that are computed before all others*)
-		AxisReference : McCfgUnboundedArrayType; (*Name of the referenced axis component*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the referenced axis component (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McMMCPECOAUseAxCompAShType : STRUCT (*Explicit computation order for axis components that are computed after shuttles*)
-		AxisReference : McCfgUnboundedArrayType; (*Name of the referenced axis component*)
+		AxisReference : McCfgUnboundedArrayType; (*Name of the referenced axis component (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;
 	McMMCPECOAUseType : STRUCT (*Type mcMMCPECOA_USE settings*)
 		AxesComputedBeforeAllOthers : McMMCPECOAUseAxCompB4AllOthType; (*Explicit computation order for axis components that are computed before all others*)
@@ -389,7 +401,7 @@ TYPE
 		mcMMCDSUFL_USE := 1 (*Used -*)
 		);
 	McMcMMCDiSnUseFLimUseType : STRUCT (*Type mcMMCDSUFL_USE settings*)
-		MaximumSize : UDINT; (*Maximum size of snapshots [KB]*)
+		MaximumSize : UDINT; (*Maximum total size of snapshots (0 for unlimited) [KB]*)
 		MaximumNumberOfSnapshots : UDINT; (*Maximum number of snapshots*)
 	END_STRUCT;
 	McMcMMCDiSnUseFLimType : STRUCT (*Limits*)
@@ -433,37 +445,58 @@ TYPE
 		Angle2 : LREAL; (*Rotation around the second coordinate axis of the rotation order [measurement units]*)
 		Angle3 : LREAL; (*Rotation around the third coordinate axis of the rotation order [measurement units]*)
 	END_STRUCT;
-	McScnSurfaceEnum :
-		( (*Material*)
-		mcSOS_UDEF := 0, (*Undefined*)
-		mcSOS_RED_MATTE := 1, (*Red Matte*)
-		mcSOS_BLUE_MATTE := 2, (*Blue Matte*)
-		mcSOS_GREY_MATTE := 3, (*Grey Matte*)
-		mcSOS_YELLOW_MATTE := 4, (*Yellow Matte*)
-		mcSOS_GREEN_MATTE := 5, (*Green Matte*)
-		mcSOS_ORANGE_MATTE := 6, (*Orange Matte*)
-		mcSOS_WHITE_MATTE := 7, (*White Matte*)
-		mcSOS_BLACK_MATTE := 8, (*Black Matte*)
-		mcSOS_VIOLET_MATTE := 9, (*Violet Matte*)
-		mcSOS_METAL_SHINE := 10, (*Metal Shine*)
-		mcSOS_RED_METAL_SHINE := 11, (*Red Metal Shine*)
-		mcSOS_YELLOW_METAL_SHINE := 12, (*Yellow Metal Shine*)
-		mcSOS_BLACK_METAL_SHINE := 13, (*Black Metal Shine*)
-		mcSOS_CYAN_MATTE := 14, (*Cyan Matte*)
-		mcSOS_MAGENTA_MATTE := 15, (*Magenta Matte*)
-		mcSOS_LIGHT_GREY_MATTE := 16, (*Light Grey Matte*)
-		mcSOS_CERULEAN_BLUE_SHINE := 17, (*Cerulean Blue Shine*)
-		mcSOS_SILVER := 18 (*Silver*)
+	McOHGCSOTCSVIECEnum :
+		( (*Scene Viewer Object selector setting*)
+		mcOHGCSOTCSVIEC_USE := 0 (*Used - Scene viewer object is used.*)
 		);
+	McOHGCSOTCSVIECUICmptEnum :
+		( (*Component specific frames selector setting*)
+		mcOHGCSOTCSVIECUIC_NOT_USE := 0, (*Not used - Not used*)
+		mcOHGCSOTCSVIECUIC_AX_GRP := 1 (*Axes group - Component specific axes group frames*)
+		);
+	McOHGCSOTCSVIECUICmptAxGrpType : STRUCT (*Type mcOHGCSOTCSVIECUIC_AX_GRP settings*)
+		FlangeSceneFile : STRING[250]; (*Name of scene file to add to this coordinate system. Without a path, the file must be located next to the auto-generated scene when the scene viewer opens.*)
+	END_STRUCT;
+	McOHGCSOTCSVIECUICmptType : STRUCT (*Include scene at a component specific coordinate system.*)
+		Type : McOHGCSOTCSVIECUICmptEnum; (*Component specific frames selector setting*)
+		AxesGroup : McOHGCSOTCSVIECUICmptAxGrpType; (*Type mcOHGCSOTCSVIECUIC_AX_GRP settings*)
+	END_STRUCT;
+	McOHGCSOTCSVIECUIType : STRUCT (*Scene files to be included in the automatically generated scene.*)
+		SceneFile : STRING[250]; (*Name of scene file to add to this coordinate system. Without a path, the file must be located next to the auto-generated scene when the scene viewer opens.*)
+		Component : McOHGCSOTCSVIECUICmptType; (*Include scene at a component specific coordinate system.*)
+	END_STRUCT;
+	McOHGCSOTCSVIECUseType : STRUCT (*Type mcOHGCSOTCSVIEC_USE settings*)
+		IncludedScenes : McOHGCSOTCSVIECUIType; (*Scene files to be included in the automatically generated scene.*)
+	END_STRUCT;
+	McOHGCSOTCSVIECType : STRUCT
+		Type : McOHGCSOTCSVIECEnum; (*Scene Viewer Object selector setting*)
+		Used : McOHGCSOTCSVIECUseType; (*Type mcOHGCSOTCSVIEC_USE settings*)
+	END_STRUCT;
 	McOHGCSOTCType : STRUCT (*Type mcOHGCSOT_CMPT settings*)
 		ComponentReference : McCfgReferenceType;
 		Translation : McCfgTransXYZType; (*Translation parameters*)
 		Orientation : McCfgOrientType; (*Orientation parameters*)
+		SceneViewerObject : McOHGCSOTCSVIECType;
+	END_STRUCT;
+	McOHGCSOTCSVEnum :
+		( (*Scene Viewer Object selector setting*)
+		mcOHGCSOTCSV_USE := 0 (*Used - Scene viewer object is used.*)
+		);
+	McOHGCSOTCSVUseInclScnType : STRUCT (*Scene files to be included in the automatically generated scene.*)
+		SceneFile : STRING[250]; (*Name of scene file to add to this coordinate system. Without a path, the file must be located next to the auto-generated scene when the scene viewer opens.*)
+	END_STRUCT;
+	McOHGCSOTCSVUseType : STRUCT (*Type mcOHGCSOTCSV_USE settings*)
+		IncludedScenes : McOHGCSOTCSVUseInclScnType; (*Scene files to be included in the automatically generated scene.*)
+	END_STRUCT;
+	McOHGCSOTCSVType : STRUCT (*Settings for automatically generated scene.*)
+		Type : McOHGCSOTCSVEnum; (*Scene Viewer Object selector setting*)
+		Used : McOHGCSOTCSVUseType; (*Type mcOHGCSOTCSV_USE settings*)
 	END_STRUCT;
 	McOHGCSOTSFType : STRUCT (*Type mcOHGCSOT_STD_FRM settings*)
 		FrameName : STRING[250]; (*Standard frame name*)
 		Translation : McCfgTransXYZType; (*Translation parameters*)
 		Orientation : McCfgOrientType; (*Orientation parameters*)
+		SceneViewerObject : McOHGCSOTCSVType; (*Settings for automatically generated scene.*)
 	END_STRUCT;
 	McOHGCSOTypType : STRUCT (*Object type*)
 		Type : McOHGCSOTypEnum; (*Type selector setting*)
@@ -475,7 +508,7 @@ TYPE
 		Type : McOHGCSOTypType; (*Object type*)
 	END_STRUCT;
 	McOHGCSType : STRUCT (*Systemwide reference frame*)
-		Object : McCfgUnboundedArrayType;
+		Object : McCfgUnboundedArrayType; (*Connect array of type McOHGCSObjType*)
 	END_STRUCT;
 	McCfgObjHierGCSType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_OBJ_HIER_GCS*)
 		GlobalCoordinateSystem : McOHGCSType; (*Systemwide reference frame*)
@@ -562,6 +595,28 @@ TYPE
 	McOHFrmTrfType : STRUCT (*Defines frame transformations properties*)
 		RotationTolerance : LREAL; (*Allowed rotation tolerance for frame to frame transformation [measurement units]*)
 	END_STRUCT;
+	McScnSurfaceEnum :
+		( (*Material*)
+		mcSOS_UDEF := 0, (*Undefined*)
+		mcSOS_RED_MATTE := 1, (*Red Matte*)
+		mcSOS_BLUE_MATTE := 2, (*Blue Matte*)
+		mcSOS_GREY_MATTE := 3, (*Grey Matte*)
+		mcSOS_YELLOW_MATTE := 4, (*Yellow Matte*)
+		mcSOS_GREEN_MATTE := 5, (*Green Matte*)
+		mcSOS_ORANGE_MATTE := 6, (*Orange Matte*)
+		mcSOS_WHITE_MATTE := 7, (*White Matte*)
+		mcSOS_BLACK_MATTE := 8, (*Black Matte*)
+		mcSOS_VIOLET_MATTE := 9, (*Violet Matte*)
+		mcSOS_METAL_SHINE := 10, (*Metal Shine*)
+		mcSOS_RED_METAL_SHINE := 11, (*Red Metal Shine*)
+		mcSOS_YELLOW_METAL_SHINE := 12, (*Yellow Metal Shine*)
+		mcSOS_BLACK_METAL_SHINE := 13, (*Black Metal Shine*)
+		mcSOS_CYAN_MATTE := 14, (*Cyan Matte*)
+		mcSOS_MAGENTA_MATTE := 15, (*Magenta Matte*)
+		mcSOS_LIGHT_GREY_MATTE := 16, (*Light Grey Matte*)
+		mcSOS_CERULEAN_BLUE_SHINE := 17, (*Cerulean Blue Shine*)
+		mcSOS_SILVER := 18 (*Silver*)
+		);
 	McOHScnExType : STRUCT (*Defines Scene Viewer export settings*)
 		FileDevice : STRING[250]; (*File device where the Object Hierarchy Scene Viewer file will be created*)
 	END_STRUCT;
@@ -635,7 +690,7 @@ TYPE
 		Dimension : McWSCubeDimType; (*Dimension parameters*)
 	END_STRUCT;
 	McWSCubesType : STRUCT (*Defines cuboids*)
-		Cuboid : McCfgUnboundedArrayType;
+		Cuboid : McCfgUnboundedArrayType; (*Connect array of type McWSCubeType*)
 	END_STRUCT;
 	McWSHalfSpcPlEnum :
 		( (*Defines plane*)
@@ -650,7 +705,7 @@ TYPE
 		Plane : McWSHalfSpcPlEnum; (*Defines plane*)
 	END_STRUCT;
 	McWSHalfSpcsType : STRUCT (*Defines half-spaces*)
-		HalfSpace : McCfgUnboundedArrayType;
+		HalfSpace : McCfgUnboundedArrayType; (*Connect array of type McWSHalfSpcType*)
 	END_STRUCT;
 	McWSTcConeParType : STRUCT (*Object description parameters*)
 		BaseRadius : LREAL; (*Base radius of the cone [measurement units]*)
@@ -664,7 +719,7 @@ TYPE
 		Parameters : McWSTcConeParType; (*Object description parameters*)
 	END_STRUCT;
 	McWSTcConesType : STRUCT (*Defines truncated cones*)
-		TruncatedCone : McCfgUnboundedArrayType; (*Selects object type*)
+		TruncatedCone : McCfgUnboundedArrayType; (*Selects object type (Connect array of type McWSTcConeType)*)
 	END_STRUCT;
 	McWSWorkSpaceType : STRUCT (*Defines the WorkSpace*)
 		Cuboids : McWSCubesType; (*Defines cuboids*)
@@ -691,7 +746,7 @@ TYPE
 		Description : STRING[250];
 	END_STRUCT;
 	McCfgFrmTblType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_FRMTBL*)
-		Row : McCfgUnboundedArrayType;
+		Row : McCfgUnboundedArrayType; (*Connect array of type McFTRowType*)
 	END_STRUCT;
 	McDPTRowType : STRUCT
 		BaseParameterIndex : UINT;
@@ -700,7 +755,7 @@ TYPE
 		Description : STRING[250];
 	END_STRUCT;
 	McCfgDynParTblType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_DYNPARTBL*)
-		Row : McCfgUnboundedArrayType;
+		Row : McCfgUnboundedArrayType; (*Connect array of type McDPTRowType*)
 	END_STRUCT;
 	McLSPosEnum :
 		( (*Position selector setting*)
@@ -874,7 +929,7 @@ TYPE
 		Description : STRING[250];
 	END_STRUCT;
 	McCfgCamLstType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_CAMLST*)
-		Row : McCfgUnboundedArrayType;
+		Row : McCfgUnboundedArrayType; (*Connect array of type McCLRowType*)
 	END_STRUCT;
 	McPPTypEnum :
 		( (*Type selector setting*)

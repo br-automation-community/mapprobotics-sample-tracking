@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 6.4.0 */
+/* McBase 6.6.0 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 6.4.0
+#define _McBase_VERSION 6.6.0
 #endif
 
 #include <bur/plctypes.h>
@@ -48,7 +48,8 @@ typedef enum McBufferModeEnum
 	mcBLENDING_LOW,
 	mcBLENDING_PREVIOUS,
 	mcBLENDING_NEXT,
-	mcBLENDING_HIGH
+	mcBLENDING_HIGH,
+	mcBLENDING
 } McBufferModeEnum;
 
 typedef enum McBrakeCmdEnum
@@ -105,7 +106,9 @@ typedef enum McErrorCmdEnum
 	mcERROR_STOP_DEC_CTRL_OFF_CMD,
 	mcERROR_V_STOP_DEC_CTRL_OFF_CMD,
 	mcERROR_ENCODER_CMD,
-	mcERROR_CHANNEL_CMD
+	mcERROR_CHANNEL_CMD,
+	mcERROR_STOP_TRQ_CMD,
+	mcERROR_STOP_TRQ_JERK_CMD
 } McErrorCmdEnum;
 
 typedef enum McEdgeEnum
@@ -119,7 +122,9 @@ typedef enum McNetworkTypeEnum
 } McNetworkTypeEnum;
 
 typedef enum McTransitionModeEnum
-{	mcTM_NONE
+{	mcTM_NONE,
+	mcTM_CORNER_DISTANCE,
+	mcTM_MAX_CORNER_DEVIATION
 } McTransitionModeEnum;
 
 typedef enum McExecutionModeEnum
@@ -258,12 +263,15 @@ typedef enum McCfgTypeEnum
 	mcCFG_MOT_SYN = 10500,
 	mcCFG_MOT_INDUCT = 10501,
 	mcCFG_MOT_SYN_AMC = 10502,
+	mcCFG_MOT_BLDC = 10503,
+	mcCFG_MOT_STEP = 10504,
 	mcCFG_ACP_PL_IN_CARD_ENC = 10510,
 	mcCFG_ACP_MUL_PL_IN_CARD_ENC = 10511,
 	mcCFG_ACP_P3_PL_IN_CARD_ENC = 10512,
 	mcCFG_ACP_P3_SNG_PL_IN_CARD_ENC = 10513,
 	mcCFG_ACP_PL_IN_CARD_IO = 10514,
 	mcCFG_BRK_RES = 10530,
+	mcCFG_VIBR_UNIT = 10540,
 	mcCFG_ACP_AX = 11000,
 	mcCFG_ACP_AX_REF = 11011,
 	mcCFG_ACP_MECH_ELM = 11012,
@@ -349,6 +357,9 @@ typedef enum McCfgTypeEnum
 	mcCFG_ACP_INV_AX = 13600,
 	mcCFG_ACP_INV_AX_REF = 13611,
 	mcCFG_ACP_INV_AX_MECH_ELM = 13612,
+	mcCFG_ACP_INV2_AX_REF = 14611,
+	mcCFG_ACP_INV2_AX_MECH_ELM = 14612,
+	mcCFG_ACP_INV2_HOME = 14016,
 	mcCFG_AXGRP_ADMIN = 20000,
 	mcCFG_AXGRP_FEAT_HOME_ORD = 20101,
 	mcCFG_AXGRP_FEAT_PWR_ON_ORD = 20102,
@@ -384,6 +395,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_AXGRP_FEAT_TRK = 21126,
 	mcCFG_AXGRP_FEAT_PIPE_CUT = 21127,
 	mcCFG_AXGRP_FEAT_TRKFRM_SEL = 21128,
+	mcCFG_AXGRP_FEAT_TRKFRM_SEL_AREA = 21129,
 	mcCFG_ASM = 31000,
 	mcCFG_ASM_COGG_COMP = 31001,
 	mcCFG_ASM_ELONG_COMP = 31002,
@@ -391,12 +403,15 @@ typedef enum McCfgTypeEnum
 	mcCFG_ASM_ADD_CTRL_PARAM = 31004,
 	mcCFG_ASM_STOP_REACTION = 31005,
 	mcCFG_ASM_SPEED_FILTER = 31006,
+	mcCFG_ASM_MAGNET_PLATE = 31007,
 	mcCFG_ASM_SCOPE_OF_ERR_REAC = 31008,
 	mcCFG_ASM_SH_IDENT_TIME = 31009,
 	mcCFG_ASM_POS_CTRL_LAG_MON = 31010,
 	mcCFG_ASM_DIVERTER = 31011,
 	mcCFG_ASM_STRATEGY = 31012,
 	mcCFG_ASM_ADJUSTMENT_MODE = 31013,
+	mcCFG_ASM_DIST_RESERVES = 31014,
+	mcCFG_ASM_VIRT_SH_SCOPE = 31015,
 	mcCFG_ASM_FEAT_CPLG = 31101,
 	mcCFG_ASM_FEAT_SIM_SH_DEF = 31102,
 	mcCFG_ASM_FEAT_SEC_TRACE = 31103,
@@ -415,6 +430,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_SH_STATE_TRANS = 31402,
 	mcCFG_SH_ZERO_VIB_FILTER = 31403,
 	mcCFG_SEG = 31500,
+	mcCFG_VIRT_SEG = 31501,
 	mcCFG_MS_CUS_STD = 50001,
 	mcCFG_MS_2AX_CNC_XY = 51201,
 	mcCFG_MS_2AX_CNC_XZ = 51202,
@@ -429,6 +445,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_MS_5AX_CNC_XYZBC = 51503,
 	mcCFG_MS_5AX_CNC_XYZCA = 51504,
 	mcCFG_MS_6AX_CNC_ZXYBCA = 51603,
+	mcCFG_MS_3AX_SCARA_A = 52042,
 	mcCFG_MS_4AX_SCARA_A = 52041,
 	mcCFG_MS_2AX_DELTA_A = 52121,
 	mcCFG_MS_2AX_DELTA_B = 52122,
@@ -523,27 +540,18 @@ typedef enum McOHGCSOTypEnum
 	mcOHGCSOT_STD_FRM = 1
 } McOHGCSOTypEnum;
 
-typedef enum McScnSurfaceEnum
-{	mcSOS_UDEF = 0,
-	mcSOS_RED_MATTE = 1,
-	mcSOS_BLUE_MATTE = 2,
-	mcSOS_GREY_MATTE = 3,
-	mcSOS_YELLOW_MATTE = 4,
-	mcSOS_GREEN_MATTE = 5,
-	mcSOS_ORANGE_MATTE = 6,
-	mcSOS_WHITE_MATTE = 7,
-	mcSOS_BLACK_MATTE = 8,
-	mcSOS_VIOLET_MATTE = 9,
-	mcSOS_METAL_SHINE = 10,
-	mcSOS_RED_METAL_SHINE = 11,
-	mcSOS_YELLOW_METAL_SHINE = 12,
-	mcSOS_BLACK_METAL_SHINE = 13,
-	mcSOS_CYAN_MATTE = 14,
-	mcSOS_MAGENTA_MATTE = 15,
-	mcSOS_LIGHT_GREY_MATTE = 16,
-	mcSOS_CERULEAN_BLUE_SHINE = 17,
-	mcSOS_SILVER = 18
-} McScnSurfaceEnum;
+typedef enum McOHGCSOTCSVIECEnum
+{	mcOHGCSOTCSVIEC_USE = 0
+} McOHGCSOTCSVIECEnum;
+
+typedef enum McOHGCSOTCSVIECUICmptEnum
+{	mcOHGCSOTCSVIECUIC_NOT_USE = 0,
+	mcOHGCSOTCSVIECUIC_AX_GRP = 1
+} McOHGCSOTCSVIECUICmptEnum;
+
+typedef enum McOHGCSOTCSVEnum
+{	mcOHGCSOTCSV_USE = 0
+} McOHGCSOTCSVEnum;
 
 typedef enum McOHMeasUnitLenMeasUnitEnum
 {	mcOHMULMU_MILL = 5066068,
@@ -602,6 +610,28 @@ typedef enum McOHRotDescEuRotOrdEnum
 	mcOHRDERO_ZXZ = 10,
 	mcOHRDERO_ZYZ = 11
 } McOHRotDescEuRotOrdEnum;
+
+typedef enum McScnSurfaceEnum
+{	mcSOS_UDEF = 0,
+	mcSOS_RED_MATTE = 1,
+	mcSOS_BLUE_MATTE = 2,
+	mcSOS_GREY_MATTE = 3,
+	mcSOS_YELLOW_MATTE = 4,
+	mcSOS_GREEN_MATTE = 5,
+	mcSOS_ORANGE_MATTE = 6,
+	mcSOS_WHITE_MATTE = 7,
+	mcSOS_BLACK_MATTE = 8,
+	mcSOS_VIOLET_MATTE = 9,
+	mcSOS_METAL_SHINE = 10,
+	mcSOS_RED_METAL_SHINE = 11,
+	mcSOS_YELLOW_METAL_SHINE = 12,
+	mcSOS_BLACK_METAL_SHINE = 13,
+	mcSOS_CYAN_MATTE = 14,
+	mcSOS_MAGENTA_MATTE = 15,
+	mcSOS_LIGHT_GREY_MATTE = 16,
+	mcSOS_CERULEAN_BLUE_SHINE = 17,
+	mcSOS_SILVER = 18
+} McScnSurfaceEnum;
 
 typedef enum McCfgVarDatTypEnum
 {	mcCVDT_TYP_BOOL = 0,
@@ -1043,16 +1073,54 @@ typedef struct McCfgOrientType
 	double Angle3;
 } McCfgOrientType;
 
+typedef struct McOHGCSOTCSVIECUICmptAxGrpType
+{	plcstring FlangeSceneFile[251];
+} McOHGCSOTCSVIECUICmptAxGrpType;
+
+typedef struct McOHGCSOTCSVIECUICmptType
+{	enum McOHGCSOTCSVIECUICmptEnum Type;
+	struct McOHGCSOTCSVIECUICmptAxGrpType AxesGroup;
+} McOHGCSOTCSVIECUICmptType;
+
+typedef struct McOHGCSOTCSVIECUIType
+{	plcstring SceneFile[251];
+	struct McOHGCSOTCSVIECUICmptType Component;
+} McOHGCSOTCSVIECUIType;
+
+typedef struct McOHGCSOTCSVIECUseType
+{	struct McOHGCSOTCSVIECUIType IncludedScenes;
+} McOHGCSOTCSVIECUseType;
+
+typedef struct McOHGCSOTCSVIECType
+{	enum McOHGCSOTCSVIECEnum Type;
+	struct McOHGCSOTCSVIECUseType Used;
+} McOHGCSOTCSVIECType;
+
 typedef struct McOHGCSOTCType
 {	struct McCfgReferenceType ComponentReference;
 	struct McCfgTransXYZType Translation;
 	struct McCfgOrientType Orientation;
+	struct McOHGCSOTCSVIECType SceneViewerObject;
 } McOHGCSOTCType;
+
+typedef struct McOHGCSOTCSVUseInclScnType
+{	plcstring SceneFile[251];
+} McOHGCSOTCSVUseInclScnType;
+
+typedef struct McOHGCSOTCSVUseType
+{	struct McOHGCSOTCSVUseInclScnType IncludedScenes;
+} McOHGCSOTCSVUseType;
+
+typedef struct McOHGCSOTCSVType
+{	enum McOHGCSOTCSVEnum Type;
+	struct McOHGCSOTCSVUseType Used;
+} McOHGCSOTCSVType;
 
 typedef struct McOHGCSOTSFType
 {	plcstring FrameName[251];
 	struct McCfgTransXYZType Translation;
 	struct McCfgOrientType Orientation;
+	struct McOHGCSOTCSVType SceneViewerObject;
 } McOHGCSOTSFType;
 
 typedef struct McOHGCSOTypType
