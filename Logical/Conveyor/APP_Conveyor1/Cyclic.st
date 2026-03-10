@@ -51,11 +51,7 @@ PROGRAM _CYCLIC
 				MC_MoveVelocity_0.Velocity := SetVelocity;
 				MC_MoveVelocity_0.Execute := TRUE;
 			END_IF
-			
-			IF NOT MC_BR_TrackingFrameCreate_0.Busy THEN
-				addNewObjects;
-			END_IF
-			
+						
 			IF MC_ReadStatus_0.Error OR MC_ReadStatus_0.ErrorStop THEN
 				State := STATE_ERROR;
 

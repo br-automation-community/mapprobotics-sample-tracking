@@ -5,6 +5,9 @@
     <Selector ID="Type">
       <Selector ID="MotionSource" Value="Axis">
         <Property ID="AxisRef" Value="gAxis_Conveyor_2" />
+        <Selector ID="AxisUsage">
+          <Selector ID="CommandConsideration" Value="SupportBasicCommands" />
+        </Selector>
       </Selector>
       <Group ID="TrackingFrames">
         <Group ID="AutomaticCreation">
@@ -41,7 +44,7 @@
           <Property ID="Height" Value="1" />
         </Group>
         <Group ID="Translation">
-          <Property ID="Y" Value="-150" />
+          <Property ID="Y" Value="-225" />
           <Property ID="Z" Value="-50" />
         </Group>
       </Selector>
@@ -90,7 +93,7 @@
           <Property ID="Height" Value="1" />
         </Group>
         <Group ID="Translation">
-          <Property ID="Y" Value="-150" />
+          <Property ID="Y" Value="-225" />
           <Property ID="Z" Value="-50" />
         </Group>
       </Selector>

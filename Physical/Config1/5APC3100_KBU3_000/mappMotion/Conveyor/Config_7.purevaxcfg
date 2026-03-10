@@ -9,6 +9,9 @@
   <Element ID="PureVAxCfg_2" Type="purevaxcfg">
     <Group ID="PureVAxis">
       <Property ID="AxisReference" Value="gAxis_Conveyor_2" />
+      <Selector ID="JerkFilter" Value="JerkLimited">
+        <Property ID="JerkLimit" Value="1000.0" />
+      </Selector>
     </Group>
   </Element>
 </Configuration>

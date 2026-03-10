@@ -5,10 +5,10 @@ ACTION DefineLinks:
 	Period := 100000.0;
 		
 	Reset := ControlPanel.Input.Reset;
-	Start := ControlPanel.Input.Start
+	Start := ControlPanel.Input.Start;
 	
 	ProductGap := 160;
-	SetVelocity := ProductGap / (ControlPanel.Input.PickRate / 60) / 2;
+	SetVelocity := LREAL_TO_REAL(ProductGap) / (ControlPanel.Input.PickRate / 60) / 2;
 	
 	
 END_ACTION

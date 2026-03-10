@@ -21,8 +21,6 @@
     <GlobalVariables Name="Global Variables">
       <Variable Name="ControlPanel">
         <Variable Name="Input">
-          <Variable Name="StartMultipick" />
-          <Variable Name="StartMultipickRandom" />
           <Variable Name="Reset" />
         </Variable>
       </Variable>
