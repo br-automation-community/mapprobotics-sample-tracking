@@ -23,8 +23,8 @@
         <Selector ID="Type" Value="TrackingPath">
           <Property ID="TrackingPathRef" Value="gTrackingPathConveyor_1" />
           <Group ID="Translation">
-            <Property ID="X" Value="-1500" />
-            <Property ID="Y" Value="-200" />
+            <Property ID="X" Value="-500" />
+            <Property ID="Y" Value="-250" />
           </Group>
         </Selector>
       </Group>
@@ -32,11 +32,11 @@
         <Selector ID="Type" Value="TrackingPath">
           <Property ID="TrackingPathRef" Value="gTrackingPathConveyor_2" />
           <Group ID="Translation">
-            <Property ID="X" Value="1500" />
-            <Property ID="Y" Value="200" />
+            <Property ID="X" Value="-1500" />
+            <Property ID="Y" Value="250" />
           </Group>
           <Group ID="Orientation">
-            <Property ID="Angle3" Value="180" />
+            <Property ID="Angle3" Value="0" />
           </Group>
         </Selector>
       </Group>

@@ -6,7 +6,6 @@
     <File Description="Init code">Init.st</File>
     <File Description="Cyclic code">Cyclic.st</File>
     <File Description="Exit code">Exit.st</File>
-    <File>DeviceActions.st</File>
     <File>DefineLinks.st</File>
   </Files>
 </Program>

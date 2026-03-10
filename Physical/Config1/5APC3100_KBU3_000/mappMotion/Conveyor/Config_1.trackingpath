@@ -7,10 +7,28 @@
         <Property ID="AxisRef" Value="gAxis_Conveyor_2" />
       </Selector>
       <Group ID="TrackingFrames">
+        <Group ID="AutomaticCreation">
+          <Selector ID="Condition[1]">
+            <Property ID="Distance" Value="160" />
+            <Group ID="Position">
+              <Group ID="Translation">
+                <Property ID="Y" Value="-125" />
+              </Group>
+            </Group>
+          </Selector>
+          <Selector ID="Condition[2]">
+            <Property ID="Distance" Value="160" />
+            <Group ID="Position">
+              <Group ID="Translation">
+                <Property ID="Y" Value="125" />
+              </Group>
+            </Group>
+          </Selector>
+        </Group>
         <Group ID="AutomaticDeletion">
           <Selector ID="Condition[1]">
             <Property ID="MinPosition" Value="-100" />
-            <Property ID="MaxPosition" Value="3000" />
+            <Property ID="MaxPosition" Value="2200" />
           </Selector>
         </Group>
       </Group>
@@ -18,8 +36,8 @@
     <Selector ID="SceneViewerObject">
       <Selector ID="VisualRepresentation" Value="Conveyor belt">
         <Group ID="Dimensions">
-          <Property ID="Length" Value="3000" />
-          <Property ID="Width" Value="300" />
+          <Property ID="Length" Value="2200" />
+          <Property ID="Width" Value="450" />
           <Property ID="Height" Value="1" />
         </Group>
         <Group ID="Translation">
@@ -35,10 +53,28 @@
         <Property ID="AxisRef" Value="gAxis_Conveyor_1" />
       </Selector>
       <Group ID="TrackingFrames">
+        <Group ID="AutomaticCreation">
+          <Selector ID="Condition[1]">
+            <Property ID="Distance" Value="130" />
+            <Group ID="Position">
+              <Group ID="Translation">
+                <Property ID="Y" Value="-113" />
+              </Group>
+            </Group>
+          </Selector>
+          <Selector ID="Condition[2]">
+            <Property ID="Distance" Value="130" />
+            <Group ID="Position">
+              <Group ID="Translation">
+                <Property ID="Y" Value="113" />
+              </Group>
+            </Group>
+          </Selector>
+        </Group>
         <Group ID="AutomaticDeletion">
           <Selector ID="Condition[1]">
             <Property ID="MinPosition" Value="-100" />
-            <Property ID="MaxPosition" Value="3000" />
+            <Property ID="MaxPosition" Value="2200" />
           </Selector>
           <Selector ID="Condition[2]" Value="AfterDesynchronization">
             <Property ID="AxesGroupRef" Value="gAxesGroup_D4r1100R_1" />
@@ -49,8 +85,8 @@
     <Selector ID="SceneViewerObject">
       <Selector ID="VisualRepresentation" Value="Conveyor belt">
         <Group ID="Dimensions">
-          <Property ID="Length" Value="3000" />
-          <Property ID="Width" Value="300" />
+          <Property ID="Length" Value="2200" />
+          <Property ID="Width" Value="450" />
           <Property ID="Height" Value="1" />
         </Group>
         <Group ID="Translation">
