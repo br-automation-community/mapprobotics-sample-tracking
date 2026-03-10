@@ -1,15 +1,9 @@
 (*
 MpAxisBasic function blocks used for Conveyor Handling*)
 VAR
-	MpAxConveyor : MpAxisBasic;
-	AxParConveyor : MpAxisBasicParType;
 	Period : LREAL;
-	LinkTrackingPath : UDINT;
 	LinkAxis : UDINT;
-END_VAR
-(*
-MpAxisBasicConfig function blocks*)
-VAR
+	LinkTrackingPath : UDINT;
 	LastProductPosition : LREAL := 0;
 	State : ConveyorStatesEnum;
 	Reset : BOOL;
@@ -18,11 +12,23 @@ VAR
 	ProductGap : LREAL;
 	Multipick : BOOL;
 END_VAR
+(*Ax Mngment Functions*)
+VAR
+	MC_Stop_0 : MC_Stop;
+	MC_Reset_0 : MC_Reset;
+	MC_Power_0 : MC_Power;
+	MC_Home_0 : MC_Home;
+	MC_MoveVelocity_0 : MC_MoveVelocity;
+	MC_MoveAdditive_0 : MC_MoveAdditive;
+	MC_ReadStatus_0 : MC_ReadStatus;
+END_VAR
 (*
 Tracking function*)
 VAR
-	MC_BR_TrackingFrameDelete_0 : MC_BR_TrackingFrameDelete;
 	MC_BR_TrackingFrameCreate_0 : MC_BR_TrackingFrameCreate;
-	createCnt : USINT;
-	RandomCreation : BOOL;
+	MC_BR_TrackingPathReset_0 : MC_BR_TrackingPathReset;
+	MC_BR_TrackingPathReadStatus_0 : MC_BR_TrackingPathReadStatus;
+	MC_BR_TrackingPathReadInfo_0 : MC_BR_TrackingPathReadInfo;
+	MC_BR_TrackingFrameDelete_0 : MC_BR_TrackingFrameDelete;
+	TrackLinkConveyor : BOOL;
 END_VAR

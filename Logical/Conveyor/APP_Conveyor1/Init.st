@@ -13,5 +13,10 @@ PROGRAM _INIT
 	MC_BR_TrackingFrameCreate_0.Parameters.Orientation.Type := 0;
 	
 	MC_BR_TrackingFrameDelete_0.Mode :=  mcTRKFRM_DELETE_MOD_ALL;
+	
+	MC_Home_0.HomingMode := mcHOMING_DEFAULT;
+	MC_ReadStatus_0.Enable := TRUE;
+	MC_BR_TrackingPathReadInfo_0.Enable := TRUE;
+	MC_BR_TrackingPathReadStatus_0.Enable := TRUE;
 
 END_PROGRAM

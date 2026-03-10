@@ -5,111 +5,101 @@ PROGRAM _CYCLIC
 		
 		/////////////////////////////////////////////////////////////////////////////
 		STATE_WAIT:
-			/////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////
 			IF  Start THEN
-				State := 	STATE_INIT;
+				State := STATE_RESET;
+				MC_Power_0.Enable := FALSE;
 			END_IF
 
 		/////////////////////////////////////////////////////////////////////////////
-		STATE_INIT:
+		STATE_RESET:
 		////////////////////////////////////////////////////////////////////////////
+			MC_Reset_0.Execute := TRUE;
+			IF MC_Reset_0.Done THEN
+				State := STATE_POWER;
+			END_IF
 			
-			IF MpAxConveyor.CommandBusy THEN
-				// wait	
-			ELSIF 	NOT(MpAxConveyor.Active) THEN
-				MpAxConveyor.Enable := TRUE;
-				
-			ELSIF MpAxConveyor.Error THEN
-				MpAxConveyor.ErrorReset := TRUE;
-											
-			ELSIF NOT(MpAxConveyor.PowerOn) THEN
-				MpAxConveyor.Power := TRUE;
+		/////////////////////////////////////////////////////////////////////////////
+		STATE_POWER:
+		////////////////////////////////////////////////////////////////////////////
+			MC_Power_0.Enable := TRUE;
+			IF MC_Power_0.Status THEN
+				State := STATE_HOME;
+			END_IF
 			
-			ELSIF NOT(MpAxConveyor.IsHomed) THEN
-				AxParConveyor.Homing.Mode := mcHOMING_DIRECT;
-				AxParConveyor.Homing.Position := 0;
-				MpAxConveyor.Home := TRUE;
-				
-			ELSIF MpAxConveyor.Info.CommunicationReady THEN
-				LastProductPosition := MpAxConveyor.Position - ProductGap;
-				MC_BR_TrackingFrameDelete_0.Execute := TRUE;
+		/////////////////////////////////////////////////////////////////////////////
+		STATE_HOME:
+		////////////////////////////////////////////////////////////////////////////
+			MC_Home_0.Execute := TRUE;
+			IF MC_Home_0.Done THEN
+				MC_MoveVelocity_0.Velocity := SetVelocity;
 				State := STATE_PRODUCTION;
-			END_IF
+			END_IF	
 				
-		//////////////////////////////////////// Frame Handling! + Stat Machine Conveyor///////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////
 		STATE_PRODUCTION: 
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////
 			
-			// Move Belt with selected speed
-			IF AxParConveyor.Velocity  <> SetVelocity THEN
-				// If velocity ist not up to date, update Conveyer Velocity to the Velocity set at the ControlPanel
-				MpAxConveyor.Update := TRUE;
+			IF MC_MoveVelocity_0.Velocity <> SetVelocity AND MC_MoveVelocity_0.InVelocity THEN
+				MC_MoveVelocity_0.Velocity := SetVelocity;
+				MC_MoveVelocity_0.Execute := TRUE;
 			END_IF
-			AxParConveyor.Velocity := SetVelocity;
-			MpAxConveyor.MoveVelocity := TRUE;
 			
 			IF NOT MC_BR_TrackingFrameCreate_0.Busy THEN
 				addNewObjects;
-			END_IF	
-				
-			IF MpAxConveyor.Error THEN
+			END_IF
+			
+			IF MC_ReadStatus_0.Error OR MC_ReadStatus_0.ErrorStop THEN
 				State := STATE_ERROR;
-				
-			ELSIF NOT Start THEN
-				MpAxConveyor.MoveVelocity := FALSE;
-				
-				IF (MpAxConveyor.Error) THEN
-					MpAxConveyor.Power := FALSE;
-					State := STATE_WAIT;
 
-				ELSIF MpAxConveyor.PowerOn AND NOT(MpAxConveyor.CommandBusy) THEN
-					MpAxConveyor.MoveVelocity := FALSE;
-					MpAxConveyor.Power := FALSE;
-					
-				ELSIF NOT(MpAxConveyor.CommandBusy) THEN
+			ELSIF NOT Start THEN
+				MC_Stop_0.Execute := TRUE;
+				IF MC_Stop_0.Done THEN
 					State := STATE_WAIT;
-					
-				END_IF 
+				END_IF
 			END_IF
 			
 		///////////////////////////////////////////////////////////////////////////////
 		STATE_ERROR:
 		///////////////////////////////////////////////////////////////////////////////
-			MpAxConveyor.MoveVelocity := FALSE;
-			MpAxConveyor.Power := FALSE;
-		
-			IF Reset AND MpAxConveyor.Error AND MpAxConveyor.CommandBusy THEN
-				MpAxConveyor.ErrorReset := TRUE;
-				
-			ELSIF Start AND NOT(MpAxConveyor.Error) AND NOT(MpAxConveyor.CommandBusy) THEN
+			MC_Power_0.Enable := FALSE;
+			MC_BR_TrackingPathReset_0.Execute := TRUE
+			
+			IF ControlPanel.Input.Reset AND NOT MC_BR_TrackingPathReset_0.Busy THEN
 				State := STATE_WAIT;
-			END_IF			
-					
+			END_IF
 	END_CASE
 	
-	MpAxConveyor(MpLink := LinkAxis, Parameters := ADR(AxParConveyor), ErrorReset := Reset);
-	MC_BR_TrackingFrameCreate_0(TrackingPath := LinkTrackingPath);
-	MC_BR_TrackingFrameDelete_0(TrackingPath := LinkTrackingPath);
 	
-	IF (MpAxConveyor.Update AND MpAxConveyor.UpdateDone) OR MpAxConveyor.Error THEN
-		MpAxConveyor.Update	:= FALSE;
-	END_IF
-	
-	IF (NOT(MpAxConveyor.MoveActive) AND NOT(MpAxConveyor.CommandBusy)) OR MpAxConveyor.Error THEN
-		MpAxConveyor.MoveVelocity := FALSE;
-		MpAxConveyor.Update := FALSE;
-	END_IF	
 
-	IF MpAxConveyor.ErrorReset AND NOT(MpAxConveyor.Error) THEN
-		MpAxConveyor.ErrorReset := FALSE;
-	END_IF
+	(* *************************************************************************************************************************** *)
+	(* *************************************************************************************************************************** *)
+	(* *************************************************************************************************************************** *)
 
-	IF (MpAxConveyor.Home AND MpAxConveyor.IsHomed) OR MpAxConveyor.Error THEN
-		MpAxConveyor.Home := FALSE;
-	END_IF
+	// Axis commands
+	MC_MoveAdditive_0(Axis := LinkAxis);
+	MC_MoveVelocity_0(Axis := LinkAxis);
+	MC_Stop_0(Axis := LinkAxis);
+	MC_Reset_0(Axis := LinkAxis);
+	MC_Home_0(Axis := LinkAxis);
+	MC_Power_0(Axis := LinkAxis);
 	
-	MC_BR_TrackingFrameCreate_0.Execute	:= FALSE;
+	MC_MoveAdditive_0.Execute := FALSE;
+	MC_MoveVelocity_0.Execute := FALSE;
+	MC_Stop_0.Execute := FALSE;
+	MC_Reset_0.Execute := FALSE;
+	MC_Home_0.Execute := FALSE;
+	MC_Power_0.Enable := MC_Power_0.Enable AND NOT MC_Power_0.Error;
+	
+	// Trackingpath commands
+	MC_BR_TrackingFrameCreate_0(TrackingPath := TrackLinkConveyor);
+	MC_BR_TrackingFrameDelete_0(TrackingPath := TrackLinkConveyor);
+	MC_BR_TrackingPathReset_0(TrackingPath := TrackLinkConveyor);
+	MC_BR_TrackingPathReadStatus_0(TrackingPath := TrackLinkConveyor);
+	MC_BR_TrackingPathReadInfo_0(TrackingPath := TrackLinkConveyor);
+	
+	MC_BR_TrackingFrameCreate_0.Execute := FALSE;
 	MC_BR_TrackingFrameDelete_0.Execute := FALSE;
-
+	MC_BR_TrackingPathReset_0.Execute := FALSE;
 
 END_PROGRAM
