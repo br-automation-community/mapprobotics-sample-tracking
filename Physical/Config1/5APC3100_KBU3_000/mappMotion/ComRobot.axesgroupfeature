@@ -126,7 +126,7 @@
                   <Property ID="Z" Value="-1000" />
                 </Group>
                 <Group ID="Dimensions">
-                  <Property ID="Length" Value="1300" />
+                  <Property ID="Length" Value="1500" />
                   <Property ID="Width" Value="1000" />
                   <Property ID="Height" Value="1000" />
                 </Group>
@@ -143,12 +143,12 @@
             <Selector ID="Filter[2]" Value="SelectionArea">
               <Selector ID="Area[1]">
                 <Group ID="Translation">
-                  <Property ID="X" Value="0" />
+                  <Property ID="X" Value="-700" />
                   <Property ID="Y" Value="-500" />
                   <Property ID="Z" Value="-1000" />
                 </Group>
                 <Group ID="Dimensions">
-                  <Property ID="Length" Value="1500" />
+                  <Property ID="Length" Value="700" />
                   <Property ID="Width" Value="1000" />
                   <Property ID="Height" Value="1000" />
                 </Group>

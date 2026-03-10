@@ -7,6 +7,7 @@ ACTION DefineLinks:
 	Reset := ControlPanel.Input.Reset;
 	Start := ControlPanel.Input.Start;
 	
+	Indexing := TRUE;
 	ProductGap := 160;
 	SetVelocity := LREAL_TO_REAL(ProductGap) / (ControlPanel.Input.PickRate / 60) / 2;
 	

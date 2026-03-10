@@ -9,7 +9,9 @@ VAR
 	Reset : BOOL;
 	Start : BOOL;
 	SetVelocity : REAL;
+	timeLast : UDINT;
 	ProductGap : LREAL;
+	Indexing : BOOL;
 	Multipick : BOOL;
 END_VAR
 (*Ax Mngment Functions*)

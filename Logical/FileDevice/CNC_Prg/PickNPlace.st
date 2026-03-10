@@ -31,13 +31,18 @@ PROGRAM _MAIN
 		WaitALAP();													// hold interpreter
 		
 		MoveLR(SynchPosUp);											// move up to change frame
-		WaitUntil(TrackingFrameSelect(FrameOut,'Outfeed'));			// hold interpeter until place frame has been selected
+		IF NOT TrackingFrameSelect(FrameOut,'Outfeed') THEN			// Need to stop, no objects left
+			TrackStopR(MachineFrame, ParkPos, 50, 50);				// Move to a static frame							
+			WaitEndMove();											// sync interpreter and program 
+			WaitUntil(TrackingFrameSelect(FrameOut,'Outfeed'));		// hold interpreter until a new frame is available 
+		END_IF
+
 		TrackObjectR(FrameOut, SynchPosUp, 50, 50);					// move to place position
 		MoveLR(SynchPosDown);										// move down on place position
 		WaitTime(0.04);												// Wait cause delay of gripper
 		SetM(16);													// Scene - place product on belt, open gripper
 		WaitALAP();													// hold interpreter 
-		TrackingFrameSetAttribute(FrameOut, 4);						// Transfer attribute value
+		TrackingFrameSetAttribute(FrameOut, 1);						// Transfer attribute value
 		
 		MoveLR(SynchPosUp);											// move up to change frame
 		IF NOT TrackingFrameSelect(FrameIn,'Infeed') THEN			// Need to stop, no objects left

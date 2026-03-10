@@ -39,7 +39,19 @@ PROGRAM _CYCLIC
 				MC_MoveVelocity_0.Velocity := SetVelocity;
 				MC_MoveVelocity_0.Acceleration := SetVelocity/10;
 				MC_MoveVelocity_0.Deceleration := SetVelocity/10;
-				MC_MoveVelocity_0.Execute := TRUE;
+				
+				MC_MoveAdditive_0.Distance := ProductGap;
+				MC_MoveAdditive_0.Acceleration := SetVelocity/2;
+				MC_MoveAdditive_0.Deceleration := SetVelocity/2;
+				MC_MoveAdditive_0.Jerk := SetVelocity*5;
+				MC_MoveAdditive_0.Velocity := 2*SetVelocity;
+				
+				IF NOT Indexing THEN
+					MC_MoveVelocity_0.Execute := TRUE;
+				ELSE
+					MC_MoveAdditive_0.Execute := TRUE;
+				END_IF
+				timeLast := 0;
 				State := STATE_PRODUCTION;
 			END_IF	
 				
@@ -47,9 +59,15 @@ PROGRAM _CYCLIC
 		STATE_PRODUCTION: 
 		///////////////////////////////////////////////////////////////////////////////
 			
-			IF MC_MoveVelocity_0.Velocity <> SetVelocity AND MC_MoveVelocity_0.InVelocity THEN
+			IF NOT Indexing AND MC_MoveVelocity_0.Velocity <> SetVelocity AND MC_MoveVelocity_0.InVelocity THEN
 				MC_MoveVelocity_0.Velocity := SetVelocity;
 				MC_MoveVelocity_0.Execute := TRUE;
+			END_IF
+			
+			timeLast := timeLast + 1;
+			IF Indexing AND (UDINT_TO_REAL(timeLast * 2)/1000.0) >= (LREAL_TO_REAL(ProductGap) / SetVelocity) THEN
+				timeLast := 0;
+				MC_MoveAdditive_0.Execute := TRUE;
 			END_IF
 						
 			IF MC_ReadStatus_0.Error OR MC_ReadStatus_0.ErrorStop THEN

@@ -2,11 +2,6 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="File">Multipick.st</Object>
     <Object Type="File">PickNPlace.st</Object>
-    <Object Type="File">PlaceWithConditionalStop.st</Object>
-    <Object Type="File">PrePalletizing.st</Object>
-    <Object Type="File">Sorting.st</Object>
-    <Object Type="File">MultipickRandom.st</Object>
   </Objects>
 </Package>
