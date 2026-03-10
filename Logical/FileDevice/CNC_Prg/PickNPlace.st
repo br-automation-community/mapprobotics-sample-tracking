@@ -1,5 +1,7 @@
 VAR CONSTANT
 	UpperZLevel : LREAL := 100.0;	// Gripper up position
+	MidZLevel   : LREAL := 10.0;	// Gripper up position
+	MidYLevel   : LREAL := -10.0;	// Gripper up position
 	LowerZLevel : LREAL := 0.0;		// Gripper down position
 	YProductPos : LREAL := 200;		// position in y coordinate where the product should be placed
 END_VAR
@@ -8,6 +10,8 @@ VAR
 	ParkPos				: McPointType := (Pos:=(X:=-100, Y:=100, 			Z:= UpperZLevel));
 	SynchPosUp			: McPointType := (Pos:=(X:=   0, Y:= 0, 			Z:= UpperZLevel));
 	SynchPosDown		: McPointType := (Pos:=(X:=   0, Y:= 0, 			Z:= LowerZLevel));
+	SynchPosSide		: McPointType := (Pos:=(X:= MidYLevel, Y:= 0, 		Z:= MidZLevel));
+	SynchPosSideUP		: McPointType := (Pos:=(X:= MidYLevel, Y:= 0, 		Z:= UpperZLevel));
 		
 	FrameIn : McTrkFrmIdentType;
 	FrameOut : McTrkFrmIdentType;
@@ -30,7 +34,9 @@ PROGRAM _MAIN
 		SetM(32);													// Scene - remove product from belt, close gripper
 		WaitALAP();													// hold interpreter
 		
-		MoveLR(SynchPosUp);											// move up to change frame
+		Feedrate(5000);												// low feedrate while start	
+		MoveL(SynchPosSide);										// move to the side to change frame		
+		MoveLR(SynchPosSideUP);										// move up to change frame
 		IF NOT TrackingFrameSelect(FrameOut,'Outfeed') THEN			// Need to stop, no objects left
 			TrackStopR(MachineFrame, ParkPos, 50, 50);				// Move to a static frame							
 			WaitEndMove();											// sync interpreter and program 

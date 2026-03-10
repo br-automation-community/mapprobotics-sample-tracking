@@ -3,6 +3,7 @@
 <Configuration>
   <Element ID="gTrackingPathConveyor_2" Type="trackingpath" Description="Tracking Path with moving objects">
     <Selector ID="Type">
+      <Property ID="MaxPositionError" Value="5" />
       <Selector ID="MotionSource" Value="Axis">
         <Property ID="AxisRef" Value="gAxis_Conveyor_2" />
         <Selector ID="AxisUsage">
@@ -52,6 +53,7 @@
   </Element>
   <Element ID="gTrackingPathConveyor_1" Type="trackingpath" Description="Tracking Path with moving objects">
     <Selector ID="Type">
+      <Property ID="MaxPositionError" Value="5" />
       <Selector ID="MotionSource" Value="Axis">
         <Property ID="AxisRef" Value="gAxis_Conveyor_1" />
       </Selector>

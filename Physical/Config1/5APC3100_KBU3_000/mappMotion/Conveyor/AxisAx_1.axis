@@ -12,6 +12,15 @@
         <Property ID="LowerLimit" Value="-8388608.0" />
         <Property ID="UpperLimit" Value="8388607.0" />
       </Group>
+      <Selector ID="Velocity">
+        <Property ID="Velocity" Value="5000.0" />
+      </Selector>
+      <Selector ID="Acceleration">
+        <Property ID="Acceleration" Value="50000.0" />
+      </Selector>
+      <Selector ID="Deceleration">
+        <Property ID="Deceleration" Value="50000.0" />
+      </Selector>
     </Selector>
   </Element>
   <Element ID="gAxis_Conveyor_1" Type="axis">

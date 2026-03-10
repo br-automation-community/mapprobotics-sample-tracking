@@ -41,10 +41,10 @@ PROGRAM _CYCLIC
 				MC_MoveVelocity_0.Deceleration := SetVelocity/10;
 				
 				MC_MoveAdditive_0.Distance := ProductGap;
-				MC_MoveAdditive_0.Acceleration := SetVelocity/2;
-				MC_MoveAdditive_0.Deceleration := SetVelocity/2;
-				MC_MoveAdditive_0.Jerk := SetVelocity*5;
-				MC_MoveAdditive_0.Velocity := 2*SetVelocity;
+				MC_MoveAdditive_0.Acceleration := SetVelocity*4;
+				MC_MoveAdditive_0.Deceleration := SetVelocity*4;
+				MC_MoveAdditive_0.Jerk := SetVelocity*2*10;
+				MC_MoveAdditive_0.Velocity := 4*SetVelocity;
 				
 				IF NOT Indexing THEN
 					MC_MoveVelocity_0.Execute := TRUE;

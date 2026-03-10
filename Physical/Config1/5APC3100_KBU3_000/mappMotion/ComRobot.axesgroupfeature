@@ -143,7 +143,7 @@
             <Selector ID="Filter[2]" Value="SelectionArea">
               <Selector ID="Area[1]">
                 <Group ID="Translation">
-                  <Property ID="X" Value="-700" />
+                  <Property ID="X" Value="-1000" />
                   <Property ID="Y" Value="-500" />
                   <Property ID="Z" Value="-1000" />
                 </Group>
