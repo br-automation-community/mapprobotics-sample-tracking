@@ -20,8 +20,7 @@
     <Build GccVersion="11.3.0" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Safety SafetyRelease="0.0" />
-    <Transfer AddToUserPart="True" AdditionalUserDir="\Logical\FileDevice" AllowDowngrade="False" AllowInitialTransfer="False" AllowPartitioning="False" CreatePIPEntryForOldTargets="true" ExecuteInitExitProgram="True" ForceInitialTransfer="True" IdentificationTypeValue="" IgnoreVersion="True" KeepNonVolatileMemory="False" ModuleSystemForPip="" PreserveVariableValues="True" ProjectConsistent="False" RebootDuringTransfer="False" SavedOfflineInstallationFolder="F:\" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" TargetIdentificationType="Always" TryToBootInRunMode="False" UserFilesIgnoreDifference="False" />
-    <Vc FirmwareVersion="" />
+    <Transfer AddToUserPart="True" AdditionalUserDir="\Logical\FileDevice" AllowDowngrade="False" AllowInitialTransfer="False" AllowPartitioning="False" CreatePIPEntryForOldTargets="true" ExecuteInitExitProgram="True" ForceInitialTransfer="True" IgnoreVersion="True" KeepNonVolatileMemory="False" PreserveVariableValues="True" ProjectConsistent="False" RebootDuringTransfer="False" SavedOfflineInstallationFolder="F:\" TargetIdentificationType="Always" TryToBootInRunMode="False" UserFilesIgnoreDifference="False" WaitForReconnectAfterReboot="True" />
     <OnlineConfiguration Name="APC3109Local" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/COMT=2500 /COMT=1000 /AM=* /SDT=5 /IP=192.168.20.254 /PT=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>
 </Cpu>

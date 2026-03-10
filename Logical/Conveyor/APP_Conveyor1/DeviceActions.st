@@ -1,11 +1,11 @@
 ACTION addNewObjects:
 	
 	// overflow handling
-	IF MpAxConveyor.Position < LastProductPosition THEN
+	IF MC_ReadActualPosition_0.Position < LastProductPosition THEN
 		LastProductPosition := LastProductPosition - Period;
 	END_IF
 	
-	IF MpAxConveyor.Position <  LastProductPosition	+ ProductGap THEN
+	IF MC_ReadActualPosition_0.Position <  LastProductPosition	+ ProductGap THEN
 		RETURN;
 	END_IF
 	
@@ -14,7 +14,7 @@ ACTION addNewObjects:
 		createCnt := createCnt + 1;
 		
 		IF createCnt MOD 2 = 0 THEN
-			LastProductPosition := MpAxConveyor.Position;
+			LastProductPosition := MC_ReadActualPosition_0.Position;
 		END_IF
 		
 	ELSE
@@ -25,7 +25,7 @@ ACTION addNewObjects:
 			MC_BR_TrackingFrameCreate_0.Parameters.Translation.Y := 0;
 			MC_BR_TrackingFrameCreate_0.Parameters.Orientation.Angle3 := 0;
 		END_IF
-		LastProductPosition := MpAxConveyor.Position;
+		LastProductPosition := MC_ReadActualPosition_0.Position;
 	END_IF
 
 	
@@ -36,7 +36,7 @@ ACTION addNewObjects:
 	END_IF;
 		
 	// Add frame in the buffer
-	MC_BR_TrackingFrameCreate_0.Parameters.LatchedPath.Position := MpAxConveyor.Position;
+	MC_BR_TrackingFrameCreate_0.Parameters.LatchedPath.Position := MC_ReadActualPosition_0.Position;
 	MC_BR_TrackingFrameCreate_0.Execute	:= TRUE;
 	
 END_ACTION

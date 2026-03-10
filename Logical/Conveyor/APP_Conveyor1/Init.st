@@ -18,5 +18,6 @@ PROGRAM _INIT
 	MC_ReadStatus_0.Enable := TRUE;
 	MC_BR_TrackingPathReadInfo_0.Enable := TRUE;
 	MC_BR_TrackingPathReadStatus_0.Enable := TRUE;
-
+	MC_ReadActualPosition_0.Enable := TRUE;
+	
 END_PROGRAM

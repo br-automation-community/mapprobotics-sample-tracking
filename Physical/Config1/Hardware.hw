@@ -53,6 +53,7 @@
     </Connector>
     <Parameter ID="ConfigurationID" Value="Template_X20CP1586" />
     <Parameter ID="UserPartitionSize" Value="5" />
+    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />
     <Parameter ID="TimerDevice" Value="5AC901.IPLK-00.IF1" />
     <Parameter ID="IdleTaskClass" Value="4" />

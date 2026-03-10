@@ -21,6 +21,7 @@ VAR
 	MC_MoveVelocity_0 : MC_MoveVelocity;
 	MC_MoveAdditive_0 : MC_MoveAdditive;
 	MC_ReadStatus_0 : MC_ReadStatus;
+	MC_ReadActualPosition_0 : MC_ReadActualPosition;
 END_VAR
 (*
 Tracking function*)
@@ -30,5 +31,6 @@ VAR
 	MC_BR_TrackingPathReadStatus_0 : MC_BR_TrackingPathReadStatus;
 	MC_BR_TrackingPathReadInfo_0 : MC_BR_TrackingPathReadInfo;
 	MC_BR_TrackingFrameDelete_0 : MC_BR_TrackingFrameDelete;
-	TrackLinkConveyor : BOOL;
+	createCnt : USINT;
+	RandomCreation : BOOL;
 END_VAR

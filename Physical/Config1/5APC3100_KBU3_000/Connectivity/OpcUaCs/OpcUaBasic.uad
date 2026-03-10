@@ -27,11 +27,7 @@
         </Variable>
       </Variable>
     </GlobalVariables>
-    <Task Name="APP_Convey">
-      <Variable Name="MpAxConveyor">
-        <Variable Name="Position" />
-      </Variable>
-    </Task>
+    <Task Name="APP_Convey" />
     <Task Name="APP_Robot1">
       <Variable Name="MC_BR_ConditionalStop_0">
         <Variable Name="Activated" />

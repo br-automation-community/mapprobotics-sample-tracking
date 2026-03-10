@@ -15,7 +15,7 @@ ACTION DefineLinks:
 	
 	Multipick := ControlPanel.Input.StartMultipick;
 	ProductGap := ControlPanel.Input.ProductGap;
-	SetVelocity := ControlPanel.Input.VelocityProduction;
+	SetVelocity := ControlPanel.Input.VelocityProduction;	
 	RandomCreation := ControlPanel.Input.StartMultipickRandom;
 		
 END_ACTION

@@ -15,9 +15,13 @@ PROGRAM _CYCLIC
 		STATE_RESET:
 		////////////////////////////////////////////////////////////////////////////
 			MC_Reset_0.Execute := TRUE;
-			IF MC_Reset_0.Done THEN
+			MC_BR_TrackingPathReset_0.Execute := TRUE;
+			
+			IF MC_Reset_0.Done AND MC_BR_TrackingPathReset_0.Done THEN
 				State := STATE_POWER;
 			END_IF
+			
+			
 			
 		/////////////////////////////////////////////////////////////////////////////
 		STATE_POWER:
@@ -33,6 +37,9 @@ PROGRAM _CYCLIC
 			MC_Home_0.Execute := TRUE;
 			IF MC_Home_0.Done THEN
 				MC_MoveVelocity_0.Velocity := SetVelocity;
+				MC_MoveVelocity_0.Acceleration := SetVelocity/10;
+				MC_MoveVelocity_0.Deceleration := SetVelocity/10;
+				MC_MoveVelocity_0.Execute := TRUE;
 				State := STATE_PRODUCTION;
 			END_IF	
 				
@@ -63,7 +70,7 @@ PROGRAM _CYCLIC
 		STATE_ERROR:
 		///////////////////////////////////////////////////////////////////////////////
 			MC_Power_0.Enable := FALSE;
-			MC_BR_TrackingPathReset_0.Execute := TRUE
+			MC_BR_TrackingPathReset_0.Execute := TRUE;
 			
 			IF ControlPanel.Input.Reset AND NOT MC_BR_TrackingPathReset_0.Busy THEN
 				State := STATE_WAIT;
@@ -83,6 +90,8 @@ PROGRAM _CYCLIC
 	MC_Reset_0(Axis := LinkAxis);
 	MC_Home_0(Axis := LinkAxis);
 	MC_Power_0(Axis := LinkAxis);
+	MC_ReadStatus_0(Axis := LinkAxis);
+	MC_ReadActualPosition_0(Axis := LinkAxis);
 	
 	MC_MoveAdditive_0.Execute := FALSE;
 	MC_MoveVelocity_0.Execute := FALSE;
@@ -92,11 +101,11 @@ PROGRAM _CYCLIC
 	MC_Power_0.Enable := MC_Power_0.Enable AND NOT MC_Power_0.Error;
 	
 	// Trackingpath commands
-	MC_BR_TrackingFrameCreate_0(TrackingPath := TrackLinkConveyor);
-	MC_BR_TrackingFrameDelete_0(TrackingPath := TrackLinkConveyor);
-	MC_BR_TrackingPathReset_0(TrackingPath := TrackLinkConveyor);
-	MC_BR_TrackingPathReadStatus_0(TrackingPath := TrackLinkConveyor);
-	MC_BR_TrackingPathReadInfo_0(TrackingPath := TrackLinkConveyor);
+	MC_BR_TrackingFrameCreate_0(TrackingPath := LinkTrackingPath);
+	MC_BR_TrackingFrameDelete_0(TrackingPath := LinkTrackingPath);
+	MC_BR_TrackingPathReset_0(TrackingPath := LinkTrackingPath);
+	MC_BR_TrackingPathReadStatus_0(TrackingPath := LinkTrackingPath);
+	MC_BR_TrackingPathReadInfo_0(TrackingPath := LinkTrackingPath);
 	
 	MC_BR_TrackingFrameCreate_0.Execute := FALSE;
 	MC_BR_TrackingFrameDelete_0.Execute := FALSE;
