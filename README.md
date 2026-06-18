@@ -1,4 +1,4 @@
-# mapp-robotics-tracking-sample
+# mapprobotics-sample-tracking
 
 ## Introduction
 This sample serves as an introduction to the mapp Robotics tracking technology.
