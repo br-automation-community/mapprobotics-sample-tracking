@@ -7,5 +7,7 @@
     <Object Type="File" TransferedForTargetSourceCompare="false">Config_4.mechanicalsystem</Object>
     <Object Type="File" TransferedForTargetSourceCompare="false">Config_5.axesgroupfeature</Object>
     <Object Type="File" TransferedForTargetSourceCompare="false">Config_11.axisfeature</Object>
+    <Object Type="File">WSScara.workspace</Object>
+    <Object Type="File">Config_6.dynpartable</Object>
   </Objects>
 </Package>

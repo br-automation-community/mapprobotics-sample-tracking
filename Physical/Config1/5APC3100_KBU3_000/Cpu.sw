@@ -289,5 +289,6 @@
     <LibraryObject Name="McDS402Ax" Source="Libraries.McDS402Ax.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="MpRobotics" Source="Libraries.MpRobotics.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="MpCnc" Source="Libraries.MpCnc.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="MpTool" Source="Libraries.MpTool.lby" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

@@ -90,7 +90,8 @@
               <Property ID="Name" Value="FixedPlace" />
               <Selector ID="Type">
                 <Group ID="Translation">
-                  <Property ID="Y" Value="450" />
+                  <Property ID="X" Value="500" />
+                  <Property ID="Y" Value="250" />
                 </Group>
               </Selector>
             </Group>
@@ -133,6 +134,11 @@
   <Element ID="Feature_Programs" Type="axesgroupfeature">
     <Selector ID="Type">
       <Selector ID="DefaultLanguage" Value="ST" />
+    </Selector>
+  </Element>
+  <Element ID="Feature_Workspace" Type="axesgroupfeature">
+    <Selector ID="Type" Value="WorkspaceMonitoring">
+      <Property ID="WorkspaceRef" Value="Workspace_1" />
     </Selector>
   </Element>
 </Configuration>

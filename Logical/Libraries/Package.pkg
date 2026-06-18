@@ -45,5 +45,6 @@
     <Object Type="Library" Language="binary" Description="[mapp Motion] DS402 axis library">McDS402Ax</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] Robotics library">MpRobotics</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] CNC library">MpCnc</Object>
+    <Object Type="Library" Language="binary" Description="[mapp Motion] Tool library">MpTool</Object>
   </Objects>
 </Package>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Configuration>
+  <Element ID="ProductLoad_1" Type="dynpartable">
+    <Group ID="Row[1]">
+      <Property ID="Value" Value="2.5" />
+      <Property ID="Unit" Value="kg" />
+      <Property ID="Description" Value="Mass" />
+    </Group>
+    <Group ID="Row[2]">
+      <Property ID="Index" Value="1" />
+      <Property ID="Unit" Value="m" />
+      <Property ID="Description" Value="Center of gravity - X direction" />
+    </Group>
+    <Group ID="Row[3]">
+      <Property ID="Index" Value="2" />
+      <Property ID="Unit" Value="m" />
+      <Property ID="Description" Value="Center of gravity - Y direction" />
+    </Group>
+    <Group ID="Row[4]">
+      <Property ID="Index" Value="3" />
+      <Property ID="Unit" Value="m" />
+      <Property ID="Description" Value="Center of gravity - Z direction" />
+    </Group>
+    <Group ID="Row[5]">
+      <Property ID="Index" Value="4" />
+      <Property ID="Unit" Value="kg m^2" />
+      <Property ID="Description" Value="Moment of inertia about X" />
+    </Group>
+    <Group ID="Row[6]">
+      <Property ID="Index" Value="5" />
+      <Property ID="Unit" Value="kg m^2" />
+      <Property ID="Description" Value="Moment of inertia about Y" />
+    </Group>
+    <Group ID="Row[7]">
+      <Property ID="Index" Value="6" />
+      <Property ID="Unit" Value="kg m^2" />
+      <Property ID="Description" Value="Moment of inertia about Z" />
+    </Group>
+    <Group ID="Row[8]">
+      <Property ID="Index" Value="1000" />
+      <Property ID="Value" Value="1" />
+      <Property ID="Unit" Value="" />
+      <Property ID="Description" Value="0 (toolDynPar), 1 (productLoadPar)" />
+    </Group>
+  </Element>
+</Configuration>

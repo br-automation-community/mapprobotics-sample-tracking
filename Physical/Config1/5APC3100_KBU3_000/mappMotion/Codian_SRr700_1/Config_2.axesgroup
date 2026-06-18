@@ -65,6 +65,8 @@
         <Property ID="FeatureRef[5]" Value="Feature_PathDefRobot" />
         <Property ID="FeatureRef[6]" Value="Feature_Selection" />
         <Property ID="FeatureRef[7]" Value="Feature_TrackingRobot" />
+        <Property ID="FeatureRef[8]" Value="Feature_FrameHierachy" />
+        <Property ID="FeatureRef[9]" Value="Feature_Workspace" />
       </Group>
     </Selector>
   </Element>
