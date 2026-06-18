@@ -8,14 +8,14 @@
     <Group ID="GlobalCoordinateSystem">
       <Group ID="Object[1]">
         <Selector ID="Type">
-          <Property ID="AxesGroupRef" Value="gAxesGroup_SRr700_1" />
+          <Property ID="AxesGroupRef" Value="gAxesGroup_SRr500_1" />
         </Selector>
       </Group>
       <Group ID="Object[2]">
         <Selector ID="Type" Value="StandardFrame">
           <Property ID="Name" Value="FixedPlace" />
           <Group ID="Translation">
-            <Property ID="X" Value="500" />
+            <Property ID="X" Value="300" />
             <Property ID="Y" Value="250" />
           </Group>
         </Selector>

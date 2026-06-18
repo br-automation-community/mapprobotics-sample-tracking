@@ -6,6 +6,8 @@
     <Object Type="File">Config.mappmotioncfg</Object>
     <Object Type="File" Description="Migrated from ComRobot.axesgroupfeature (mapp Motion Version 5)">ComRobot.axesgroupfeature</Object>
     <Object Type="Package">Conveyor</Object>
-    <Object Type="Package">Codian_SRr700_1</Object>
+    <Object Type="File">WSScara.workspace</Object>
+    <Object Type="File">Config_6.dynpartable</Object>
+    <Object Type="Package">Codian_SRr500_1</Object>
   </Objects>
 </Package>

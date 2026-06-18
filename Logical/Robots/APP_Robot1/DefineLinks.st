@@ -1,8 +1,8 @@
 ACTION DefineLinks:
 
 	// Define Link to the Robot & Conveyor
-	NameAxesGroup	:= 'gAxesGroup_SRr700_1';
-	LinkAxesGroup	:= ADR(gAxesGroup_SRr700_1);
+	NameAxesGroup	:= 'gAxesGroup_SRr500_1';
+	LinkAxesGroup	:= ADR(gAxesGroup_SRr500_1);
 	
 	LinkTrackingPath := ADR(gTrackingPathConveyor_1);
 	NameTrackingPath := 'gTrackingPathConveyor_1';

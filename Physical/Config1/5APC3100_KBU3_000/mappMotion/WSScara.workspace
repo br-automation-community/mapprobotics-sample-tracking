@@ -12,7 +12,7 @@
             <Property ID="Z" Value="-500" />
           </Group>
           <Group ID="Dimension">
-            <Property ID="X" Value="700" />
+            <Property ID="X" Value="600" />
             <Property ID="Y" Value="400" />
             <Property ID="Z" Value="1000" />
           </Group>

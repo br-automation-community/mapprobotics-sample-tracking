@@ -90,7 +90,7 @@
               <Property ID="Name" Value="FixedPlace" />
               <Selector ID="Type">
                 <Group ID="Translation">
-                  <Property ID="X" Value="500" />
+                  <Property ID="X" Value="300" />
                   <Property ID="Y" Value="250" />
                 </Group>
               </Selector>
@@ -117,7 +117,7 @@
                   <Property ID="Z" Value="-500" />
                 </Group>
                 <Group ID="Dimensions">
-                  <Property ID="Length" Value="800" />
+                  <Property ID="Length" Value="600" />
                   <Property ID="Width" Value="1000" />
                   <Property ID="Height" Value="1000" />
                 </Group>

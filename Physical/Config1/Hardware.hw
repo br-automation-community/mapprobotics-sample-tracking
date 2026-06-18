@@ -97,17 +97,17 @@
     <Parameter ID="ActivateWebServer" Value="1" />
     <Parameter ID="ActivateSdm" Value="1" />
   </Module>
-  <Module Name="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" Type="8EI8X8MWD10.xxxx-1" Version="2.4.0.0" NodeNumber="1">
+  <Module Name="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr500_1" Type="8EI8X8MWD10.xxxx-1" Version="2.4.0.0" NodeNumber="1">
     <Connection Connector="PLK1" TargetModule="5AC901.IPLK-00" TargetConnector="IF1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" TargetConnector="PLK1">
+    <Connection Connector="PLK2" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr500_1" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="MT2" TargetModule="SR200M2A-Q2_SRr700_1" TargetConnector="MT" />
+    <Connection Connector="MT2" TargetModule="SR200M2A-Q2_SRr500_1" TargetConnector="MT" />
     <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX41" Value="T_Format" />
     <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX42" Value="T_Format" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ1_SRr700_1" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ1_SRr500_1" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="80" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
@@ -116,7 +116,7 @@
     <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="1" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="100.0" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="60.0" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.5" />
@@ -133,7 +133,7 @@
     <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="Used" />
     <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
     <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ2_SRr700_1" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ2_SRr500_1" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="50" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
@@ -142,7 +142,7 @@
     <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller" Value="1" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[2]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="125.0" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="75.0" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="1" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="0.5" />
@@ -160,14 +160,14 @@
     <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
     <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
   </Module>
-  <Module Name="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" Type="8EI8X8MWD10.xxxx-1" Version="2.4.0.0" NodeNumber="2">
-    <Connection Connector="PLK1" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" TargetConnector="PLK2">
+  <Module Name="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr500_1" Type="8EI8X8MWD10.xxxx-1" Version="2.4.0.0" NodeNumber="2">
+    <Connection Connector="PLK1" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr500_1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="MT2" TargetModule="SR200M4A-Q4_SRr700_1" TargetConnector="MT" />
+    <Connection Connector="MT2" TargetModule="SR200M4A-Q4_SRr500_1" TargetConnector="MT" />
     <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX41" Value="T_Format" />
     <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX42" Value="T_Format" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ3_SRr700_1" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ3_SRr500_1" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="2" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
@@ -177,10 +177,10 @@
     <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="1" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="400.0" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="225.0" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.45" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.6" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="1" />
@@ -194,8 +194,8 @@
     <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="Used" />
     <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
     <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
-    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[1]/RealAxis/AxisFeatures" Value="Feature_Brake_SRr700_1" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ4_SRr700_1" />
+    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[1]/RealAxis/AxisFeatures" Value="Feature_Brake_SRr500_1" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ4_SRr500_1" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1875" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
@@ -222,10 +222,10 @@
     <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[2]/RealAxis" Value="Used" />
     <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
     <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
-    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[2]/RealAxis/AxisFeatures" Value="Feature_Brake_SRr700_1" />
+    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[2]/RealAxis/AxisFeatures" Value="Feature_Brake_SRr500_1" />
   </Module>
-  <Module Name="SR200M1A-Q1_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" TargetConnector="MT1" />
+  <Module Name="SR200M1A-Q1_SRr500_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr500_1" TargetConnector="MT1" />
     <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
     <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
     <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
@@ -257,8 +257,8 @@
     <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.0019144080232812802" />
     <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.16999999999999998" />
   </Module>
-  <Module Name="SR200M2A-Q2_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" TargetConnector="MT2" />
+  <Module Name="SR200M2A-Q2_SRr500_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr500_1" TargetConnector="MT2" />
     <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
     <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
     <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
@@ -290,8 +290,8 @@
     <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.001198831756609865" />
     <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.1" />
   </Module>
-  <Module Name="SR200M3A-Q3_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" TargetConnector="MT1" />
+  <Module Name="SR200M3A-Q3_SRr500_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr500_1" TargetConnector="MT1" />
     <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
     <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
     <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
@@ -321,8 +321,8 @@
     <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.156" />
     <Parameter ID="Encoder" Location="M1" Value="NotUsed" />
   </Module>
-  <Module Name="SR200M4A-Q4_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" TargetConnector="MT2" />
+  <Module Name="SR200M4A-Q4_SRr500_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr500_1" TargetConnector="MT2" />
     <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
     <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
     <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="MechSys_SRr700_1" Type="mechanicalsystem" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="MechSys_SRr500_1" Type="mechanicalsystem" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Property ID="TypeIsReadOnly" Value="1" />
     <Selector ID="Type" Value="Scara">
       <Property ID="SubtypeIsReadOnly" Value="1" />
       <Selector ID="Subtype">
         <Selector ID="SceneViewerObject" Value="ObjectID">
-          <Property ID="ID" Value="2750" />
+          <Property ID="ID" Value="2710" />
         </Selector>
         <Property ID="DescriptionIsReadOnly" Value="1" />
         <Selector ID="Description">
@@ -18,7 +18,7 @@
             </Group>
             <Property ID="TranslationFromQ1ToQ2IsReadOnly" Value="1" />
             <Group ID="TranslationFromQ1ToQ2">
-              <Property ID="XY" Value="425.0" />
+              <Property ID="XY" Value="225.0" />
               <Property ID="Z" Value="54.5" />
             </Group>
             <Group ID="TranslationFromQ2ToQZ">
@@ -72,7 +72,7 @@
         <Property ID="InternalDynamicModelIsReadOnly" Value="1" />
         <Selector ID="InternalDynamicModel" Value="Used">
           <Property ID="TypeIsReadOnly" Value="1" />
-          <Property ID="Type" Value="Codian SR200-6/700Z20A" />
+          <Property ID="Type" Value="Codian SR200-6/500Z20A" />
           <Group ID="Row[1]">
             <Property ID="Value" Value="6" />
             <Property ID="Unit" Value="" />
@@ -80,157 +80,157 @@
           </Group>
           <Group ID="Row[2]">
             <Property ID="Index" Value="1" />
-            <Property ID="Value" Value="5.430278" />
+            <Property ID="Value" Value="3.791755" />
             <Property ID="Unit" Value="kg" />
             <Property ID="Description" Value="m1" />
           </Group>
           <Group ID="Row[3]">
             <Property ID="Index" Value="2" />
-            <Property ID="Value" Value="1.43276798974" />
+            <Property ID="Value" Value="0.573779741865" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m1*rc1x" />
           </Group>
           <Group ID="Row[4]">
             <Property ID="Index" Value="3" />
-            <Property ID="Value" Value="0.000467003908" />
+            <Property ID="Value" Value="0.00049292815" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m1*rc1y" />
           </Group>
           <Group ID="Row[5]">
             <Property ID="Index" Value="4" />
-            <Property ID="Value" Value="0.244802362518" />
+            <Property ID="Value" Value="0.20037908473" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m1*rc1z" />
           </Group>
           <Group ID="Row[6]">
             <Property ID="Index" Value="5" />
-            <Property ID="Value" Value="0.000123218047118" />
+            <Property ID="Value" Value="0.0000745913664424" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m1*rc1x*rc1y" />
           </Group>
           <Group ID="Row[7]">
             <Property ID="Index" Value="6" />
-            <Property ID="Value" Value="0.0000210530031765" />
+            <Property ID="Value" Value="0.0000260492810149" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m1*rc1y*rc1z" />
           </Group>
           <Group ID="Row[8]">
             <Property ID="Index" Value="7" />
-            <Property ID="Value" Value="0.0645906137456" />
+            <Property ID="Value" Value="0.0303219642386" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m1*rc1x*rc1z" />
           </Group>
           <Group ID="Row[9]">
             <Property ID="Index" Value="8" />
-            <Property ID="Value" Value="0.378032968558" />
+            <Property ID="Value" Value="0.0868260718782" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m1*rc1x*rc1x" />
           </Group>
           <Group ID="Row[10]">
             <Property ID="Index" Value="9" />
-            <Property ID="Value" Value="0.000000040162336088" />
+            <Property ID="Value" Value="0.0000000640806595" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m1*rc1y*rc1y" />
           </Group>
           <Group ID="Row[11]">
             <Property ID="Index" Value="10" />
-            <Property ID="Value" Value="0.0110359353047" />
+            <Property ID="Value" Value="0.0105892331116" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m1*rc1z*rc1z" />
           </Group>
           <Group ID="Row[12]">
             <Property ID="Index" Value="11" />
-            <Property ID="Value" Value="0.022483" />
+            <Property ID="Value" Value="0.019199" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="Jxx1" />
           </Group>
           <Group ID="Row[13]">
             <Property ID="Index" Value="12" />
-            <Property ID="Value" Value="0.537046" />
+            <Property ID="Value" Value="0.136703" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="Jyy1" />
           </Group>
           <Group ID="Row[14]">
             <Property ID="Index" Value="13" />
-            <Property ID="Value" Value="0.523971" />
+            <Property ID="Value" Value="0.123126" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="Jzz1" />
           </Group>
           <Group ID="Row[15]">
             <Property ID="Index" Value="14" />
-            <Property ID="Value" Value="4.79047" />
+            <Property ID="Value" Value="4.530055" />
             <Property ID="Unit" Value="kg" />
             <Property ID="Description" Value="m2" />
           </Group>
           <Group ID="Row[16]">
             <Property ID="Index" Value="15" />
-            <Property ID="Value" Value="0.15806634812" />
+            <Property ID="Value" Value="0.3856888827" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m2*rc2x" />
           </Group>
           <Group ID="Row[17]">
             <Property ID="Index" Value="16" />
-            <Property ID="Value" Value="-0.0115929374" />
+            <Property ID="Value" Value="0.00221972695" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m2*rc2y" />
           </Group>
           <Group ID="Row[18]">
             <Property ID="Index" Value="17" />
-            <Property ID="Value" Value="0.43553037052" />
+            <Property ID="Value" Value="0.320632762845" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m2*rc2z" />
           </Group>
           <Group ID="Row[19]">
             <Property ID="Index" Value="18" />
-            <Property ID="Value" Value="-0.00038252056245" />
+            <Property ID="Value" Value="0.000188987552523" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m2*rc2x*rc2y" />
           </Group>
           <Group ID="Row[20]">
             <Property ID="Index" Value="19" />
-            <Property ID="Value" Value="-0.00105398349666" />
+            <Property ID="Value" Value="0.000157110053794" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m2*rc2y*rc2z" />
           </Group>
           <Group ID="Row[21]">
             <Property ID="Index" Value="20" />
-            <Property ID="Value" Value="0.0143707601057" />
+            <Property ID="Value" Value="0.0272986734286" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m2*rc2x*rc2z" />
           </Group>
           <Group ID="Row[22]">
             <Property ID="Index" Value="21" />
-            <Property ID="Value" Value="0.00521555722257" />
+            <Property ID="Value" Value="0.0328375514731" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m2*rc2x*rc2x" />
           </Group>
           <Group ID="Row[23]">
             <Property ID="Index" Value="22" />
-            <Property ID="Value" Value="0.000028054908508" />
+            <Property ID="Value" Value="0.0000010876662055" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m2*rc2y*rc2y" />
           </Group>
           <Group ID="Row[24]">
             <Property ID="Index" Value="23" />
-            <Property ID="Value" Value="0.0395966791662" />
+            <Property ID="Value" Value="0.0226940663214" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m2*rc2z*rc2z" />
           </Group>
           <Group ID="Row[25]">
             <Property ID="Index" Value="24" />
-            <Property ID="Value" Value="0.098841" />
+            <Property ID="Value" Value="0.053513" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="Jxx2" />
           </Group>
           <Group ID="Row[26]">
             <Property ID="Index" Value="25" />
-            <Property ID="Value" Value="0.309168" />
+            <Property ID="Value" Value="0.167955" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="Jyy2" />
           </Group>
           <Group ID="Row[27]">
             <Property ID="Index" Value="26" />
-            <Property ID="Value" Value="0.221562" />
+            <Property ID="Value" Value="0.126363" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="Jzz2" />
           </Group>
@@ -317,7 +317,7 @@
           </Group>
           <Group ID="Row[44]">
             <Property ID="Index" Value="43" />
-            <Property ID="Value" Value="0.058800459165" />
+            <Property ID="Value" Value="0.058762637073" />
             <Property ID="Unit" Value="kgm" />
             <Property ID="Description" Value="m4*rc4z" />
           </Group>
@@ -348,7 +348,7 @@
           </Group>
           <Group ID="Row[50]">
             <Property ID="Index" Value="49" />
-            <Property ID="Value" Value="0.00402224540918" />
+            <Property ID="Value" Value="0.00401707263295" />
             <Property ID="Unit" Value="kgm²" />
             <Property ID="Description" Value="m4*rc4z*rc4z" />
           </Group>
@@ -443,7 +443,7 @@
         </Selector>
         <Selector ID="InternalDynamicLimits" Value="Used">
           <Property ID="TypeIsReadOnly" Value="1" />
-          <Property ID="Type" Value="Codian SR200-6/700Z20A" />
+          <Property ID="Type" Value="Codian SR200-6/500Z20A" />
           <Group ID="GearboxLimits">
             <Group ID="Row[1]">
               <Property ID="Value" Value="6" />
@@ -494,11 +494,11 @@
             </Group>
             <Group ID="CondLimRedPoint[3]">
               <Property ID="SourceValue" Value="4.0" />
-              <Property ID="LimitReductionInPercent" Value="0.0" />
+              <Property ID="LimitReductionInPercent" Value="40.0" />
             </Group>
             <Group ID="CondLimRedPoint[4]">
               <Property ID="SourceValue" Value="6.0" />
-              <Property ID="LimitReductionInPercent" Value="58.3" />
+              <Property ID="LimitReductionInPercent" Value="65.0" />
             </Group>
             <Group ID="CondLimRedPoint[5]" />
             <Group ID="CondLimRedPoint[6]" />
@@ -524,11 +524,11 @@
             </Group>
             <Group ID="CondLimRedPoint[3]">
               <Property ID="SourceValue" Value="4.0" />
-              <Property ID="LimitReductionInPercent" Value="0.0" />
+              <Property ID="LimitReductionInPercent" Value="54.0" />
             </Group>
             <Group ID="CondLimRedPoint[4]">
               <Property ID="SourceValue" Value="6.0" />
-              <Property ID="LimitReductionInPercent" Value="53.8" />
+              <Property ID="LimitReductionInPercent" Value="70.0" />
             </Group>
             <Group ID="CondLimRedPoint[5]" />
             <Group ID="CondLimRedPoint[6]" />
@@ -554,11 +554,11 @@
             </Group>
             <Group ID="CondLimRedPoint[3]">
               <Property ID="SourceValue" Value="4.0" />
-              <Property ID="LimitReductionInPercent" Value="0.0" />
+              <Property ID="LimitReductionInPercent" Value="54.0" />
             </Group>
             <Group ID="CondLimRedPoint[4]">
               <Property ID="SourceValue" Value="6.0" />
-              <Property ID="LimitReductionInPercent" Value="69.2" />
+              <Property ID="LimitReductionInPercent" Value="83.0" />
             </Group>
             <Group ID="CondLimRedPoint[5]" />
             <Group ID="CondLimRedPoint[6]" />

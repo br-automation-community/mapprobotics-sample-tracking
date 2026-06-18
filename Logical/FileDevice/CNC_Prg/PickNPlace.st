@@ -5,7 +5,7 @@ END_VAR
 
 VAR	
 
-	ParkPos				: McPointType := (Pos:=(X:=	  500, Y:= 100, Z:= 50));
+	ParkPos				: McPointType := (Pos:=(X:=	  300, Y:= 100, Z:= 50));
 	ParkPosRight		: McAxisTargetType :=(JointAxis:=[45, -90, -20, 0]);
 		
 	SynchPosUp			: McPointType := (Pos:=(X:=   0, Y:= 0, 			Z:= UpperZLevel));

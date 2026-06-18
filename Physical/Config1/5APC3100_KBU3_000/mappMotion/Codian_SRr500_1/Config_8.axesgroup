@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="gAxesGroup_SRr700_1" Type="axesgroup" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="gAxesGroup_SRr500_1" Type="axesgroup" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Selector ID="Type" Value="PathGenAxesGroup">
       <Property ID="ProcessingTaskClass" Value="1" />
       <Group ID="PhysicalAxes">
         <Group ID="JointAxes">
           <Group ID="JointAxis[1]">
-            <Property ID="AxisRef" Value="gAxisQ1_SRr700_1" />
+            <Property ID="AxisRef" Value="gAxisQ1_SRr500_1" />
           </Group>
           <Group ID="JointAxis[2]">
-            <Property ID="AxisRef" Value="gAxisQ2_SRr700_1" />
+            <Property ID="AxisRef" Value="gAxisQ2_SRr500_1" />
           </Group>
           <Group ID="JointAxis[3]">
             <Property ID="Name" Value="QZ" />
-            <Property ID="AxisRef" Value="gAxisQ3_SRr700_1" />
+            <Property ID="AxisRef" Value="gAxisQ3_SRr500_1" />
           </Group>
           <Group ID="JointAxis[4]">
             <Property ID="Name" Value="QC" />
-            <Property ID="AxisRef" Value="gAxisQ4_SRr700_1" />
+            <Property ID="AxisRef" Value="gAxisQ4_SRr500_1" />
           </Group>
         </Group>
       </Group>
       <Group ID="MechanicalSystem">
-        <Property ID="MechSysRef" Value="MechSys_SRr700_1" />
+        <Property ID="MechSysRef" Value="MechSys_SRr500_1" />
       </Group>
       <Group ID="BasicSettings">
         <Group ID="GeometryPlanning">
@@ -59,14 +59,15 @@
       </Group>
       <Group ID="AxesGroupFeatures">
         <Property ID="FeatureRef[1]" Value="Feature_Programs" />
-        <Property ID="FeatureRef[2]" Value="Feature_FeedForward_SRr700_1" />
-        <Property ID="FeatureRef[3]" Value="Feature_SharedBrakesSignals_SRr700_1" />
-        <Property ID="FeatureRef[4]" Value="Feature_MFunctions" />
-        <Property ID="FeatureRef[5]" Value="Feature_PathDefRobot" />
-        <Property ID="FeatureRef[6]" Value="Feature_Selection" />
-        <Property ID="FeatureRef[7]" Value="Feature_TrackingRobot" />
-        <Property ID="FeatureRef[8]" Value="Feature_FrameHierachy" />
+        <Property ID="FeatureRef[2]" Value="Feature_Jogging_SRr500_1" />
+        <Property ID="FeatureRef[3]" Value="Feature_FeedForward_SRr500_1" />
+        <Property ID="FeatureRef[4]" Value="Feature_SharedBrakesSignals_SRr500_1" />
+        <Property ID="FeatureRef[5]" Value="Feature_FrameHierachy" />
+        <Property ID="FeatureRef[6]" Value="Feature_MFunctions" />
+        <Property ID="FeatureRef[7]" Value="Feature_Selection" />
+        <Property ID="FeatureRef[8]" Value="Feature_TrackingRobot" />
         <Property ID="FeatureRef[9]" Value="Feature_Workspace" />
+        <Property ID="FeatureRef[10]" Value="Feature_PathDefRobot" />
       </Group>
     </Selector>
   </Element>

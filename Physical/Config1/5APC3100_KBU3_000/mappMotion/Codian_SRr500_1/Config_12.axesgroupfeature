@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="Feature_Programs_SRr700_1" Type="axesgroupfeature" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="Feature_Programs_SRr500_1" Type="axesgroupfeature" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Selector ID="Type">
       <Group ID="InitialSettings">
         <Selector ID="AccuracyHoldDelays" Value="User defined">
@@ -10,24 +10,24 @@
       </Group>
     </Selector>
   </Element>
-  <Element ID="Feature_Jogging_SRr700_1" Type="axesgroupfeature" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="Feature_Jogging_SRr500_1" Type="axesgroupfeature" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Selector ID="Type" Value="Jogging" />
   </Element>
-  <Element ID="Feature_FeedForward_SRr700_1" Type="axesgroupfeature" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="Feature_FeedForward_SRr500_1" Type="axesgroupfeature" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Selector ID="Type" Value="FeedForward">
       <Property ID="RiseTime" Value="0.25" />
       <Selector ID="Filter" Value="AxisJerkTime" />
     </Selector>
   </Element>
-  <Element ID="Feature_SharedBrakesSignals_SRr700_1" Type="axesgroupfeature" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="Feature_SharedBrakesSignals_SRr500_1" Type="axesgroupfeature" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Selector ID="Type" Value="SharedBrakesSignals">
       <Group ID="BrakeComposite[1]">
         <Group ID="Axes">
-          <Property ID="AxisRef[1]" Value="gAxisQ3_SRr700_1" />
-          <Property ID="AxisRef[2]" Value="gAxisQ4_SRr700_1" />
+          <Property ID="AxisRef[1]" Value="gAxisQ3_SRr500_1" />
+          <Property ID="AxisRef[2]" Value="gAxisQ4_SRr500_1" />
         </Group>
         <Selector ID="Output">
-          <Property ID="AxisRef" Value="gAxisQ4_SRr700_1" />
+          <Property ID="AxisRef" Value="gAxisQ4_SRr500_1" />
         </Selector>
         <Selector ID="Feedback">
           <Property ID="ActivationDelay" Value="0.08" />

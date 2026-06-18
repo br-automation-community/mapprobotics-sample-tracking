@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="gAxisQ1_SRr700_1" Type="axis" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="gAxisQ1_SRr500_1" Type="axis" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Property ID="BaseTypeIsReadOnly" Value="1" />
     <Selector ID="BaseType" Value="RotaryBounded">
       <Property ID="MeasurementUnitIsReadOnly" Value="1" />
@@ -36,17 +36,17 @@
       <Property ID="JerkIsReadOnly" Value="1" />
       <Selector ID="Jerk" Value="Advanced">
         <Property ID="JerkAccelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkAccelerationPositiveMax" Value="1200000.0" />
-        <Property ID="JerkAccelerationPositive" Value="1200000.0" />
+        <Property ID="JerkAccelerationPositiveMax" Value="1000000.0" />
+        <Property ID="JerkAccelerationPositive" Value="1000000.0" />
         <Property ID="JerkAccelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkAccelerationNegativeMax" Value="1200000.0" />
-        <Property ID="JerkAccelerationNegative" Value="1200000.0" />
+        <Property ID="JerkAccelerationNegativeMax" Value="1000000.0" />
+        <Property ID="JerkAccelerationNegative" Value="1000000.0" />
         <Property ID="JerkDecelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkDecelerationPositiveMax" Value="1200000.0" />
-        <Property ID="JerkDecelerationPositive" Value="1200000.0" />
+        <Property ID="JerkDecelerationPositiveMax" Value="1000000.0" />
+        <Property ID="JerkDecelerationPositive" Value="1000000.0" />
         <Property ID="JerkDecelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkDecelerationNegativeMax" Value="1200000.0" />
-        <Property ID="JerkDecelerationNegative" Value="1200000.0" />
+        <Property ID="JerkDecelerationNegativeMax" Value="1000000.0" />
+        <Property ID="JerkDecelerationNegative" Value="1000000.0" />
       </Selector>
       <Property ID="TorqueIsReadOnly" Value="1" />
       <Selector ID="Torque" Value="Basic">
@@ -55,7 +55,7 @@
       </Selector>
     </Selector>
   </Element>
-  <Element ID="gAxisQ2_SRr700_1" Type="axis" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="gAxisQ2_SRr500_1" Type="axis" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Property ID="BaseTypeIsReadOnly" Value="1" />
     <Selector ID="BaseType" Value="RotaryBounded">
       <Property ID="MeasurementUnitIsReadOnly" Value="1" />
@@ -90,17 +90,17 @@
       <Property ID="JerkIsReadOnly" Value="1" />
       <Selector ID="Jerk" Value="Advanced">
         <Property ID="JerkAccelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkAccelerationPositiveMax" Value="1300000.0" />
-        <Property ID="JerkAccelerationPositive" Value="1300000.0" />
+        <Property ID="JerkAccelerationPositiveMax" Value="1500000.0" />
+        <Property ID="JerkAccelerationPositive" Value="1500000.0" />
         <Property ID="JerkAccelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkAccelerationNegativeMax" Value="1300000.0" />
-        <Property ID="JerkAccelerationNegative" Value="1300000.0" />
+        <Property ID="JerkAccelerationNegativeMax" Value="1500000.0" />
+        <Property ID="JerkAccelerationNegative" Value="1500000.0" />
         <Property ID="JerkDecelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkDecelerationPositiveMax" Value="1300000.0" />
-        <Property ID="JerkDecelerationPositive" Value="1300000.0" />
+        <Property ID="JerkDecelerationPositiveMax" Value="1500000.0" />
+        <Property ID="JerkDecelerationPositive" Value="1500000.0" />
         <Property ID="JerkDecelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkDecelerationNegativeMax" Value="1300000.0" />
-        <Property ID="JerkDecelerationNegative" Value="1300000.0" />
+        <Property ID="JerkDecelerationNegativeMax" Value="1500000.0" />
+        <Property ID="JerkDecelerationNegative" Value="1500000.0" />
       </Selector>
       <Property ID="TorqueIsReadOnly" Value="1" />
       <Selector ID="Torque" Value="Basic">
@@ -109,7 +109,7 @@
       </Selector>
     </Selector>
   </Element>
-  <Element ID="gAxisQ3_SRr700_1" Type="axis" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="gAxisQ3_SRr500_1" Type="axis" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Property ID="BaseTypeIsReadOnly" Value="1" />
     <Selector ID="BaseType" Value="Linear">
       <Property ID="MeasurementResolutionIsReadOnly" Value="1" />
@@ -135,17 +135,17 @@
       <Property ID="JerkIsReadOnly" Value="1" />
       <Selector ID="Jerk" Value="Advanced">
         <Property ID="JerkAccelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkAccelerationPositiveMax" Value="1300000.0" />
-        <Property ID="JerkAccelerationPositive" Value="1300000.0" />
+        <Property ID="JerkAccelerationPositiveMax" Value="1500000.0" />
+        <Property ID="JerkAccelerationPositive" Value="1500000.0" />
         <Property ID="JerkAccelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkAccelerationNegativeMax" Value="1300000.0" />
-        <Property ID="JerkAccelerationNegative" Value="1300000.0" />
+        <Property ID="JerkAccelerationNegativeMax" Value="1500000.0" />
+        <Property ID="JerkAccelerationNegative" Value="1500000.0" />
         <Property ID="JerkDecelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkDecelerationPositiveMax" Value="1300000.0" />
-        <Property ID="JerkDecelerationPositive" Value="1300000.0" />
+        <Property ID="JerkDecelerationPositiveMax" Value="1500000.0" />
+        <Property ID="JerkDecelerationPositive" Value="1500000.0" />
         <Property ID="JerkDecelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkDecelerationNegativeMax" Value="1300000.0" />
-        <Property ID="JerkDecelerationNegative" Value="1300000.0" />
+        <Property ID="JerkDecelerationNegativeMax" Value="1500000.0" />
+        <Property ID="JerkDecelerationNegative" Value="1500000.0" />
       </Selector>
       <Property ID="TorqueIsReadOnly" Value="1" />
       <Selector ID="Torque" Value="Basic">
@@ -154,7 +154,7 @@
       </Selector>
     </Selector>
   </Element>
-  <Element ID="gAxisQ4_SRr700_1" Type="axis" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+  <Element ID="gAxisQ4_SRr500_1" Type="axis" Description="Codian SR200-6/500Z20A [RobotID=&quot;CodianSR200p6r500Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Property ID="BaseTypeIsReadOnly" Value="1" />
     <Selector ID="BaseType" Value="Rotary">
       <Property ID="MeasurementUnitIsReadOnly" Value="1" />
@@ -183,17 +183,17 @@
       <Property ID="JerkIsReadOnly" Value="1" />
       <Selector ID="Jerk" Value="Advanced">
         <Property ID="JerkAccelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkAccelerationPositiveMax" Value="1500000.0" />
-        <Property ID="JerkAccelerationPositive" Value="1500000.0" />
+        <Property ID="JerkAccelerationPositiveMax" Value="2000000.0" />
+        <Property ID="JerkAccelerationPositive" Value="2000000.0" />
         <Property ID="JerkAccelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkAccelerationNegativeMax" Value="1500000.0" />
-        <Property ID="JerkAccelerationNegative" Value="1500000.0" />
+        <Property ID="JerkAccelerationNegativeMax" Value="2000000.0" />
+        <Property ID="JerkAccelerationNegative" Value="2000000.0" />
         <Property ID="JerkDecelerationPositiveMin" Value="0.0" />
-        <Property ID="JerkDecelerationPositiveMax" Value="1500000.0" />
-        <Property ID="JerkDecelerationPositive" Value="1500000.0" />
+        <Property ID="JerkDecelerationPositiveMax" Value="2000000.0" />
+        <Property ID="JerkDecelerationPositive" Value="2000000.0" />
         <Property ID="JerkDecelerationNegativeMin" Value="0.0" />
-        <Property ID="JerkDecelerationNegativeMax" Value="1500000.0" />
-        <Property ID="JerkDecelerationNegative" Value="1500000.0" />
+        <Property ID="JerkDecelerationNegativeMax" Value="2000000.0" />
+        <Property ID="JerkDecelerationNegative" Value="2000000.0" />
       </Selector>
       <Property ID="TorqueIsReadOnly" Value="1" />
       <Selector ID="Torque" Value="Basic">
