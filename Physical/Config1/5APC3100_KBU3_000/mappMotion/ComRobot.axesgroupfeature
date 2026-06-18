@@ -83,11 +83,6 @@
         <Group ID="MCS">
           <Group ID="Frame[1]">
             <Property ID="Name" Value="RobotBase" />
-            <Selector ID="Type">
-              <Group ID="Translation">
-                <Property ID="Z" Value="950" />
-              </Group>
-            </Selector>
           </Group>
           <Group ID="Frame[2]">
             <Property ID="Name" Value="UserFrame1" />
@@ -104,11 +99,6 @@
       </Selector>
     </Selector>
   </Element>
-  <Element ID="Feature_WorkspaceMonitoring" Type="axesgroupfeature">
-    <Selector ID="Type" Value="WorkspaceMonitoring">
-      <Property ID="WorkspaceRef" Value="Workspace_1" />
-    </Selector>
-  </Element>
   <Element ID="Feature_Selection" Type="axesgroupfeature">
     <Selector ID="Type" Value="TrackingFrameSelection">
       <Group ID="Selectors">
@@ -121,12 +111,12 @@
             <Selector ID="Filter[2]" Value="SelectionArea">
               <Selector ID="Area[1]">
                 <Group ID="Translation">
-                  <Property ID="X" Value="-1500" />
+                  <Property ID="X" Value="-500" />
                   <Property ID="Y" Value="-500" />
-                  <Property ID="Z" Value="-1000" />
+                  <Property ID="Z" Value="-500" />
                 </Group>
                 <Group ID="Dimensions">
-                  <Property ID="Length" Value="1300" />
+                  <Property ID="Length" Value="800" />
                   <Property ID="Width" Value="1000" />
                   <Property ID="Height" Value="1000" />
                 </Group>
@@ -134,28 +124,6 @@
             </Selector>
             <Selector ID="Filter[3]" Value="AttributeMask">
               <Property ID="Mask" Value="2#00000000000000000000000000000001" />
-            </Selector>
-          </Group>
-        </Selector>
-        <Selector ID="Selector[2]">
-          <Property ID="Name" Value="Outfeed" />
-          <Group ID="Filters">
-            <Selector ID="Filter[1]">
-              <Property ID="TrackingPathRef[1]" Value="gTrackingPathConveyor_2" />
-            </Selector>
-            <Selector ID="Filter[2]" Value="SelectionArea">
-              <Selector ID="Area[1]">
-                <Group ID="Translation">
-                  <Property ID="X" Value="0" />
-                  <Property ID="Y" Value="-500" />
-                  <Property ID="Z" Value="-1000" />
-                </Group>
-                <Group ID="Dimensions">
-                  <Property ID="Length" Value="1500" />
-                  <Property ID="Width" Value="1000" />
-                  <Property ID="Height" Value="1000" />
-                </Group>
-              </Selector>
             </Selector>
           </Group>
         </Selector>

@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="gAxis_Conveyor_2" Type="axis">
-    <Selector ID="BaseType" Value="LinearPeriodic">
-      <Group ID="PeriodSettings">
-        <Property ID="Period" Value="100000.0" />
-      </Group>
-    </Selector>
-    <Selector ID="MovementLimits" Value="InternalForPathControlledAxis">
-      <Group ID="Position">
-        <Property ID="LowerLimit" Value="-8388608.0" />
-        <Property ID="UpperLimit" Value="8388607.0" />
-      </Group>
-    </Selector>
-  </Element>
   <Element ID="gAxis_Conveyor_1" Type="axis">
     <Selector ID="BaseType" Value="LinearPeriodic">
       <Group ID="PeriodSettings">

@@ -16,7 +16,7 @@
     <Object Type="Package">mappCockpit</Object>
   </Objects>
   <Configuration ModuleId="5APC3100.KBU3-000">
-    <AutomationRuntime Version="6.4.2" />
+    <AutomationRuntime Version="6.6.3" />
     <Build GccVersion="11.3.0" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Safety SafetyRelease="0.0" />

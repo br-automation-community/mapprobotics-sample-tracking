@@ -77,10 +77,12 @@ END_TYPE
 TYPE
 	McJointAxisType :ARRAY[0..5] OF LREAL;
 	McSlaveAxisType :ARRAY[0..14] OF LREAL;
+	McAuxCoordType :ARRAY[0..2] OF LREAL;
 	McPointType : 	STRUCT
 		Pos : McPosType;
 		Orient : McOrientType;
 		SlaveAxis : McSlaveAxisType;
+		AuxCoord : McAuxCoordType;
 	END_STRUCT;
 	McAxisTargetType : 	STRUCT
 		JointAxis : McJointAxisType;

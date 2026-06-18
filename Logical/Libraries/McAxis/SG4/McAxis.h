@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 6.6.0 */
+/* McAxis 6.8.0 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 6.6.0
+#define _McAxis_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -163,7 +163,9 @@ typedef enum McShiftModeEnum
 {	mcSHIFT_ABSOLUTE,
 	mcSHIFT_RELATIVE,
 	mcSHIFT_ABSOLUTE_NO_RESET,
-	mcSHIFT_RELATIVE_NO_RESET
+	mcSHIFT_RELATIVE_NO_RESET,
+	mcSHIFT_ABSOLUTE_RESET_ENABLE,
+	mcSHIFT_RELATIVE_RESET_ENABLE
 } McShiftModeEnum;
 
 typedef enum McProfileBaseEnum
@@ -331,7 +333,8 @@ typedef enum McAxisTypeEnum
 	mcAX_TYPE_DS402_INV,
 	mcAX_TYPE_PURE_VIRT_EXT_ENC,
 	mcAX_TYPE_PURE_VIRT_DS402_CSP,
-	mcAX_TYPE_PURE_VIRT_DS402_VL
+	mcAX_TYPE_PURE_VIRT_DS402_VL,
+	mcAX_TYPE_ACP_INV_V2
 } McAxisTypeEnum;
 
 typedef enum McAcpAxAutoTuneFeedFwdModeEnum
@@ -765,6 +768,22 @@ typedef enum McAFANERNetwErrReacEnum
 {	mcAFANERNER_DEF = 0,
 	mcAFANERNER_DELAYED = 1
 } McAFANERNetwErrReacEnum;
+
+typedef enum McAFSDOPTTranOrdEnum
+{	mcAFSDOPTTO_END_OF_INIT = 0,
+	mcAFSDOPTTO_ST_OF_INIT = 1
+} McAFSDOPTTranOrdEnum;
+
+typedef enum McSDOPTRowDatTypEnum
+{	mcSDOPTRDT_BOOL = 1,
+	mcSDOPTRDT_SINT = 2,
+	mcSDOPTRDT_INT = 3,
+	mcSDOPTRDT_DINT = 4,
+	mcSDOPTRDT_USINT = 5,
+	mcSDOPTRDT_UINT = 6,
+	mcSDOPTRDT_UDINT = 7,
+	mcSDOPTRDT_REAL = 8
+} McSDOPTRowDatTypEnum;
 
 typedef struct McAdvCycDriveErrDecParType
 {	enum McDisableModeEnum DisableMode;
@@ -1867,6 +1886,23 @@ typedef struct McCfgAxFeatAcpNetwErrReacType
 typedef struct McCfgAxFeatAcpCycDatProcType
 {	enum McPTCEnum ProcessingTaskClass;
 } McCfgAxFeatAcpCycDatProcType;
+
+typedef struct McCfgAxFeatSdoParTabType
+{	struct McCfgReferenceType SDOParameterTableReference;
+	enum McAFSDOPTTranOrdEnum TransferOrder;
+} McCfgAxFeatSdoParTabType;
+
+typedef struct McSDOPTRowType
+{	plcstring Index[251];
+	unsigned char Subindex;
+	float Value;
+	enum McSDOPTRowDatTypEnum DataType;
+	plcstring Description[251];
+} McSDOPTRowType;
+
+typedef struct McCfgSdoParTabType
+{	struct McCfgUnboundedArrayType Row;
+} McCfgSdoParTabType;
 
 typedef struct MC_BR_CyclicDriveErrorDecel
 {

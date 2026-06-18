@@ -26,12 +26,18 @@ TYPE
 		mcPVAHMKD_NO := 0, (*No - mcSWITCH_OFF*)
 		mcPVAHMKD_YES := 1 (*Yes - mcSWITCH_ON*)
 		);
+	McPVAHRPUBDUEnum :
+		( (*Unit of reference pulse blocking distance*)
+		mcPVAHRPUBDU_MEAS_UNIT := 0, (*Measurement units - Reference pulse blocking distance in measurement units*)
+		mcPVAHRPUBDU_ENC_REV := 1 (*Encoder revolutions - Reference pulse blocking distance in encoder revolutions*)
+		);
 	McPVAHModDirRefPUseType : STRUCT (*Type mcPVAHMDRP_USE settings*)
 		HomingVelocity : REAL; (*Speed which is used while searching for the homing event (e.g. after reference switch has been reached) [measurement units/s]*)
 		Acceleration : REAL; (*Acceleration for homing movement [measurement units/s²]*)
 		HomingDirection : McPVAHModHomeDirEnum; (*Movement direction in which the homing event is evaluated*)
 		KeepDirection : McPVAHModKeepDirEnum; (*Keep direction (move only in one direction)*)
 		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [measurement units]*)
+		BlockingDistanceUnit : McPVAHRPUBDUEnum; (*Unit of reference pulse blocking distance*)
 	END_STRUCT;
 	McPVAHModDirRefPType : STRUCT (*Use reference pulse of encoder*)
 		Type : McPVAHModDirRefPEnum; (*Reference pulse selector setting*)
@@ -53,6 +59,7 @@ TYPE
 		);
 	McPVAHModRefPUseType : STRUCT (*Type mcPVAHMRP_USE settings*)
 		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [measurement units]*)
+		BlockingDistanceUnit : McPVAHRPUBDUEnum; (*Unit of reference pulse blocking distance*)
 	END_STRUCT;
 	McPVAHModRefPType : STRUCT (*Use reference pulse of encoder*)
 		Type : McPVAHModRefPEnum; (*Reference pulse selector setting*)
@@ -105,6 +112,7 @@ TYPE
 	END_STRUCT;
 	McPVAHModBlkRefPUseType : STRUCT (*Type mcPVAHMRP_USE settings*)
 		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [measurement units]*)
+		BlockingDistanceUnit : McPVAHRPUBDUEnum; (*Unit of reference pulse blocking distance*)
 	END_STRUCT;
 	McPVAHModBlkRefPType : STRUCT (*Use reference pulse of encoder*)
 		Type : McPVAHModRefPEnum; (*Reference pulse selector setting*)
@@ -997,6 +1005,9 @@ TYPE
 	END_STRUCT;
 	McCfgPureVAxEncLinkType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_PURE_V_AX_ENC_LINK*)
 		EncoderLink : McPVAELType; (*Used position input*)
+	END_STRUCT;
+	McCfgPureVAxEncLinkPosFltrType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_PURE_V_AX_ENC_LINK_POS_FLT*)
+		PositionFilter : McPVAELOEEPosFltrType; (*Filter for the encoder position*)
 	END_STRUCT;
 	McCfgPureVAxDigInType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_PURE_V_AX_DIG_IN*)
 		DigitalInputs : McPVADIType; (*Various digital input functionalities e.g. like homing switch or triggers*)

@@ -180,8 +180,10 @@ TYPE
 	(
 		mcSHIFT_ABSOLUTE,  (*The value on input "XxxShift" is interpreted as an absolute value*)
 		mcSHIFT_RELATIVE,  (*The value on input "XxxShift" is interpreted as a relative value*)
-		mcSHIFT_ABSOLUTE_NO_RESET,  (*The functionality here is effectively the same as for mcSHIFT_ABSOLUTE. With this setting, however, the shift value on the drive is not set to 0 if the slave axis leaves state Synchronized Motion and input "Enable" is still set*)
-		mcSHIFT_RELATIVE_NO_RESET  (*The functionality here is effectively the same as for mcSHIFT_RELATIVE. With this setting, however, the shift value on the drive is not set to 0 if the slave axis leaves state Synchronized Motion and input "Enable" is still set*)
+		mcSHIFT_ABSOLUTE_NO_RESET,  (*The functionality here is effectively the same as for mcSHIFT_ABSOLUTE. With this setting, however, the shift value on the drive is not set to 0 if the slave axis leaves state Synchronized Motion regardless of "Enable"*)
+		mcSHIFT_RELATIVE_NO_RESET,  (*The functionality here is effectively the same as for mcSHIFT_RELATIVE. With this setting, however, the shift value on the drive is not set to 0 if the slave axis leaves state Synchronized Motion regardless of "Enable*)
+		mcSHIFT_ABSOLUTE_RESET_ENABLE,  (*The functionality here is effectively the same as for mcSHIFT_ABSOLUTE. With this setting, however, the shift value on the drive is not set to 0 if the slave axis leaves state Synchronized Motion and input "Enable" is still set*)
+		mcSHIFT_RELATIVE_RESET_ENABLE  (*The functionality here is effectively the same as for mcSHIFT_RELATIVE. With this setting, however, the shift value on the drive is not set to 0 if the slave axis leaves state Synchronized Motion and input "Enable" is still set*)
 	);
 
 	McProfileBaseEnum:
@@ -414,7 +416,8 @@ TYPE
 	 	mcAX_TYPE_DS402_INV,	(*DS402 conform inverter axis*)
 	 	mcAX_TYPE_PURE_VIRT_EXT_ENC,	(*Purely virtual axis with activated external encoder axis interface*)
 	 	mcAX_TYPE_PURE_VIRT_DS402_CSP,	(*Purely virtual axis with activated DS402 CSP*)
-	 	mcAX_TYPE_PURE_VIRT_DS402_VL	(*Purely virtual axis with activated DS402 VL*)
+	 	mcAX_TYPE_PURE_VIRT_DS402_VL,	(*Purely virtual axis with activated DS402 VL*)
+	 	mcAX_TYPE_ACP_INV_V2	(*ACOPOSinverter version 2 axis*)
 	);
 
 	McAcpAxAutoTuneFeedFwdModeEnum:

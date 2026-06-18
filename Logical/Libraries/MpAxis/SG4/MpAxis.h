@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAxis 6.6.0 */
+/* MpAxis 6.8.0 */
 
 #ifndef _MPAXIS_
 #define _MPAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAxis_VERSION
-#define _MpAxis_VERSION 6.6.0
+#define _MpAxis_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -318,6 +318,11 @@ typedef enum MpAXBLoopFltrLimLimTypEnum
 typedef enum MpAXBDrvCtrlCurModEnum
 {	mcAXB_CUR_CTRL_MODE_STD = 0
 } MpAXBDrvCtrlCurModEnum;
+
+typedef enum MpAXBDrvHomeBlkDistUnitEnum
+{	mcAXB_HOME_BL_DIST_MEAS_UNIT = 0,
+	mcAXB_HOME_BL_DIST_ENC_REV = 1
+} MpAXBDrvHomeBlkDistUnitEnum;
 
 typedef enum MpAXBDrvStopReacQstopEnum
 {	mcAXB_QSTOP_RCT_DEC_LIM = 0,
@@ -1119,6 +1124,7 @@ typedef struct MpAXBDrvHomeType
 	double Position;
 	enum McSwitchEnum ReferencePulse;
 	double ReferencePulseBlockingDistance;
+	enum MpAXBDrvHomeBlkDistUnitEnum BlockingDistanceUnit;
 	float StartVelocity;
 	float HomingVelocity;
 	float Acceleration;

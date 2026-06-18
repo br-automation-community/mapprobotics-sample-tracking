@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 6.6.0 */
+/* McAcpAx 6.8.0 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 6.6.0
+#define _McAcpAx_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -933,6 +933,11 @@ typedef enum McACELCPosTzEnum
 	mcACELCPT_TZUSER = 1
 } McACELCPosTzEnum;
 
+typedef enum McACELCStalDetEnum
+{	mcACELCSD_NOT_USE = 0,
+	mcACELCSD_USE = 1
+} McACELCStalDetEnum;
+
 typedef enum McACModEnum
 {	mcACM_POS_CTRL = 0,
 	mcACM_POS_CTRL_TORQ_FF = 1,
@@ -1055,6 +1060,11 @@ typedef enum McAHModKeepDirEnum
 {	mcAHMKD_NO = 0,
 	mcAHMKD_YES = 1
 } McAHModKeepDirEnum;
+
+typedef enum McAHRPUBDUEnum
+{	mcAHRPUBDU_MEAS_UNIT = 0,
+	mcAHRPUBDU_ENC_REV = 1
+} McAHRPUBDUEnum;
 
 typedef enum McAHModSwEdgEnum
 {	mcAHMSE_POS = 0,
@@ -1196,6 +1206,11 @@ typedef enum McASAMEnum
 	mcASAM_SET_VAL_GEN = 1,
 	mcASAM_COMPL = 2
 } McASAMEnum;
+
+typedef enum McAPSMActAcpSimOnPLCEnum
+{	mcAPSMAASOP_OFF = 0,
+	mcAPSMAASOP_ON = 1
+} McAPSMActAcpSimOnPLCEnum;
 
 typedef enum McAPSMOutParEnum
 {	mcAPSMOP_ACPMOT_CMPCT = 0,
@@ -4318,12 +4333,29 @@ typedef struct McACELCPosTzType
 	struct McACELCPosTzTzUserType TzUser;
 } McACELCPosTzType;
 
+typedef struct McACELCStalDetUseType
+{	float StallDetectionTime;
+} McACELCStalDetUseType;
+
+typedef struct McACELCStalDetType
+{	enum McACELCStalDetEnum Type;
+	struct McACELCStalDetUseType Used;
+} McACELCStalDetType;
+
+typedef struct McACELCInvAdjType
+{	float GainFactor;
+	float Exponent;
+} McACELCInvAdjType;
+
 typedef struct McACELCPosType
 {	struct McACELCSetCurType SetCurrent;
 	struct McACELCPosTlType Tl;
 	struct McACELCPosTzType Tz;
 	struct McACELCKeepHomeType KeepHoming;
 	struct McACELCKeepPhaseType KeepPhasing;
+	float TransferTime;
+	struct McACELCStalDetType StallDetection;
+	struct McACELCInvAdjType InverterAdjustment;
 } McACELCPosType;
 
 typedef struct McAELNoEncELCtrlModType
@@ -4349,6 +4381,7 @@ typedef struct McAHModDirRefPUseType
 	enum McAHModHomeDirEnum HomingDirection;
 	enum McAHModKeepDirEnum KeepDirection;
 	double ReferencePulseBlockingDistance;
+	enum McAHRPUBDUEnum BlockingDistanceUnit;
 } McAHModDirRefPUseType;
 
 typedef struct McAHModDirRefPType
@@ -4363,6 +4396,7 @@ typedef struct McAHModDirType
 
 typedef struct McAHModRefPUseType
 {	double ReferencePulseBlockingDistance;
+	enum McAHRPUBDUEnum BlockingDistanceUnit;
 } McAHModRefPUseType;
 
 typedef struct McAHModRefPType
@@ -4434,6 +4468,7 @@ typedef struct McAHModBlkRefPNotUseType
 
 typedef struct McAHModBlkRefPUseType
 {	double ReferencePulseBlockingDistance;
+	enum McAHRPUBDUEnum BlockingDistanceUnit;
 } McAHModBlkRefPUseType;
 
 typedef struct McAHModBlkRefPType
@@ -4928,6 +4963,7 @@ typedef struct McAPSMOutVOnType
 
 typedef struct McCfgAcpAuxPwrSupModType
 {	plcstring AxisReference[251];
+	enum McAPSMActAcpSimOnPLCEnum ActivateACOPOSSimulationOnPLC;
 	struct McAPSMOutParType OutputParameters;
 	struct McAPSMOutVOnType OutputVoltageOn;
 } McCfgAcpAuxPwrSupModType;
@@ -5886,6 +5922,10 @@ typedef struct McCfgAcpExtEncAxRefType
 typedef struct McCfgAcpExtEncAxEncLinkType
 {	struct McAEEAUseEncLinkType EncoderLink;
 } McCfgAcpExtEncAxEncLinkType;
+
+typedef struct McCfgAcpExtEncAxEncLinkPosFType
+{	struct McAEEAUELOneEncPosFltrType PositionFilter;
+} McCfgAcpExtEncAxEncLinkPosFType;
 
 typedef struct McCfgAcpExtEncAxMechElmType
 {	struct McAMEType MechanicalElements;

@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McProgInt 6.6.0 */
+/* McProgInt 6.8.0 */
 
 #ifndef _MCPROGINT_
 #define _MCPROGINT_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McProgInt_VERSION
-#define _McProgInt_VERSION 6.6.0
+#define _McProgInt_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -112,10 +112,13 @@ typedef struct McProgIntFileMonitorType
 
 typedef double McSlaveAxisType[15];
 
+typedef double McAuxCoordType[3];
+
 typedef struct McPointType
 {	struct McPosType Pos;
 	struct McOrientType Orient;
 	McSlaveAxisType SlaveAxis;
+	McAuxCoordType AuxCoord;
 } McPointType;
 
 typedef double McJointAxisType[6];

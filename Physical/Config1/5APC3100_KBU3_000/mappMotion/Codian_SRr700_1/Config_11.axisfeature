@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Configuration>
+  <Element ID="Feature_Brake_SRr700_1" Type="axisfeature" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
+    <Selector ID="Type" Value="Brake">
+      <Selector ID="BrakeControlType">
+        <Selector ID="ControlMode" Value="External">
+          <Property ID="CommandAcceptance" Value="Any" />
+        </Selector>
+        <Selector ID="ControlMonitoring" Value="NotUsed" />
+        <Selector ID="MovementMonitoring" Value="NotUsed" />
+      </Selector>
+    </Selector>
+  </Element>
+</Configuration>

@@ -299,8 +299,21 @@ TYPE
 		DirectInput : McTPLinFrmDatSzDirInType; (*Type mcTPLinFrmDatS_DIR_IN settings*)
 		ProcessVariableReference : McTPLinFrmDatSzProcVarRefType; (*Type mcTPLinFrmDatS_PROC_VAR_REF settings*)
 	END_STRUCT;
+	McTPLinFrmDatVisEnum :
+		( (*Visualization selector setting*)
+		mcTPLinFrmDatVis_NO_USR_DAT_ACS := 0, (*No user data access - Visualization does not access user data*)
+		mcTPLinFrmDatVis_ACS_SUBFRM := 1 (*Access sub-frames - The user data contains sub-frames that will be accessed for visualization purposes*)
+		);
+	McTPLinFrmDatVisAcsSubFrmType : STRUCT (*Type mcTPLinFrmDatVis_ACS_SUBFRM settings*)
+		NumberOfSubFrames : UINT; (*Number of McTrkFrmSubFrmType sub-frames for visualization; they must begin at offset 0 of the user data (array or individual members) for safe access.*)
+	END_STRUCT;
+	McTPLinFrmDatVisType : STRUCT
+		Type : McTPLinFrmDatVisEnum; (*Visualization selector setting*)
+		AccessSubFrames : McTPLinFrmDatVisAcsSubFrmType; (*Type mcTPLinFrmDatVis_ACS_SUBFRM settings*)
+	END_STRUCT;
 	McTPLinFrmDatType : STRUCT (*TrackingFrame user data is automatically allocated and released by the TrackingPath component. During the lifetime of a TrackingFrame the allocated user data can be accessed (read/write) via the corresponding function block*)
 		Size : McTPLinFrmDatSzType; (*Defines how the size of the user data for one TrackingFrame is specified*)
+		Visualization : McTPLinFrmDatVisType;
 	END_STRUCT;
 	McTPLinTrkFrmType : STRUCT
 		AutomaticCreation : McTPLinAutCrtType; (*The TrackingPath component generates TrackingFrames automatically based on the configured conditions*)
@@ -308,7 +321,7 @@ TYPE
 		UserData : McTPLinFrmDatType; (*TrackingFrame user data is automatically allocated and released by the TrackingPath component. During the lifetime of a TrackingFrame the allocated user data can be accessed (read/write) via the corresponding function block*)
 	END_STRUCT;
 	McTPLinType : STRUCT (*Type mcTPT_LIN settings*)
-		MaxTrackingFrames : UINT; (*Maximum number of TrackingFrames*)
+		MaxTrackingFrames : UINT; (*Maximum number of TrackingFrames. Directly impacts the CPU load (cyclic mapp Motion processing task class)*)
 		MaxPositionError : LREAL; (*Maximal deviation between TrackingFrames and motion source position when considering TrackingPath movement limits [measurement units]*)
 		MotionSource : McTPLinMotSrcType; (*Source describing the TrackingPath movement*)
 		TrackingFrames : McTPLinTrkFrmType;
@@ -379,14 +392,191 @@ TYPE
 		mcTPSSVOUC_NOT_USE := 0, (*Not used - TrackingFrames visualization is deactivated*)
 		mcTPSSVOUC_VIS := 1 (*Visible - TrackingFrames visualization is activated*)
 		);
-	McTPSVUseContType : STRUCT (*Defines if the TrackingFrames in the TrackingPath are visualized*)
+	McTPSVTmplVREnum :
+		( (*Visual representation selector setting*)
+		mcTPSSVOUCVTVR_NOT_USE := 0, (*Not used - Item is not dispalyed*)
+		mcTPSSVOUCVTVR_FRM := 1, (*Frame - Item is displayed as a frame*)
+		mcTPSSVOUCVTVR_SHP_2D := 2, (*Shape 2D - Item is displayed as a 2D shape*)
+		mcTPSSVOUCVTVR_SHP_3D := 3, (*Shape 3D - Item is displayed as a 3D shape*)
+		mcTPSSVOUCVTVR_MESH_3D := 4 (*Mesh 3D - TrackingPath item is displayed as a 3D mesh*)
+		);
+	McTPSVContFrmType : STRUCT (*Type mcTPSSVOUCVTVR_FRM settings*)
+		Size : LREAL; (*Size [measurement units]*)
+	END_STRUCT;
+	McTPSVCont2DShpTypEnum :
+		( (*Shape type selector setting*)
+		mcTPSSVOUCVTVRS2ST_CIR := 0, (*Circle - Circle*)
+		mcTPSSVOUCVTVRS2ST_RECT := 1, (*Rectangle - Rectangle*)
+		mcTPSSVOUCVTVRS2ST_TRPZ := 2 (*Trapezoid - Trapezoid*)
+		);
+	McTPSVCont2DShpTypCirDimType : STRUCT (*Dimensions of the object*)
+		Radius : LREAL; (*Dimension in the x-direction [measurement units]*)
+	END_STRUCT;
+	McTPSESSEnum :
+		( (*Style selector setting*)
+		mcTPSESS_FILL := 0, (*Fill - Fill*)
+		mcTPSESS_BORDER := 1, (*Border - Border*)
+		mcTPSESS_BORDER_AND_FILL := 2 (*Border and Fill - Border and Fill*)
+		);
+	McTPSESSType : STRUCT (*Shape style*)
+		Type : McTPSESSEnum; (*Style selector setting*)
+	END_STRUCT;
+	McTPSVCont2DShpTypCirType : STRUCT (*Type mcTPSSVOUCVTVRS2ST_CIR settings*)
+		Dimensions : McTPSVCont2DShpTypCirDimType; (*Dimensions of the object*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Style : McTPSESSType; (*Shape style*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVCont2DShpTypRectDimType : STRUCT (*Dimensions of the object*)
+		Length : LREAL; (*Length [measurement units]*)
+		Width : LREAL; (*Width [measurement units]*)
+	END_STRUCT;
+	McTPSVCont2DShpTypRectType : STRUCT (*Type mcTPSSVOUCVTVRS2ST_RECT settings*)
+		Dimensions : McTPSVCont2DShpTypRectDimType; (*Dimensions of the object*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Style : McTPSESSType; (*Shape style*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVCont2DShpTypTrpzDimType : STRUCT (*Dimensions of the object*)
+		Length : LREAL; (*Length [measurement units]*)
+		Width : LREAL; (*Width [measurement units]*)
+	END_STRUCT;
+	McTPSVCont2DShpTypTrpzType : STRUCT (*Type mcTPSSVOUCVTVRS2ST_TRPZ settings*)
+		Dimensions : McTPSVCont2DShpTypTrpzDimType; (*Dimensions of the object*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Style : McTPSESSType; (*Shape style*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVCont2DShpTypType : STRUCT (*Shape type*)
+		Type : McTPSVCont2DShpTypEnum; (*Shape type selector setting*)
+		Circle : McTPSVCont2DShpTypCirType; (*Type mcTPSSVOUCVTVRS2ST_CIR settings*)
+		Rectangle : McTPSVCont2DShpTypRectType; (*Type mcTPSSVOUCVTVRS2ST_RECT settings*)
+		Trapezoid : McTPSVCont2DShpTypTrpzType; (*Type mcTPSSVOUCVTVRS2ST_TRPZ settings*)
+	END_STRUCT;
+	McTPSVCont2DType : STRUCT (*Type mcTPSSVOUCVTVR_SHP_2D settings*)
+		ShapeType : McTPSVCont2DShpTypType; (*Shape type*)
+	END_STRUCT;
+	McTPSVCont3DTypEnum :
+		( (*Type selector setting*)
+		mcTPSSVOUCVTVRS3T_CUBE := 0, (*Cuboid - Cuboid*)
+		mcTPSSVOUCVTVRS3T_CYLINDER := 1, (*Cylinder - Cylinder*)
+		mcTPSSVOUCVTVRS3T_TRPZ_PRSM := 2 (*Trapezoidal prism - Trapezoidal prism*)
+		);
+	McTPSVCont3DTypCubeDimType : STRUCT (*Dimensions of the object*)
+		Length : LREAL; (*Length [measurement units]*)
+		Width : LREAL; (*Width [measurement units]*)
+		Height : LREAL; (*Height [measurement units]*)
+	END_STRUCT;
+	McTPSVCont3DTypCubeType : STRUCT (*Type mcTPSSVOUCVTVRS3T_CUBE settings*)
+		Dimensions : McTPSVCont3DTypCubeDimType; (*Dimensions of the object*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Style : McTPSESSType; (*Shape style*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVCont3DTypCylinderDimType : STRUCT (*Dimensions of the object*)
+		Radius : LREAL; (*Radius [measurement units]*)
+		Height : LREAL; (*Height [measurement units]*)
+	END_STRUCT;
+	McTPSVCont3DTypCylinderType : STRUCT (*Type mcTPSSVOUCVTVRS3T_CYLINDER settings*)
+		Dimensions : McTPSVCont3DTypCylinderDimType; (*Dimensions of the object*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Style : McTPSESSType; (*Shape style*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVCont3DTypTrpzPrsmDimType : STRUCT (*Dimensions of the object*)
+		Length : LREAL; (*Length [measurement units]*)
+		Width : LREAL; (*Width [measurement units]*)
+		Height : LREAL; (*Height [measurement units]*)
+	END_STRUCT;
+	McTPSVCont3DTypTrpzPrsmType : STRUCT (*Type mcTPSSVOUCVTVRS3T_TRPZ_PRSM settings*)
+		Dimensions : McTPSVCont3DTypTrpzPrsmDimType; (*Dimensions of the object*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Style : McTPSESSType; (*Shape style*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVCont3DTypType : STRUCT (*Shape type*)
+		Type : McTPSVCont3DTypEnum; (*Type selector setting*)
+		Cuboid : McTPSVCont3DTypCubeType; (*Type mcTPSSVOUCVTVRS3T_CUBE settings*)
+		Cylinder : McTPSVCont3DTypCylinderType; (*Type mcTPSSVOUCVTVRS3T_CYLINDER settings*)
+		TrapezoidalPrism : McTPSVCont3DTypTrpzPrsmType; (*Type mcTPSSVOUCVTVRS3T_TRPZ_PRSM settings*)
+	END_STRUCT;
+	McTPSVCont3DType : STRUCT (*Type mcTPSSVOUCVTVR_SHP_3D settings*)
+		Type : McTPSVCont3DTypType; (*Shape type*)
+	END_STRUCT;
+	McTPSVContMeshType : STRUCT (*Type mcTPSSVOUCVTVR_MESH_3D settings*)
+		FileName : STRING[250]; (*File name of 3D mesh located at file device configured in object hierarchy. Supported format: *.stl*)
+		Translation : McCfgTransXYZType; (*Translation parameters*)
+		Orientation : McCfgOrientType; (*Orientation parameters*)
+		Material : McScnSurfaceEnum; (*Material*)
+	END_STRUCT;
+	McTPSVTmplVRType : STRUCT (*Visual representation of a TrackingFrame or sub-frame*)
+		Type : McTPSVTmplVREnum; (*Visual representation selector setting*)
+		Frame : McTPSVContFrmType; (*Type mcTPSSVOUCVTVR_FRM settings*)
+		Shape2D : McTPSVCont2DType; (*Type mcTPSSVOUCVTVR_SHP_2D settings*)
+		Shape3D : McTPSVCont3DType; (*Type mcTPSSVOUCVTVR_SHP_3D settings*)
+		Mesh3D : McTPSVContMeshType; (*Type mcTPSSVOUCVTVR_MESH_3D settings*)
+	END_STRUCT;
+	McTPSVFltrsEnum :
+		( (*Filter 1-N selector setting*)
+		mcTPSVFltrs_NOT_USE := 0, (*Not used -*)
+		mcTPSVFltrs_ATTRBASED := 1 (*Attribute-based - Filtering based on TrackingFrame or sub-frame attribute*)
+		);
+	McTPSVAttrFltrTypEnum :
+		( (*Type selector setting*)
+		mcTPSVAttrFltrT_DECIMAL_VAL := 0, (*Decimal value - Attribute value must match one of the listed decimal values*)
+		mcTPSVAttrFltrT_MAND_BITS := 1, (*Mandatory bits - All selected bits must be 1 in the attribute*)
+		mcTPSVAttrFltrT_ANYOF_BITS := 2, (*Any-of bits - At least one selected bit must be 1 in the attribute*)
+		mcTPSVAttrFltrT_FBD_BITS := 3 (*Forbidden bits - All selected bits must be 0 in the attribute*)
+		);
+	McTPSVAttrFltrTypDecimalValType : STRUCT (*Type mcTPSVAttrFltrT_DECIMAL_VAL settings*)
+		Value : McCfgUnboundedArrayType; (*Frame or sub-frame passes if its attribute equals this value. (Connect array of type UDINT)*)
+	END_STRUCT;
+	McTPSVAttrFltrTypMandBitsType : STRUCT (*Type mcTPSVAttrFltrT_MAND_BITS settings*)
+		Mask : UDINT; (*Only bits set to 1 in this mask are checked. All those bits must be 1 in the attribute value of the TrackingFrame or sub-frame.*)
+	END_STRUCT;
+	McTPSVAttrFltrTypAnyOfBitsType : STRUCT (*Type mcTPSVAttrFltrT_ANYOF_BITS settings*)
+		Mask : UDINT; (*Only bits set to 1 in this mask are checked. At least one of those bits must be 1 in the attribute value of the TrackingFrame or sub-frame.*)
+	END_STRUCT;
+	McTPSVAttrFltrTypFbdBitsType : STRUCT (*Type mcTPSVAttrFltrT_FBD_BITS settings*)
+		Mask : UDINT; (*Only bits set to 1 in this mask are checked. All those bits must be 0 in the attribute value of the TrackingFrame or sub-frame.*)
+	END_STRUCT;
+	McTPSVAttrFltrTypType : STRUCT (*Type of attribute-based filter to be applied*)
+		Type : McTPSVAttrFltrTypEnum; (*Type selector setting*)
+		DecimalValue : McTPSVAttrFltrTypDecimalValType; (*Type mcTPSVAttrFltrT_DECIMAL_VAL settings*)
+		MandatoryBits : McTPSVAttrFltrTypMandBitsType; (*Type mcTPSVAttrFltrT_MAND_BITS settings*)
+		AnyOfBits : McTPSVAttrFltrTypAnyOfBitsType; (*Type mcTPSVAttrFltrT_ANYOF_BITS settings*)
+		ForbiddenBits : McTPSVAttrFltrTypFbdBitsType; (*Type mcTPSVAttrFltrT_FBD_BITS settings*)
+	END_STRUCT;
+	McTPSVAttrFltrType : STRUCT (*Type mcTPSVFltrs_ATTRBASED settings*)
+		Type : McTPSVAttrFltrTypType; (*Type of attribute-based filter to be applied*)
+	END_STRUCT;
+	McTPSVFltrsType : STRUCT
+		Type : McTPSVFltrsEnum; (*Filter 1-N selector setting*)
+		AttributeBased : McTPSVAttrFltrType; (*Type mcTPSVFltrs_ATTRBASED settings*)
+	END_STRUCT;
+	McTPSVTmplType : STRUCT (*Customized template to visualize TrackingPath frames based on specific needs*)
+		Name : STRING[250]; (*Name of the visualization template*)
+		VisualRepresentation : McTPSVTmplVRType; (*Visual representation of a TrackingFrame or sub-frame*)
+		Filter : McCfgUnboundedArrayType; (*Connect array of type McTPSVFltrsType*)
+	END_STRUCT;
+	McTPSVUseContVisType : STRUCT (*Type mcTPSSVOUC_VIS settings*)
+		Template : McCfgUnboundedArrayType; (*Customized template to visualize TrackingPath frames based on specific needs (Connect array of type McTPSVTmplType)*)
+	END_STRUCT;
+	McTPSVUseContType : STRUCT (*Defines if and how the TrackingFrames and their sub-frames in the TrackingPath are visualized*)
 		Type : McTPSVUseContEnum; (*Content selector setting*)
+		Visible : McTPSVUseContVisType; (*Type mcTPSSVOUC_VIS settings*)
 	END_STRUCT;
 	McTPSVUseType : STRUCT (*Type mcTPSSVO_USE settings*)
 		Name : McTPSVUseNameType; (*Defines if TrackingPath name is visible*)
 		Frame : McTPSVUseFrmType; (*Defines if TrackingPath frame is be visible*)
 		VisualRepresentation : McTPSVUseVRType; (*Defines a (physical) object representing the TrackingPath*)
-		Content : McTPSVUseContType; (*Defines if the TrackingFrames in the TrackingPath are visualized*)
+		Content : McTPSVUseContType; (*Defines if and how the TrackingFrames and their sub-frames in the TrackingPath are visualized*)
 	END_STRUCT;
 	McTPSVType : STRUCT (*Defines if the TrackingPath is contained in the automatically generated scene*)
 		Type : McTPSVEnum; (*Scene Viewer Object selector setting*)

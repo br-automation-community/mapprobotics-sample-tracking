@@ -6,9 +6,4 @@
       <Property ID="AxisReference" Value="gAxis_Conveyor_1" />
     </Group>
   </Element>
-  <Element ID="PureVAxCfg_2" Type="purevaxcfg">
-    <Group ID="PureVAxis">
-      <Property ID="AxisReference" Value="gAxis_Conveyor_2" />
-    </Group>
-  </Element>
 </Configuration>

@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McTrkPath 6.6.0 */
+/* McTrkPath 6.8.0 */
 
 #ifndef _MCTRKPATH_
 #define _MCTRKPATH_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McTrkPath_VERSION
-#define _McTrkPath_VERSION 6.6.0
+#define _McTrkPath_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -168,6 +168,11 @@ typedef enum McTPLinFrmDatSzEnum
 	mcTPLinFrmDatS_PROC_VAR_REF = 1
 } McTPLinFrmDatSzEnum;
 
+typedef enum McTPLinFrmDatVisEnum
+{	mcTPLinFrmDatVis_NO_USR_DAT_ACS = 0,
+	mcTPLinFrmDatVis_ACS_SUBFRM = 1
+} McTPLinFrmDatVisEnum;
+
 typedef enum McTPSVEnum
 {	mcTPSSVO_USE = 0,
 	mcTPSSVO_NOT_USE = 1
@@ -193,6 +198,44 @@ typedef enum McTPSVUseContEnum
 {	mcTPSSVOUC_NOT_USE = 0,
 	mcTPSSVOUC_VIS = 1
 } McTPSVUseContEnum;
+
+typedef enum McTPSVTmplVREnum
+{	mcTPSSVOUCVTVR_NOT_USE = 0,
+	mcTPSSVOUCVTVR_FRM = 1,
+	mcTPSSVOUCVTVR_SHP_2D = 2,
+	mcTPSSVOUCVTVR_SHP_3D = 3,
+	mcTPSSVOUCVTVR_MESH_3D = 4
+} McTPSVTmplVREnum;
+
+typedef enum McTPSVCont2DShpTypEnum
+{	mcTPSSVOUCVTVRS2ST_CIR = 0,
+	mcTPSSVOUCVTVRS2ST_RECT = 1,
+	mcTPSSVOUCVTVRS2ST_TRPZ = 2
+} McTPSVCont2DShpTypEnum;
+
+typedef enum McTPSESSEnum
+{	mcTPSESS_FILL = 0,
+	mcTPSESS_BORDER = 1,
+	mcTPSESS_BORDER_AND_FILL = 2
+} McTPSESSEnum;
+
+typedef enum McTPSVCont3DTypEnum
+{	mcTPSSVOUCVTVRS3T_CUBE = 0,
+	mcTPSSVOUCVTVRS3T_CYLINDER = 1,
+	mcTPSSVOUCVTVRS3T_TRPZ_PRSM = 2
+} McTPSVCont3DTypEnum;
+
+typedef enum McTPSVFltrsEnum
+{	mcTPSVFltrs_NOT_USE = 0,
+	mcTPSVFltrs_ATTRBASED = 1
+} McTPSVFltrsEnum;
+
+typedef enum McTPSVAttrFltrTypEnum
+{	mcTPSVAttrFltrT_DECIMAL_VAL = 0,
+	mcTPSVAttrFltrT_MAND_BITS = 1,
+	mcTPSVAttrFltrT_ANYOF_BITS = 2,
+	mcTPSVAttrFltrT_FBD_BITS = 3
+} McTPSVAttrFltrTypEnum;
 
 typedef unsigned long McTrkFrmIdentType;
 
@@ -253,6 +296,12 @@ typedef struct McTrkPathInfoType
 	struct McTrkPathAxisCmdConsiderType AxisCommandConsideration;
 	double PositionError;
 } McTrkPathInfoType;
+
+typedef struct McTrkFrmSubFrmType
+{	struct McPosType Pos;
+	struct McOrientType Orient;
+	unsigned long Attribute;
+} McTrkFrmSubFrmType;
 
 typedef struct McTPLMSPPVMLIVelBasicType
 {	float Velocity;
@@ -505,8 +554,18 @@ typedef struct McTPLinFrmDatSzType
 	struct McTPLinFrmDatSzProcVarRefType ProcessVariableReference;
 } McTPLinFrmDatSzType;
 
+typedef struct McTPLinFrmDatVisAcsSubFrmType
+{	unsigned short NumberOfSubFrames;
+} McTPLinFrmDatVisAcsSubFrmType;
+
+typedef struct McTPLinFrmDatVisType
+{	enum McTPLinFrmDatVisEnum Type;
+	struct McTPLinFrmDatVisAcsSubFrmType AccessSubFrames;
+} McTPLinFrmDatVisType;
+
 typedef struct McTPLinFrmDatType
 {	struct McTPLinFrmDatSzType Size;
+	struct McTPLinFrmDatVisType Visualization;
 } McTPLinFrmDatType;
 
 typedef struct McTPLinTrkFrmType
@@ -571,8 +630,176 @@ typedef struct McTPSVUseVRType
 	struct McTPSVUseVRCnvrBeltType ConveyorBelt;
 } McTPSVUseVRType;
 
+typedef struct McTPSVContFrmType
+{	double Size;
+} McTPSVContFrmType;
+
+typedef struct McTPSVCont2DShpTypCirDimType
+{	double Radius;
+} McTPSVCont2DShpTypCirDimType;
+
+typedef struct McTPSESSType
+{	enum McTPSESSEnum Type;
+} McTPSESSType;
+
+typedef struct McTPSVCont2DShpTypCirType
+{	struct McTPSVCont2DShpTypCirDimType Dimensions;
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	struct McTPSESSType Style;
+	enum McScnSurfaceEnum Material;
+} McTPSVCont2DShpTypCirType;
+
+typedef struct McTPSVCont2DShpTypRectDimType
+{	double Length;
+	double Width;
+} McTPSVCont2DShpTypRectDimType;
+
+typedef struct McTPSVCont2DShpTypRectType
+{	struct McTPSVCont2DShpTypRectDimType Dimensions;
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	struct McTPSESSType Style;
+	enum McScnSurfaceEnum Material;
+} McTPSVCont2DShpTypRectType;
+
+typedef struct McTPSVCont2DShpTypTrpzDimType
+{	double Length;
+	double Width;
+} McTPSVCont2DShpTypTrpzDimType;
+
+typedef struct McTPSVCont2DShpTypTrpzType
+{	struct McTPSVCont2DShpTypTrpzDimType Dimensions;
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	struct McTPSESSType Style;
+	enum McScnSurfaceEnum Material;
+} McTPSVCont2DShpTypTrpzType;
+
+typedef struct McTPSVCont2DShpTypType
+{	enum McTPSVCont2DShpTypEnum Type;
+	struct McTPSVCont2DShpTypCirType Circle;
+	struct McTPSVCont2DShpTypRectType Rectangle;
+	struct McTPSVCont2DShpTypTrpzType Trapezoid;
+} McTPSVCont2DShpTypType;
+
+typedef struct McTPSVCont2DType
+{	struct McTPSVCont2DShpTypType ShapeType;
+} McTPSVCont2DType;
+
+typedef struct McTPSVCont3DTypCubeDimType
+{	double Length;
+	double Width;
+	double Height;
+} McTPSVCont3DTypCubeDimType;
+
+typedef struct McTPSVCont3DTypCubeType
+{	struct McTPSVCont3DTypCubeDimType Dimensions;
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	struct McTPSESSType Style;
+	enum McScnSurfaceEnum Material;
+} McTPSVCont3DTypCubeType;
+
+typedef struct McTPSVCont3DTypCylinderDimType
+{	double Radius;
+	double Height;
+} McTPSVCont3DTypCylinderDimType;
+
+typedef struct McTPSVCont3DTypCylinderType
+{	struct McTPSVCont3DTypCylinderDimType Dimensions;
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	struct McTPSESSType Style;
+	enum McScnSurfaceEnum Material;
+} McTPSVCont3DTypCylinderType;
+
+typedef struct McTPSVCont3DTypTrpzPrsmDimType
+{	double Length;
+	double Width;
+	double Height;
+} McTPSVCont3DTypTrpzPrsmDimType;
+
+typedef struct McTPSVCont3DTypTrpzPrsmType
+{	struct McTPSVCont3DTypTrpzPrsmDimType Dimensions;
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	struct McTPSESSType Style;
+	enum McScnSurfaceEnum Material;
+} McTPSVCont3DTypTrpzPrsmType;
+
+typedef struct McTPSVCont3DTypType
+{	enum McTPSVCont3DTypEnum Type;
+	struct McTPSVCont3DTypCubeType Cuboid;
+	struct McTPSVCont3DTypCylinderType Cylinder;
+	struct McTPSVCont3DTypTrpzPrsmType TrapezoidalPrism;
+} McTPSVCont3DTypType;
+
+typedef struct McTPSVCont3DType
+{	struct McTPSVCont3DTypType Type;
+} McTPSVCont3DType;
+
+typedef struct McTPSVContMeshType
+{	plcstring FileName[251];
+	struct McCfgTransXYZType Translation;
+	struct McCfgOrientType Orientation;
+	enum McScnSurfaceEnum Material;
+} McTPSVContMeshType;
+
+typedef struct McTPSVTmplVRType
+{	enum McTPSVTmplVREnum Type;
+	struct McTPSVContFrmType Frame;
+	struct McTPSVCont2DType Shape2D;
+	struct McTPSVCont3DType Shape3D;
+	struct McTPSVContMeshType Mesh3D;
+} McTPSVTmplVRType;
+
+typedef struct McTPSVAttrFltrTypDecimalValType
+{	struct McCfgUnboundedArrayType Value;
+} McTPSVAttrFltrTypDecimalValType;
+
+typedef struct McTPSVAttrFltrTypMandBitsType
+{	unsigned long Mask;
+} McTPSVAttrFltrTypMandBitsType;
+
+typedef struct McTPSVAttrFltrTypAnyOfBitsType
+{	unsigned long Mask;
+} McTPSVAttrFltrTypAnyOfBitsType;
+
+typedef struct McTPSVAttrFltrTypFbdBitsType
+{	unsigned long Mask;
+} McTPSVAttrFltrTypFbdBitsType;
+
+typedef struct McTPSVAttrFltrTypType
+{	enum McTPSVAttrFltrTypEnum Type;
+	struct McTPSVAttrFltrTypDecimalValType DecimalValue;
+	struct McTPSVAttrFltrTypMandBitsType MandatoryBits;
+	struct McTPSVAttrFltrTypAnyOfBitsType AnyOfBits;
+	struct McTPSVAttrFltrTypFbdBitsType ForbiddenBits;
+} McTPSVAttrFltrTypType;
+
+typedef struct McTPSVAttrFltrType
+{	struct McTPSVAttrFltrTypType Type;
+} McTPSVAttrFltrType;
+
+typedef struct McTPSVFltrsType
+{	enum McTPSVFltrsEnum Type;
+	struct McTPSVAttrFltrType AttributeBased;
+} McTPSVFltrsType;
+
+typedef struct McTPSVTmplType
+{	plcstring Name[251];
+	struct McTPSVTmplVRType VisualRepresentation;
+	struct McCfgUnboundedArrayType Filter;
+} McTPSVTmplType;
+
+typedef struct McTPSVUseContVisType
+{	struct McCfgUnboundedArrayType Template;
+} McTPSVUseContVisType;
+
 typedef struct McTPSVUseContType
 {	enum McTPSVUseContEnum Type;
+	struct McTPSVUseContVisType Visible;
 } McTPSVUseContType;
 
 typedef struct McTPSVUseType

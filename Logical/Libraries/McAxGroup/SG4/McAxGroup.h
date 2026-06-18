@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxGroup 6.6.0 */
+/* McAxGroup 6.8.0 */
 
 #ifndef _MCAXGROUP_
 #define _MCAXGROUP_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxGroup_VERSION
-#define _McAxGroup_VERSION 6.6.0
+#define _McAxGroup_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -199,6 +199,26 @@ typedef enum McAGSRQSPwrOffAStopEnum
 {	mcAGSRQSPOFFAS_NOT_USE = 0,
 	mcAGSRQSPOFFAS_USE = 1
 } McAGSRQSPwrOffAStopEnum;
+
+typedef enum McAGSRESPwrOnAStopEnum
+{	mcAGSRESPONAS_NOT_USE = 0,
+	mcAGSRESPONAS_USE = 1
+} McAGSRESPwrOnAStopEnum;
+
+typedef enum McAGSRESPUseSrcEnum
+{	mcAGSRESPUS_VAR = 0,
+	mcAGSRESPUS_IO_CH = 1
+} McAGSRESPUseSrcEnum;
+
+typedef enum McAGSRESPUseLvlEnum
+{	mcAGSRESPUL_LOW = 0,
+	mcAGSRESPUL_HIGH = 1
+} McAGSRESPUseLvlEnum;
+
+typedef enum McAGSRESPwrOffAStopEnum
+{	mcAGSRESPOFFAS_NOT_USE = 0,
+	mcAGSRESPOFFAS_USE = 1
+} McAGSRESPwrOffAStopEnum;
 
 typedef enum McAGFSBSBCErrBxEnum
 {	mcAGFSBSBCEB_CLOSE_IMMED = 0,
@@ -411,6 +431,40 @@ typedef struct McAGSRQSType
 {	struct McAGSRQSPwrOnAStopType PowerOnAfterStop;
 	struct McAGSRQSPwrOffAStopType PowerOffAfterStop;
 } McAGSRQSType;
+
+typedef struct McAGSRESPUseSrcVarType
+{	plcstring PVMapping[251];
+} McAGSRESPUseSrcVarType;
+
+typedef struct McAGSRESPUseSrcIOChType
+{	plcstring ChannelMapping[251];
+} McAGSRESPUseSrcIOChType;
+
+typedef struct McAGSRESPUseSrcType
+{	enum McAGSRESPUseSrcEnum Type;
+	struct McAGSRESPUseSrcVarType Variable;
+	struct McAGSRESPUseSrcIOChType IOChannel;
+} McAGSRESPUseSrcType;
+
+typedef struct McAGSRESPUseType
+{	struct McAGSRESPUseSrcType Source;
+	enum McAGSRESPUseLvlEnum Level;
+} McAGSRESPUseType;
+
+typedef struct McAGSRESPwrOnAStopType
+{	enum McAGSRESPwrOnAStopEnum Type;
+	struct McAGSRESPUseType Used;
+} McAGSRESPwrOnAStopType;
+
+typedef struct McAGSRESPwrOffAStopType
+{	enum McAGSRESPwrOffAStopEnum Type;
+	struct McAGSRESPUseType Used;
+} McAGSRESPwrOffAStopType;
+
+typedef struct McAGSRESType
+{	struct McAGSRESPwrOnAStopType PowerOnAfterStop;
+	struct McAGSRESPwrOffAStopType PowerOffAfterStop;
+} McAGSRESType;
 
 typedef struct McAGAGFType
 {	struct McCfgUnboundedArrayType FeatureReference;

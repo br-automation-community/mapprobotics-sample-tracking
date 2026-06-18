@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McPureVAx 6.6.0 */
+/* McPureVAx 6.8.0 */
 
 #ifndef _MCPUREVAX_
 #define _MCPUREVAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McPureVAx_VERSION
-#define _McPureVAx_VERSION 6.6.0
+#define _McPureVAx_VERSION 6.8.0
 #endif
 
 #include <bur/plctypes.h>
@@ -60,6 +60,11 @@ typedef enum McPVAHModKeepDirEnum
 {	mcPVAHMKD_NO = 0,
 	mcPVAHMKD_YES = 1
 } McPVAHModKeepDirEnum;
+
+typedef enum McPVAHRPUBDUEnum
+{	mcPVAHRPUBDU_MEAS_UNIT = 0,
+	mcPVAHRPUBDU_ENC_REV = 1
+} McPVAHRPUBDUEnum;
 
 typedef enum McPVAHModSwEdgEnum
 {	mcPVAHMSE_POS = 0,
@@ -361,6 +366,7 @@ typedef struct McPVAHModDirRefPUseType
 	enum McPVAHModHomeDirEnum HomingDirection;
 	enum McPVAHModKeepDirEnum KeepDirection;
 	double ReferencePulseBlockingDistance;
+	enum McPVAHRPUBDUEnum BlockingDistanceUnit;
 } McPVAHModDirRefPUseType;
 
 typedef struct McPVAHModDirRefPType
@@ -375,6 +381,7 @@ typedef struct McPVAHModDirType
 
 typedef struct McPVAHModRefPUseType
 {	double ReferencePulseBlockingDistance;
+	enum McPVAHRPUBDUEnum BlockingDistanceUnit;
 } McPVAHModRefPUseType;
 
 typedef struct McPVAHModRefPType
@@ -430,6 +437,7 @@ typedef struct McPVAHModBlkRefPNotUseType
 
 typedef struct McPVAHModBlkRefPUseType
 {	double ReferencePulseBlockingDistance;
+	enum McPVAHRPUBDUEnum BlockingDistanceUnit;
 } McPVAHModBlkRefPUseType;
 
 typedef struct McPVAHModBlkRefPType
@@ -1264,6 +1272,10 @@ typedef struct McCfgPureVAxMechElmType
 typedef struct McCfgPureVAxEncLinkType
 {	struct McPVAELType EncoderLink;
 } McCfgPureVAxEncLinkType;
+
+typedef struct McCfgPureVAxEncLinkPosFltrType
+{	struct McPVAELOEEPosFltrType PositionFilter;
+} McCfgPureVAxEncLinkPosFltrType;
 
 typedef struct McCfgPureVAxDigInType
 {	struct McPVADIType DigitalInputs;

@@ -229,8 +229,12 @@ TYPE
 		mcAGPGMAJF_DEACT_FLTR := 1, (*Deactivate filters -*)
 		mcAGPGMAJF_OVR_FLTR := 2 (*Override filters -*)
 		);
+	McAGPGMAJFOvrFltrType : STRUCT (*Type mcAGPGMAJF_OVR_FLTR settings*)
+		JerkTime : REAL; (*Override the individual axis settings of the jerk filter with a common setting [s]*)
+	END_STRUCT;
 	McAGPGMAJFType : STRUCT (*During axis group movement, the jerk filters defined at the axis level can be active, deactivated, or overridden*)
 		Type : McAGPGMAJFEnum; (*Axis jerk filter selector setting*)
+		OverrideFilters : McAGPGMAJFOvrFltrType; (*Type mcAGPGMAJF_OVR_FLTR settings*)
 	END_STRUCT;
 	McAGPGMiscType : STRUCT
 		NonMovementsLimit : McAGPGMiscNonMoveLimType; (*Limit the count of non-movements executed in one cycle*)
@@ -266,6 +270,7 @@ TYPE
 	McAGPGSRType : STRUCT (*Stop reaction definitions for the axis group*)
 		AxisError : McAGPGSRAEType; (*Defines the stop reaction of the axis group in case of an axis error*)
 		Quickstop : McAGSRQSType; (*Enables Quickstop functionality for the axis group*)
+		EStop : McAGSRESType; (*Enables EStop functionality for the axis group*)
 	END_STRUCT;
 	McCfgAxGrpPathGenType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AXGRP_PATHGEN*)
 		Subtype : McAGPGSubtEnum;
@@ -422,6 +427,9 @@ TYPE
 		InverseTimeFeedRate : LREAL; (*Value of inverse-time feed rate*)
 		FeedPerRevolution : LREAL; (*Value of feed rate per revolution in units/revolution*)
 	END_STRUCT;
+	McAGFPRGIPSWaitUntilSetType : STRUCT (*Defines settings for WaitUntil condition evaluation*)
+		SampleTime : REAL; (*Sample time for WaitUntil condition evaluation. 0 means use processing class sample time (fastest available). [s]*)
+	END_STRUCT;
 	McAGFPRGIPSType : STRUCT (*Defines initial values of modal data*)
 		InterpolationType : McAGFPRGIPSIntrplTypType; (*Defines the interpolation type of movement commands*)
 		AbsRelPositionCoordinates : McAGFPRGIPSAbsRelPosCoorType; (*Defines the absolute or relative target position coordinates*)
@@ -431,6 +439,7 @@ TYPE
 		AccuracyHoldDelay : McAGFPRGIPSAccHoldDlyType; (*Defines the delays inserted at each accuracy hold*)
 		ProgrammingUnits : McAGFPRGIPSPrgUnitType; (*Specifies the units of programmed values*)
 		FeedSettings : McAGFPRGIPSFSetType; (*Defines initial settings of feeds*)
+		WaitUntilSettings : McAGFPRGIPSWaitUntilSetType; (*Defines settings for WaitUntil condition evaluation*)
 	END_STRUCT;
 	McAGFPRGDLEnum :
 		( (*Default language selector setting*)
@@ -905,7 +914,10 @@ TYPE
 		mcAGFMESE_ORIENT_COMP := 16, (*Orientation compliance - Orientation compliance*)
 		mcAGFMESE_SKIP_BLK := 17, (*Skip block - Skip block*)
 		mcAGFMESE_WS_MON := 18, (*Workspace monitoring - Workspace monitoring*)
-		mcAGFMESE_ACT_LIM := 19 (*Active limit - Active limit*)
+		mcAGFMESE_ACT_LIM := 19, (*Active limit - Active limit*)
+		mcAGFMESE_BASE_REAC_LOADS := 20, (*Base reaction loads - Base reaction loads*)
+		mcAGFMESE_PROD_REAC_LOADS := 21, (*Product reaction loads - Product reaction loads*)
+		mcAGFMESE_VIB_CTRL := 22 (*Vibration control - Vibration control*)
 		);
 	McAGFMESngElmCusType : STRUCT (*Type mcAGFMESE_CUS settings*)
 		ConnectionPoint : STRING[250]; (*Connection point to a custom monitoring element*)
@@ -1007,6 +1019,18 @@ TYPE
 	McAGFMESngElmActLimType : STRUCT (*Type mcAGFMESE_ACT_LIM settings*)
 		Limit : STRING[250]; (*Currently active limit for trajectory planning*)
 	END_STRUCT;
+	McAGFMESngElmBaseReacLoadsType : STRUCT (*Type mcAGFMESE_BASE_REAC_LOADS settings*)
+		Loads : STRING[250]; (*Base reaction loads*)
+		Unfiltered : STRING[250]; (*Unfiltered base reaction loads*)
+	END_STRUCT;
+	McMcAGFMESngElmPRLoadsTypeType : STRUCT (*Type mcAGFMESE_PROD_REAC_LOADS settings*)
+		Loads : STRING[250]; (*Product reaction loads*)
+		Unfiltered : STRING[250]; (*Unfiltered product reaction loads*)
+	END_STRUCT;
+	McAGFMESngElmVibCtrlType : STRUCT (*Type mcAGFMESE_VIB_CTRL settings*)
+		CompensatedTorques : STRING[250]; (*Vibration compensated torques*)
+		CompensatedPositions : STRING[250]; (*Vibration compensated positions*)
+	END_STRUCT;
 	McAGFMESngElmType : STRUCT (*Defines the single monitoring element*)
 		Type : McAGFMESngElmEnum; (*Single element selector setting*)
 		Custom : McAGFMESngElmCusType; (*Type mcAGFMESE_CUS settings*)
@@ -1028,6 +1052,9 @@ TYPE
 		SkipBlock : McAGFMESngElmSkipBlkType; (*Type mcAGFMESE_SKIP_BLK settings*)
 		WorkspaceMonitoring : McAGFMESngElmWsMonType; (*Type mcAGFMESE_WS_MON settings*)
 		ActiveLimit : McAGFMESngElmActLimType; (*Type mcAGFMESE_ACT_LIM settings*)
+		BaseReactionLoads : McAGFMESngElmBaseReacLoadsType; (*Type mcAGFMESE_BASE_REAC_LOADS settings*)
+		ProductReactionLoads : McMcAGFMESngElmPRLoadsTypeType; (*Type mcAGFMESE_PROD_REAC_LOADS settings*)
+		VibrationControl : McAGFMESngElmVibCtrlType; (*Type mcAGFMESE_VIB_CTRL settings*)
 	END_STRUCT;
 	McAGFMESngElmsType : STRUCT (*Defines the single monitoring elements*)
 		SingleElement : McCfgUnboundedArrayType; (*Defines the single monitoring element (Connect array of type McAGFMESngElmType)*)
@@ -1854,7 +1881,7 @@ TYPE
 		mcAGFTRKOOW_ADJ_VEL := 2 (*Adjusted velocity - The system adapts the velocities defined in the motion program, if the target is out-of-workspace.*)
 		);
 	McAGFTrkOoWAdjVelType : STRUCT (*Type mcAGFTRKOOW_ADJ_VEL settings*)
-		Clearance : LREAL; (*Position shift of the target in direction of the tracking path [measurement units]*)
+		Clearance : LREAL; (*Position shift of the target in direction of the TrackingPath [measurement units]*)
 	END_STRUCT;
 	McAGFTrkOoWType : STRUCT (*Defines how to react while track on objects out of workspace*)
 		Type : McAGFTrkOoWEnum; (*Out-of-workspace synchronisation selector setting*)
@@ -1867,7 +1894,7 @@ TYPE
 		mcAGFTRKOOWS_ADJ_VEL := 2 (*Adjusted velocity - The system adapts the velocities defined in the motion program, if the target is out-of-workspace.*)
 		);
 	McAGFTrkOoWSAdjVelType : STRUCT (*Type mcAGFTRKOOWS_ADJ_VEL settings*)
-		Clearance : LREAL; (*Position shift of the target in direction of the tracking path [measurement units]*)
+		Clearance : LREAL; (*Position shift of the target in direction of the TrackingPath [measurement units]*)
 	END_STRUCT;
 	McAGFTrkOoWSType : STRUCT (*Defines how to react in synchronous phase if a command would move out of workspace*)
 		Type : McAGFTrkOoWSEnum; (*Out-of-workspace synchronized selector setting*)
@@ -3162,6 +3189,62 @@ TYPE
 		Couplings : McMS5ACXYZCACplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt5AxPosLimType; (*Position limits for joint axis*)
 	END_STRUCT;
+	McMS5ACXYZCBDescEnum :
+		( (*Description selector setting*)
+		mcMS5ACXYZCBD_STD := 0 (*Standard - Standard description*)
+		);
+	McMS5ACXYZCBDSDimType : STRUCT (*Dimensions of the mechanical system*)
+		TranslationFromBaseToQX : McCfgTransXType; (*Translation from base of the mechanical system to QX*)
+		TranslationFromQXToQY : McCfgTransYType; (*Translation from QX to QY*)
+		TranslationFromQYToQZ : McCfgTransZType; (*Translation from QY to QZ*)
+		TranslationFromQZToQC : McCfgTransXYZType; (*Translation from QZ to QC*)
+		TranslationFromQCToQB : McCfgTransXYZType; (*Translation from QC to QB*)
+		TranslationFromQBToFlange : McCfgTransXYZType; (*Translation from QB to flange*)
+	END_STRUCT;
+	McMS5ACXYZCBDSType : STRUCT (*Type mcMS5ACXYZCBD_STD settings*)
+		Dimensions : McMS5ACXYZCBDSDimType; (*Dimensions of the mechanical system*)
+		ModelZeroPositionOffsets : McMSMdl5ZeroPosOffType; (*Offsets between desired and internal zero position*)
+		ModelCountDirections : McMSMdl5CntDirType; (*Count direction for joint axes relative to the internal model*)
+	END_STRUCT;
+	McMS5ACXYZCBDescType : STRUCT (*Description of the mechanical system*)
+		Type : McMS5ACXYZCBDescEnum; (*Description selector setting*)
+		Standard : McMS5ACXYZCBDSType; (*Type mcMS5ACXYZCBD_STD settings*)
+	END_STRUCT;
+	McMS5ACXYZCBCoorNameCmnType : STRUCT (*Common settings for all Type values*)
+		XCoordinateName : STRING[250]; (*X coordinate name*)
+		YCoordinateName : STRING[250]; (*Y coordinate name*)
+		ZCoordinateName : STRING[250]; (*Z coordinate name*)
+		CCoordinateName : STRING[250]; (*C coordinate name*)
+		BCoordinateName : STRING[250]; (*B coordinate name*)
+	END_STRUCT;
+	McMS5ACXYZCBCoorNameType : STRUCT (*Coordinates names*)
+		Type : McMSCNEnum; (*Coordinates names selector setting*)
+		Common : McMS5ACXYZCBCoorNameCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McMS5ACXYZCBWFrmMdlEnum :
+		( (*Wire frame model selector setting*)
+		mcMS5ACXYZCBWFM_STD := 0 (*Standard - Standard wire-frame model*)
+		);
+	McMS5ACXYZCBWFrmMdlStdType : STRUCT (*Type mcMS5ACXYZCBWFM_STD settings*)
+		QZToQC : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		QCToQB : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		QBToFlange : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		FlangeToTCP : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+	END_STRUCT;
+	McMS5ACXYZCBWFrmMdlType : STRUCT (*Wire frame model of mechanical system*)
+		Type : McMS5ACXYZCBWFrmMdlEnum; (*Wire frame model selector setting*)
+		Standard : McMS5ACXYZCBWFrmMdlStdType; (*Type mcMS5ACXYZCBWFM_STD settings*)
+	END_STRUCT;
+	McMS5ACXYZCBCplgType : STRUCT (*Couplings between selected axes and the joint axis*)
+		LinearCoupling : McCfgUnboundedArrayType; (*Linear coupling (Connect array of type McMSCplg5LinCplgType)*)
+	END_STRUCT;
+	McCfgMS5AxCncXYZCBType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MS_5AX_CNC_XYZCB*)
+		Description : McMS5ACXYZCBDescType; (*Description of the mechanical system*)
+		CoordinatesNames : McMS5ACXYZCBCoorNameType; (*Coordinates names*)
+		WireFrameModel : McMS5ACXYZCBWFrmMdlType; (*Wire frame model of mechanical system*)
+		Couplings : McMS5ACXYZCBCplgType; (*Couplings between selected axes and the joint axis*)
+		JointAxesPositionLimits : McMSJnt5AxPosLimType; (*Position limits for joint axis*)
+	END_STRUCT;
 	McMS6ACZXYBCADescEnum :
 		( (*Description selector setting*)
 		mcMS6ACZXYBCAD_STD := 0 (*Standard - Standard description*)
@@ -3597,6 +3680,37 @@ TYPE
 		Type : McMS4ASAWFrmMdlEnum; (*Wire frame model selector setting*)
 		Standard : McMS4ASAWFrmMdlStdType; (*Type mcMS4ASAWFM_STD settings*)
 	END_STRUCT;
+	McMSVibCtrlEnum :
+		( (*Vibration control selector setting*)
+		mcMSVC_NOT_USE := 0, (*Not used -*)
+		mcMSVC_DYNPARTABLE := 1 (*DynParTable - Table definition of vibration control parameters*)
+		);
+	McMSVibCtrlDynParTableType : STRUCT (*Type mcMSVC_DYNPARTABLE settings*)
+		TableReference : McCfgReferenceType; (*Name of the table reference*)
+	END_STRUCT;
+	McMSVibCtrlType : STRUCT (*Parameters for the vibration control*)
+		Type : McMSVibCtrlEnum; (*Vibration control selector setting*)
+		DynParTable : McMSVibCtrlDynParTableType; (*Type mcMSVC_DYNPARTABLE settings*)
+	END_STRUCT;
+	McMSIVCEnum :
+		( (*Vibration control selector setting*)
+		mcMSIVC_NOT_USE := 0, (*Not used -*)
+		mcMSIVC_INT := 1 (*Internal -*)
+		);
+	McMSIVCIntRowType : STRUCT
+		Index : UINT;
+		Value : LREAL;
+		Unit : STRING[250];
+		Description : STRING[250];
+	END_STRUCT;
+	McMSIVCIntType : STRUCT (*Type mcMSIVC_INT settings*)
+		Type : STRING[250]; (*Type of vibration control parameters*)
+		Row : McCfgUnboundedArrayType; (*Connect array of type McMSIVCIntRowType*)
+	END_STRUCT;
+	McMSIVCType : STRUCT
+		Type : McMSIVCEnum; (*Vibration control selector setting*)
+		Internal : McMSIVCIntType; (*Type mcMSIVC_INT settings*)
+	END_STRUCT;
 	McMS4AxConLimRedEnum :
 		( (*Conditional limit reduction selector setting*)
 		mcMS4CLR_NOT_USE := 0, (*Not used - Conditiona limit reduction not used*)
@@ -3661,6 +3775,8 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		ConditionalLimitReduction : McMS4AxConLimRedType; (*Conditional limit reduction*)
 		Couplings : McMS4ASACplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt4AxPosLimType; (*Position limits for joint axis*)
@@ -3918,6 +4034,8 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		LoadDependentJerkLimits : McMSLoadDepJerkLimType;
 		Couplings : McMS2ADBCplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt2AxPosLimType; (*Position limits for joint axis*)
@@ -4051,6 +4169,8 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		LoadDependentJerkLimits : McMSLoadDepJerkLimType;
 		Couplings : McMS3ADACplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt3AxPosLimType; (*Position limits for joint axis*)
@@ -4303,6 +4423,8 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		LoadDependentJerkLimits : McMSLoadDepJerkLimType;
 		Couplings : McMS3ADXZCCplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt3AxPosLimType; (*Position limits for joint axis*)
@@ -4316,6 +4438,7 @@ TYPE
 	McMS4ADADSDBPltType : STRUCT (*Fixed platform*)
 		Center : McCfgTransXYZType; (*Center of the base platform*)
 		ArmLinkPoint : ARRAY[0..2] OF McMSDeltaDSDBPArmLinkPtType; (*Geometrical resource to define the position of a joint*)
+		CardanOffset : McCfgTransZType; (*Offset from the base platform to the spline axis upper cardan joint*)
 	END_STRUCT;
 	McMS4ADADSDimArmType : STRUCT (*Description of arms*)
 		Arm : ARRAY[0..2] OF McMSDeltaDSDArmType; (*Serial kinematic chain connecting base platform and end-effector platform*)
@@ -4324,6 +4447,7 @@ TYPE
 	McMS4ADADSDEEPltType : STRUCT (*Moving platform*)
 		ArmLinkPoint : ARRAY[0..2] OF McMSDeltaDSDEEPArmLinkPtType; (*Point where the arm is linked to the end-effector platform*)
 		TranslationToFlange : McCfgTransXYZType; (*Translation from the center of the end-effector platform to flange*)
+		CardanOffset : McCfgTransZType; (*Offset from the end-effector platform to the spline axis lower cardan joint*)
 	END_STRUCT;
 	McMS4ADADSDimType : STRUCT (*Dimensions of the mechanical system*)
 		BasePlatform : McMS4ADADSDBPltType; (*Fixed platform*)
@@ -4380,6 +4504,8 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		LoadDependentJerkLimits : McMSLoadDepJerkLimType;
 		Couplings : McMS4ADACplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt4AxPosLimType; (*Position limits for joint axis*)
@@ -4619,8 +4745,104 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		LoadDependentJerkLimits : McMSLoadDepJerkLimType;
 		Couplings : McMS5ADACplgType; (*Couplings between selected axes and the joint axis*)
+		JointAxesPositionLimits : McMSJnt5AxPosLimType; (*Position limits for joint axis*)
+		WorkingRange : McMSDeltaWrkRngType; (*Working range description related to end-effector platform center point*)
+	END_STRUCT;
+	McMS5ADBDescEnum :
+		( (*Description selector setting*)
+		mcMS5ADBD_STD := 0 (*Standard - Standard description*)
+		);
+	McMS5ADBDSDBPltType : STRUCT (*Fixed platform*)
+		Center : McCfgTransXYZType; (*Center of the base platform*)
+		ArmLinkPoint : ARRAY[0..2] OF McMSDeltaDSDBPArmLinkPtType; (*Geometrical resource to define the position of a joint*)
+		CardanOffset : McCfgTransZType; (*Offset from the base platform to the spline axis upper cardan joint*)
+	END_STRUCT;
+	McMS5ADBDSDimArmType : STRUCT (*Description of arms*)
+		Arm : ARRAY[0..2] OF McMSDeltaDSDArmType; (*Serial kinematic chain connecting base platform and end-effector platform*)
+		LowerArmPairDistance : LREAL; (*Distance between the paired bars of the lower arm*)
+	END_STRUCT;
+	McMS5ADBDSDEEPltType : STRUCT (*Moving platform*)
+		ArmLinkPoint : ARRAY[0..2] OF McMSDeltaDSDEEPArmLinkPtType; (*Point where the arm is linked to the end-effector platform*)
+		TranslationToQC : McCfgTransXYZType; (*Translation from the center of the end-effector platform to QC*)
+		TranslationFromQCToFlange : McCfgTransXYZType; (*Translation from QC to flange*)
+		CardanOffset : McCfgTransZType; (*Offset from the end-effector platform to the spline axis lower cardan joint*)
+	END_STRUCT;
+	McMS5ADBDSDimType : STRUCT (*Dimensions of the mechanical system*)
+		BasePlatform : McMS5ADBDSDBPltType; (*Fixed platform*)
+		Arms : McMS5ADBDSDimArmType; (*Description of arms*)
+		EndEffectorPlatform : McMS5ADBDSDEEPltType; (*Moving platform*)
+	END_STRUCT;
+	McMS5ADBDSType : STRUCT (*Type mcMS5ADBD_STD settings*)
+		Dimensions : McMS5ADBDSDimType; (*Dimensions of the mechanical system*)
+		ModelZeroPositionOffsets : McMSMdl5ZeroPosOffType; (*Offsets between desired and internal zero position*)
+		ModelCountDirections : McMSMdl5CntDirType; (*Count direction for joint axes relative to the internal model*)
+	END_STRUCT;
+	McMS5ADBDescType : STRUCT (*Description of the mechanical system*)
+		Type : McMS5ADBDescEnum; (*Description selector setting*)
+		Standard : McMS5ADBDSType; (*Type mcMS5ADBD_STD settings*)
+	END_STRUCT;
+	McMS5ADBCoorNameCmnType : STRUCT (*Common settings for all Type values*)
+		XCoordinateName : STRING[250]; (*X coordinate name*)
+		YCoordinateName : STRING[250]; (*Y coordinate name*)
+		ZCoordinateName : STRING[250]; (*Z coordinate name*)
+		CCoordinateName : STRING[250]; (*C coordinate name*)
+		GripperCoordinateName : STRING[250]; (*Gripper coordinate name*)
+	END_STRUCT;
+	McMS5ADBCoorNameType : STRUCT (*Coordinates names*)
+		Type : McMSCNEnum; (*Coordinates names selector setting*)
+		Common : McMS5ADBCoorNameCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McMS5ADBGripCtrlEnum :
+		( (*Gripper control selector setting*)
+		mcMS5ADBGC_ROT_TO_LIN_TRF := 0 (*Rotary to linear transformation -*)
+		);
+	McMS5ADBGripCtrlRotToLinTrfType : STRUCT (*Type mcMS5ADBGC_ROT_TO_LIN_TRF settings*)
+		JointAxisUnits : LREAL; (*Joint axis units [measurement units]*)
+		GripperCoordinateUnits : LREAL; (*Gripper coordinate units [measurement units]*)
+		GripperZeroOffset : LREAL; (*Distance between gripper jaws when the joint axis is at zero position [measurement units]*)
+	END_STRUCT;
+	McMS5ADBGripCtrlType : STRUCT (*Gripper control*)
+		Type : McMS5ADBGripCtrlEnum; (*Gripper control selector setting*)
+		RotaryToLinearTransformation : McMS5ADBGripCtrlRotToLinTrfType; (*Type mcMS5ADBGC_ROT_TO_LIN_TRF settings*)
+	END_STRUCT;
+	McMS5ADBWFrmMdlEnum :
+		( (*Wire frame model selector setting*)
+		mcMS5ADBWFM_STD := 0 (*Standard - Standard wire-frame model*)
+		);
+	McMS5ADBWFrmMdlStdType : STRUCT (*Type mcMS5ADBWFM_STD settings*)
+		UpperArm1 : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		LowerArm1 : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		UpperArm2 : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		LowerArm2 : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		UpperArm3 : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		LowerArm3 : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		QCToFlange : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+		FlangeToTCP : McMSFrmMdlStdEdgeType; (*Wire frame model edge*)
+	END_STRUCT;
+	McMS5ADBWFrmMdlType : STRUCT (*Wire frame model of mechanical system*)
+		Type : McMS5ADBWFrmMdlEnum; (*Wire frame model selector setting*)
+		Standard : McMS5ADBWFrmMdlStdType; (*Type mcMS5ADBWFM_STD settings*)
+	END_STRUCT;
+	McMS5ADBCplgType : STRUCT (*Couplings between selected axes and the joint axis*)
+		LinearCoupling : McCfgUnboundedArrayType; (*Linear coupling (Connect array of type McMSCplg5LinCplgType)*)
+	END_STRUCT;
+	McCfgMS5AxDeltaBType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MS_5AX_DELTA_B*)
+		SceneViewerObject : McMSSVOType; (*Defines if and which Scene Viewer Object should be used*)
+		Description : McMS5ADBDescType; (*Description of the mechanical system*)
+		CoordinatesNames : McMS5ADBCoorNameType; (*Coordinates names*)
+		GripperControl : McMS5ADBGripCtrlType; (*Gripper control*)
+		TCPOrientation : McMSTCPOType; (*Handling of TCP orientation coordinates*)
+		WireFrameModel : McMS5ADBWFrmMdlType; (*Wire frame model of mechanical system*)
+		DynamicModel : McMSDynMdlType; (*Dynamic model of the mechanical system*)
+		InternalDynamicModel : McMSIDMType;
+		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
+		InternalDynamicLimits : McMSIDLType;
+		LoadDependentJerkLimits : McMSLoadDepJerkLimType;
+		Couplings : McMS5ADBCplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt5AxPosLimType; (*Position limits for joint axis*)
 		WorkingRange : McMSDeltaWrkRngType; (*Working range description related to end-effector platform center point*)
 	END_STRUCT;
@@ -4987,6 +5209,7 @@ TYPE
 		Type : McMS5ARBMonPtEnum; (*Monitoring points selector setting*)
 	END_STRUCT;
 	McCfgMS5AxRobBType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MS_5AX_ROB_B*)
+		SceneViewerObject : McMSSVOType; (*Defines if and which Scene Viewer Object should be used*)
 		Description : McMS5ARBDescType; (*Description of the mechanical system*)
 		CoordinatesNames : McMS5ARBCoorNameType; (*Coordinates names*)
 		WireFrameModel : McMS5ARBWFrmMdlType; (*Wire frame model of mechanical system*)
@@ -5067,6 +5290,8 @@ TYPE
 		InternalDynamicModel : McMSIDMType;
 		DynamicLimits : McMSDynLimType; (*Dynamic limits of the mechanical system*)
 		InternalDynamicLimits : McMSIDLType;
+		VibrationControl : McMSVibCtrlType; (*Parameters for the vibration control*)
+		InternalVibrationControl : McMSIVCType;
 		Couplings : McMS6ARACplgType; (*Couplings between selected axes and the joint axis*)
 		JointAxesPositionLimits : McMSJnt6AxPosLimType; (*Position limits for joint axis*)
 		MonitoringPoints : McMS6ARAMonPtType; (*Enable robot monitoring points*)

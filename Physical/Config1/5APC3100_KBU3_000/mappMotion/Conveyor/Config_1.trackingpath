@@ -1,34 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="gTrackingPathConveyor_2" Type="trackingpath" Description="Tracking Path with moving objects">
-    <Selector ID="Type">
-      <Selector ID="MotionSource" Value="Axis">
-        <Property ID="AxisRef" Value="gAxis_Conveyor_2" />
-      </Selector>
-      <Group ID="TrackingFrames">
-        <Group ID="AutomaticDeletion">
-          <Selector ID="Condition[1]">
-            <Property ID="MinPosition" Value="-100" />
-            <Property ID="MaxPosition" Value="3000" />
-          </Selector>
-        </Group>
-      </Group>
-    </Selector>
-    <Selector ID="SceneViewerObject">
-      <Selector ID="VisualRepresentation" Value="Conveyor belt">
-        <Group ID="Dimensions">
-          <Property ID="Length" Value="3000" />
-          <Property ID="Width" Value="300" />
-          <Property ID="Height" Value="1" />
-        </Group>
-        <Group ID="Translation">
-          <Property ID="Y" Value="-150" />
-          <Property ID="Z" Value="-50" />
-        </Group>
-      </Selector>
-    </Selector>
-  </Element>
   <Element ID="gTrackingPathConveyor_1" Type="trackingpath" Description="Tracking Path with moving objects">
     <Selector ID="Type">
       <Selector ID="MotionSource" Value="Axis">
@@ -57,6 +29,9 @@
           <Property ID="Y" Value="-150" />
           <Property ID="Z" Value="-50" />
         </Group>
+      </Selector>
+      <Selector ID="Content">
+        <Group ID="Template[1]" />
       </Selector>
     </Selector>
   </Element>

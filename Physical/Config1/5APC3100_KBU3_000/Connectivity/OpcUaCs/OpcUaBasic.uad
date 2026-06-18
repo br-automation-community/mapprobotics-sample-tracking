@@ -36,6 +36,5 @@
       <Variable Name="MultigripperClosedPos2" />
       <Variable Name="GripperClosed" />
     </Task>
-    <Task Name="APP_Conve1" />
   </Module>
 </OpcUaSource>

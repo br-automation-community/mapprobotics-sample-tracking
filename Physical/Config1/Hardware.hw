@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio WorkingVersion="6.0" FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
-  <Module Name="5AC901.IPLK-00" Type="5AC901.IPLK-00" Version="2.0.0.0">
+  <Module Name="5AC901.IPLK-00" Type="5AC901.IPLK-00" Version="2.1.0.0">
     <Connection Connector="SL" TargetModule="5APC3100_KBU3_000" TargetConnector="SL2" />
     <Connector Name="IF1">
       <Parameter ID="DNAConfiguration" Value="manual" />
@@ -10,7 +10,7 @@
       <Parameter ID="ChannelType1" Value="OCTET[96]" />
     </Connector>
   </Module>
-  <Module Name="5APC3100_KBU3_000" Type="5APC3100.KBU3-000" Version="2.2.7.0">
+  <Module Name="5APC3100_KBU3_000" Type="5APC3100.KBU3-000" Version="2.3.1.0">
     <Connector Name="IF3">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
       <Parameter ID="ActivateDevice" Value="1" />
@@ -97,342 +97,259 @@
     <Parameter ID="ActivateWebServer" Value="1" />
     <Parameter ID="ActivateSdm" Value="1" />
   </Module>
-  <Module Name="8EI2X2HWS10.xxxx-1-QC_D4r1100R_1" Type="8EI2X2HWS10.xxxx-1" Version="2.4.0.0" NodeNumber="6">
-    <Connection Connector="PLK1" TargetModule="8EI8X8HWT10.xxxx-1-Q1-Q2-Q3_D4r1100R_1" TargetConnector="PLK2">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX41" Value="EnDat" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQC_D4r1100R_1" />
-    <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="10" />
-    <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
-    <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="360" />
-    <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="1" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
-    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="80.0" />
-    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="1" />
-    <Parameter ID="FeedForward" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="CyclicValueFromAxesGroup" />
-    <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="1" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="Absolute" />
-    <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="" />
-    <Parameter ID="DriveError" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="CyclicDecelerationFromAxesGroup" />
-    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="0.5" />
-    <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis" Value="1" />
-    <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="Used" />
-    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.06" />
-    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.06" />
-  </Module>
-  <Module Name="8EI8X8HWT10.xxxx-1-Q1-Q2-Q3_D4r1100R_1" Type="8EI8X8HWT10.xxxx-1" Version="2.4.0.0" NodeNumber="4">
+  <Module Name="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" Type="8EI8X8MWD10.xxxx-1" Version="2.4.0.0" NodeNumber="1">
     <Connection Connector="PLK1" TargetModule="5AC901.IPLK-00" TargetConnector="IF1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="8EI2X2HWS10.xxxx-1-QC_D4r1100R_1" TargetConnector="PLK1">
+    <Connection Connector="PLK2" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="MT2" TargetModule="8LSA44.DB060S200-3_Q2_D4r1100R_1" TargetConnector="MT" />
-    <Connection Connector="MT3" TargetModule="8LSA44.DB060S200-3_Q3_D4r1100R_1" TargetConnector="MT" />
-    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX41" Value="EnDat" />
-    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX42" Value="EnDat" />
-    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX43" Value="EnDat" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ1_D4r1100R_1" />
+    <Connection Connector="MT2" TargetModule="SR200M2A-Q2_SRr700_1" TargetConnector="MT" />
+    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX41" Value="T_Format" />
+    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX42" Value="T_Format" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ1_SRr700_1" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="28" />
+    <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="80" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
     <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="360" />
     <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="1" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="150.0" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="100.0" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="7.5" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.5" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="1" />
     <Parameter ID="FeedForward" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="CyclicValueFromAxesGroup" />
     <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="1" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="Absolute" />
+    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="AbsoluteCorrection" />
     <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="" />
     <Parameter ID="DriveError" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="CyclicDecelerationFromAxesGroup" />
-    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="0.5" />
+    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="3.0" />
     <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis" Value="1" />
     <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="Used" />
-    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.06" />
-    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.06" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ2_D4r1100R_1" />
+    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ2_SRr700_1" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="Input" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="28" />
+    <Parameter ID="Input" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="50" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
     <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="360" />
     <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller" Value="1" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[2]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="150.0" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="125.0" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="1" />
     <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="7.5" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="0.5" />
     <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
     <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode" Value="1" />
     <Parameter ID="FeedForward" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode" Value="CyclicValueFromAxesGroup" />
     <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/LoopFilters" Value="1" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[2]/RealAxis/Homing" Value="Absolute" />
+    <Parameter ID="Mode" Location="DriveConfiguration/Channel[2]/RealAxis/Homing" Value="AbsoluteCorrection" />
     <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[2]/RealAxis/Homing" Value="" />
     <Parameter ID="DriveError" Location="DriveConfiguration/Channel[2]/RealAxis/StopReaction" Value="CyclicDecelerationFromAxesGroup" />
-    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[2]/RealAxis/MovementErrorLimits" Value="0.5" />
+    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[2]/RealAxis/MovementErrorLimits" Value="1.0" />
     <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis" Value="1" />
     <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[2]/RealAxis" Value="Used" />
-    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.06" />
-    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.06" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[3]/RealAxis" Value="gAxisQ3_D4r1100R_1" />
-    <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="Input" Location="DriveConfiguration/Channel[3]/RealAxis/MechanicalElements/Gearbox" Value="28" />
-    <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
-    <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[3]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="360" />
-    <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller" Value="1" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[3]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
-    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Position" Value="150.0" />
-    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Position" Value="1" />
-    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Speed" Value="7.5" />
-    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/Speed" Value="1" />
-    <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode" Value="1" />
-    <Parameter ID="FeedForward" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode" Value="CyclicValueFromAxesGroup" />
-    <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis/Controller/Mode/LoopFilters" Value="1" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[3]/RealAxis/Homing" Value="Absolute" />
-    <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[3]/RealAxis/Homing" Value="" />
-    <Parameter ID="DriveError" Location="DriveConfiguration/Channel[3]/RealAxis/StopReaction" Value="CyclicDecelerationFromAxesGroup" />
-    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[3]/RealAxis/MovementErrorLimits" Value="0.5" />
-    <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[3]/RealAxis" Value="1" />
-    <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[3]/RealAxis" Value="Used" />
-    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[3]/RealAxis/JerkFilter" Value="0.06" />
-    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[3]/RealAxis/JerkFilter" Value="0.06" />
+    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
   </Module>
-  <Module Name="8LSA44.DB060S200-3_Q1_D4r1100R_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8HWT10.xxxx-1-Q1-Q2-Q3_D4r1100R_1" TargetConnector="MT1" />
+  <Module Name="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" Type="8EI8X8MWD10.xxxx-1" Version="2.4.0.0" NodeNumber="2">
+    <Connection Connector="PLK1" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" TargetConnector="PLK2">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="MT2" TargetModule="SR200M4A-Q4_SRr700_1" TargetConnector="MT" />
+    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX41" Value="T_Format" />
+    <Parameter ID="InterfaceType" Location="DriveConfiguration/Encoder/EncoderX42" Value="T_Format" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxisQ3_SRr700_1" />
+    <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
+    <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="2" />
+    <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
+    <Parameter ID="Output" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="25" />
+    <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
+    <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1.0" />
+    <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="1" />
+    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
+    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="400.0" />
+    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="1" />
+    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.45" />
+    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
+    <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="1" />
+    <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="1" />
+    <Parameter ID="FeedForward" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode" Value="CyclicValueFromAxesGroup" />
+    <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="1" />
+    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="RestorePosition" />
+    <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="" />
+    <Parameter ID="DriveError" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="CyclicDecelerationFromAxesGroup" />
+    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="1.0" />
+    <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis" Value="1" />
+    <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="Used" />
+    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[1]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[1]/RealAxis/AxisFeatures" Value="Feature_Brake_SRr700_1" />
+    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[2]/RealAxis" Value="gAxisQ4_SRr700_1" />
+    <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
+    <Parameter ID="Input" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1875" />
+    <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="1" />
+    <Parameter ID="Output" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/Gearbox" Value="132" />
+    <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
+    <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[2]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="360" />
+    <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller" Value="1" />
+    <Parameter ID="Mode" Location="DriveConfiguration/Channel[2]/RealAxis/Controller" Value="PositionControllerWithTorqueFeedForward" />
+    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="1" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="200.0" />
+    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Position" Value="1" />
+    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
+    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="0.4" />
+    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
+    <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/Speed" Value="1" />
+    <Parameter ID="FeedForwardIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode" Value="1" />
+    <Parameter ID="FeedForward" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode" Value="CyclicValueFromAxesGroup" />
+    <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis/Controller/Mode/LoopFilters" Value="1" />
+    <Parameter ID="Mode" Location="DriveConfiguration/Channel[2]/RealAxis/Homing" Value="RestorePosition" />
+    <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[2]/RealAxis/Homing" Value="" />
+    <Parameter ID="DriveError" Location="DriveConfiguration/Channel[2]/RealAxis/StopReaction" Value="CyclicDecelerationFromAxesGroup" />
+    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[2]/RealAxis/MovementErrorLimits" Value="1.0" />
+    <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[2]/RealAxis" Value="1" />
+    <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[2]/RealAxis" Value="Used" />
+    <Parameter ID="JerkTimeMin" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="JerkTime" Location="DriveConfiguration/Channel[2]/RealAxis/JerkFilter" Value="0.025" />
+    <Parameter ID="FeatureRef[1]" Location="DriveConfiguration/Channel[2]/RealAxis/AxisFeatures" Value="Feature_Brake_SRr700_1" />
+  </Module>
+  <Module Name="SR200M1A-Q1_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" TargetConnector="MT1" />
     <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
-    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="6000" />
-    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="12000" />
-    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="400" />
-    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="3.7" />
-    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="7.4" />
-    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="43.8" />
-    <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="3" />
-    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="6" />
-    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="22.8" />
-    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="49.22" />
-    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.81" />
-    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="0.863" />
-    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="6.2" />
-    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="2.73" />
-    <Parameter ID="VoltageLimitation" Location="M1/MotorParameters" Value="Used" />
-    <Parameter ID="MOTOR_UDC_MAX" Location="M1/MotorParameters/VoltageLimitation" Value="1000" />
-    <Parameter ID="Angle" Location="M1/MotorParameters/EncoderMounting" Value="StoredOnEncoder" />
-    <Parameter ID="MOTOR_TEMPSENS_LIM" Location="M1/MotorParameters/TemperatureSensor" Value="130" />
-    <Parameter ID="TemperatureSensorInterface" Location="M1/MotorParameters/TemperatureSensor" Value="EncoderConnectorDigital" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR1" Location="M1/MotorParameters/TemperatureSensor" Value="30" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR2" Location="M1/MotorParameters/TemperatureSensor" Value="254" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR3" Location="M1/MotorParameters/TemperatureSensor" Value="-29.72" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR4" Location="M1/MotorParameters/TemperatureSensor" Value="-4.58" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR5" Location="M1/MotorParameters/TemperatureSensor" Value="20.33" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR6" Location="M1/MotorParameters/TemperatureSensor" Value="45.18" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR7" Location="M1/MotorParameters/TemperatureSensor" Value="69.96" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR8" Location="M1/MotorParameters/TemperatureSensor" Value="94.71" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR9" Location="M1/MotorParameters/TemperatureSensor" Value="119.6" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR10" Location="M1/MotorParameters/TemperatureSensor" Value="149.11" />
-    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="110" />
-    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="0.985" />
-    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="1800" />
-    <Parameter ID="Brake" Location="M1" Value="Used" />
-    <Parameter ID="MOTOR_BRAKE_CURR_RATED" Location="M1/Brake" Value="0.83" />
-    <Parameter ID="MOTOR_BRAKE_TORQ_RATED" Location="M1/Brake" Value="8" />
-    <Parameter ID="MOTOR_BRAKE_ON_TIME" Location="M1/Brake" Value="0.038" />
-    <Parameter ID="MOTOR_BRAKE_OFF_TIME" Location="M1/Brake" Value="0.055" />
-    <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.69" />
-    <Parameter ID="MOTOR_ENCOD_ATTR" Location="M1/Encoder" Value="1" />
-    <Parameter ID="MOTOR_ENCOD_INERTIA" Location="M1/Encoder" Value="0.022" />
-    <Parameter ID="TemperatureSensor" Location="M1/Encoder" Value="Used" />
-    <Parameter ID="MOTOR_ENCOD_TEMP_LIM" Location="M1/Encoder/TemperatureSensor" Value="129" />
+    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
+    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
+    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="220" />
+    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="4.9" />
+    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="4.9" />
+    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="17.2" />
+    <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="1.91" />
+    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="1.91" />
+    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="6.69" />
+    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="26.4" />
+    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.39" />
+    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="1.3" />
+    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="2.4" />
+    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="0.818" />
+    <Parameter ID="MOTOR_COMMUT_OFFSET" Location="M1/MotorParameters/EncoderMounting/Angle" Value="3.14" />
+    <Parameter ID="TemperatureSensor" Location="M1/MotorParameters" Value="NotUsed" />
+    <Parameter ID="TemperatureModel" Location="M1/MotorParameters" Value="Current" />
+    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel" Value="0" />
+    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="Encoder" Location="M1" Value="NotUsed" />
     <Parameter ID="Gearbox" Location="M1" Value="UsedWithDynamicTorqueLimitation" />
-    <Parameter ID="Input" Location="M1/Gearbox/GearRatio" Value="28" />
-    <Parameter ID="MOTORGEAR_SPEED_MAX" Location="M1/Gearbox" Value="7500" />
-    <Parameter ID="MOTORGEAR_TORQ_NOM" Location="M1/Gearbox" Value="126" />
-    <Parameter ID="MOTORGEAR_TORQ_MAX" Location="M1/Gearbox" Value="126" />
-    <Parameter ID="MOTORGEAR_INERTIA" Location="M1/Gearbox" Value="0.51" />
-    <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.002" />
-    <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.22" />
+    <Parameter ID="Input" Location="M1/Gearbox/GearRatio" Value="80" />
+    <Parameter ID="MOTORGEAR_SPEED_MAX" Location="M1/Gearbox" Value="5500" />
+    <Parameter ID="MOTORGEAR_TORQ_NOM" Location="M1/Gearbox" Value="178" />
+    <Parameter ID="MOTORGEAR_TORQ_MAX" Location="M1/Gearbox" Value="178" />
+    <Parameter ID="MOTORGEAR_INERTIA" Location="M1/Gearbox" Value="0.532" />
+    <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.0019144080232812802" />
+    <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.16999999999999998" />
   </Module>
-  <Module Name="8LSA44.DB060S200-3_Q2_D4r1100R_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8HWT10.xxxx-1-Q1-Q2-Q3_D4r1100R_1" TargetConnector="MT2" />
+  <Module Name="SR200M2A-Q2_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q1-Q2_SRr700_1" TargetConnector="MT2" />
     <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
-    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="6000" />
-    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="12000" />
-    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="400" />
-    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="3.7" />
-    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="7.4" />
-    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="43.8" />
-    <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="3" />
-    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="6" />
-    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="22.8" />
-    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="49.22" />
-    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.81" />
-    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="0.863" />
-    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="6.2" />
-    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="2.73" />
-    <Parameter ID="VoltageLimitation" Location="M1/MotorParameters" Value="Used" />
-    <Parameter ID="MOTOR_UDC_MAX" Location="M1/MotorParameters/VoltageLimitation" Value="1000" />
-    <Parameter ID="Angle" Location="M1/MotorParameters/EncoderMounting" Value="StoredOnEncoder" />
-    <Parameter ID="MOTOR_TEMPSENS_LIM" Location="M1/MotorParameters/TemperatureSensor" Value="130" />
-    <Parameter ID="TemperatureSensorInterface" Location="M1/MotorParameters/TemperatureSensor" Value="EncoderConnectorDigital" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR1" Location="M1/MotorParameters/TemperatureSensor" Value="30" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR2" Location="M1/MotorParameters/TemperatureSensor" Value="254" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR3" Location="M1/MotorParameters/TemperatureSensor" Value="-29.72" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR4" Location="M1/MotorParameters/TemperatureSensor" Value="-4.58" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR5" Location="M1/MotorParameters/TemperatureSensor" Value="20.33" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR6" Location="M1/MotorParameters/TemperatureSensor" Value="45.18" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR7" Location="M1/MotorParameters/TemperatureSensor" Value="69.96" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR8" Location="M1/MotorParameters/TemperatureSensor" Value="94.71" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR9" Location="M1/MotorParameters/TemperatureSensor" Value="119.6" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR10" Location="M1/MotorParameters/TemperatureSensor" Value="149.11" />
-    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="110" />
-    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="0.985" />
-    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="1800" />
-    <Parameter ID="Brake" Location="M1" Value="Used" />
-    <Parameter ID="MOTOR_BRAKE_CURR_RATED" Location="M1/Brake" Value="0.83" />
-    <Parameter ID="MOTOR_BRAKE_TORQ_RATED" Location="M1/Brake" Value="8" />
-    <Parameter ID="MOTOR_BRAKE_ON_TIME" Location="M1/Brake" Value="0.038" />
-    <Parameter ID="MOTOR_BRAKE_OFF_TIME" Location="M1/Brake" Value="0.055" />
-    <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.69" />
-    <Parameter ID="MOTOR_ENCOD_ATTR" Location="M1/Encoder" Value="1" />
-    <Parameter ID="MOTOR_ENCOD_INERTIA" Location="M1/Encoder" Value="0.022" />
-    <Parameter ID="TemperatureSensor" Location="M1/Encoder" Value="Used" />
-    <Parameter ID="MOTOR_ENCOD_TEMP_LIM" Location="M1/Encoder/TemperatureSensor" Value="129" />
-    <Parameter ID="Gearbox" Location="M1" Value="UsedWithDynamicTorqueLimitation" />
-    <Parameter ID="Input" Location="M1/Gearbox/GearRatio" Value="28" />
-    <Parameter ID="MOTORGEAR_SPEED_MAX" Location="M1/Gearbox" Value="7500" />
-    <Parameter ID="MOTORGEAR_TORQ_NOM" Location="M1/Gearbox" Value="126" />
-    <Parameter ID="MOTORGEAR_TORQ_MAX" Location="M1/Gearbox" Value="126" />
-    <Parameter ID="MOTORGEAR_INERTIA" Location="M1/Gearbox" Value="0.51" />
-    <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.002" />
-    <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.22" />
-  </Module>
-  <Module Name="8LSA44.DB060S200-3_Q3_D4r1100R_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI8X8HWT10.xxxx-1-Q1-Q2-Q3_D4r1100R_1" TargetConnector="MT3" />
-    <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
-    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="6000" />
-    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="12000" />
-    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="400" />
-    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="3.7" />
-    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="7.4" />
-    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="43.8" />
-    <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="3" />
-    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="6" />
-    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="22.8" />
-    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="49.22" />
-    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.81" />
-    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="0.863" />
-    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="6.2" />
-    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="2.73" />
-    <Parameter ID="VoltageLimitation" Location="M1/MotorParameters" Value="Used" />
-    <Parameter ID="MOTOR_UDC_MAX" Location="M1/MotorParameters/VoltageLimitation" Value="1000" />
-    <Parameter ID="Angle" Location="M1/MotorParameters/EncoderMounting" Value="StoredOnEncoder" />
-    <Parameter ID="MOTOR_TEMPSENS_LIM" Location="M1/MotorParameters/TemperatureSensor" Value="130" />
-    <Parameter ID="TemperatureSensorInterface" Location="M1/MotorParameters/TemperatureSensor" Value="EncoderConnectorDigital" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR1" Location="M1/MotorParameters/TemperatureSensor" Value="30" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR2" Location="M1/MotorParameters/TemperatureSensor" Value="254" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR3" Location="M1/MotorParameters/TemperatureSensor" Value="-29.72" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR4" Location="M1/MotorParameters/TemperatureSensor" Value="-4.58" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR5" Location="M1/MotorParameters/TemperatureSensor" Value="20.33" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR6" Location="M1/MotorParameters/TemperatureSensor" Value="45.18" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR7" Location="M1/MotorParameters/TemperatureSensor" Value="69.96" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR8" Location="M1/MotorParameters/TemperatureSensor" Value="94.71" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR9" Location="M1/MotorParameters/TemperatureSensor" Value="119.6" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR10" Location="M1/MotorParameters/TemperatureSensor" Value="149.11" />
-    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="110" />
-    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="0.985" />
-    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="1800" />
-    <Parameter ID="Brake" Location="M1" Value="Used" />
-    <Parameter ID="MOTOR_BRAKE_CURR_RATED" Location="M1/Brake" Value="0.83" />
-    <Parameter ID="MOTOR_BRAKE_TORQ_RATED" Location="M1/Brake" Value="8" />
-    <Parameter ID="MOTOR_BRAKE_ON_TIME" Location="M1/Brake" Value="0.038" />
-    <Parameter ID="MOTOR_BRAKE_OFF_TIME" Location="M1/Brake" Value="0.055" />
-    <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.69" />
-    <Parameter ID="MOTOR_ENCOD_ATTR" Location="M1/Encoder" Value="1" />
-    <Parameter ID="MOTOR_ENCOD_INERTIA" Location="M1/Encoder" Value="0.022" />
-    <Parameter ID="TemperatureSensor" Location="M1/Encoder" Value="Used" />
-    <Parameter ID="MOTOR_ENCOD_TEMP_LIM" Location="M1/Encoder/TemperatureSensor" Value="129" />
-    <Parameter ID="Gearbox" Location="M1" Value="UsedWithDynamicTorqueLimitation" />
-    <Parameter ID="Input" Location="M1/Gearbox/GearRatio" Value="28" />
-    <Parameter ID="MOTORGEAR_SPEED_MAX" Location="M1/Gearbox" Value="7500" />
-    <Parameter ID="MOTORGEAR_TORQ_NOM" Location="M1/Gearbox" Value="126" />
-    <Parameter ID="MOTORGEAR_TORQ_MAX" Location="M1/Gearbox" Value="126" />
-    <Parameter ID="MOTORGEAR_INERTIA" Location="M1/Gearbox" Value="0.51" />
-    <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.002" />
-    <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.22" />
-  </Module>
-  <Module Name="8LSAA2.D9045S200-3_QC_D4r1100R_1" Type="MotorSynchronous_any" Version="2.2.1.0">
-    <Connection Connector="MT" TargetModule="8EI2X2HWS10.xxxx-1-QC_D4r1100R_1" TargetConnector="MT1" />
-    <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
-    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="4500" />
-    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="7000" />
-    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="400" />
-    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="1.31" />
-    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="1.42" />
-    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="6" />
+    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
+    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
+    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="220" />
+    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="2.9" />
+    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="2.9" />
+    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="10.2" />
     <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="1.27" />
-    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="1.4" />
-    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="4.5" />
-    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="58.64" />
-    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.97" />
-    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="13.9" />
-    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="27" />
-    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="0.38" />
-    <Parameter ID="VoltageLimitation" Location="M1/MotorParameters" Value="Used" />
-    <Parameter ID="MOTOR_UDC_MAX" Location="M1/MotorParameters/VoltageLimitation" Value="1000" />
-    <Parameter ID="Angle" Location="M1/MotorParameters/EncoderMounting" Value="StoredOnEncoder" />
-    <Parameter ID="MOTOR_TEMPSENS_LIM" Location="M1/MotorParameters/TemperatureSensor" Value="130" />
-    <Parameter ID="TemperatureSensorInterface" Location="M1/MotorParameters/TemperatureSensor" Value="EncoderConnectorDigital" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR1" Location="M1/MotorParameters/TemperatureSensor" Value="30" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR2" Location="M1/MotorParameters/TemperatureSensor" Value="254" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR3" Location="M1/MotorParameters/TemperatureSensor" Value="-29.72" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR4" Location="M1/MotorParameters/TemperatureSensor" Value="-4.58" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR5" Location="M1/MotorParameters/TemperatureSensor" Value="20.33" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR6" Location="M1/MotorParameters/TemperatureSensor" Value="45.18" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR7" Location="M1/MotorParameters/TemperatureSensor" Value="69.96" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR8" Location="M1/MotorParameters/TemperatureSensor" Value="94.71" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR9" Location="M1/MotorParameters/TemperatureSensor" Value="119.6" />
-    <Parameter ID="MOTOR_TEMPSENS_PAR10" Location="M1/MotorParameters/TemperatureSensor" Value="149.11" />
-    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="110" />
-    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="0.126" />
-    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel/Calculation" Value="1860" />
-    <Parameter ID="Brake" Location="M1" Value="Used" />
-    <Parameter ID="MOTOR_BRAKE_CURR_RATED" Location="M1/Brake" Value="0.56" />
-    <Parameter ID="MOTOR_BRAKE_TORQ_RATED" Location="M1/Brake" Value="3.2" />
-    <Parameter ID="MOTOR_BRAKE_ON_TIME" Location="M1/Brake" Value="0.01" />
-    <Parameter ID="MOTOR_BRAKE_OFF_TIME" Location="M1/Brake" Value="0.06" />
-    <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.38" />
-    <Parameter ID="MOTOR_ENCOD_ATTR" Location="M1/Encoder" Value="1" />
-    <Parameter ID="MOTOR_ENCOD_INERTIA" Location="M1/Encoder" Value="0.004" />
-    <Parameter ID="TemperatureSensor" Location="M1/Encoder" Value="Used" />
-    <Parameter ID="MOTOR_ENCOD_TEMP_LIM" Location="M1/Encoder/TemperatureSensor" Value="124" />
+    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="1.27" />
+    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="4.46" />
+    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="29.3" />
+    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.439" />
+    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="3.3" />
+    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="5.2" />
+    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="0.45" />
+    <Parameter ID="MOTOR_COMMUT_OFFSET" Location="M1/MotorParameters/EncoderMounting/Angle" Value="3.14" />
+    <Parameter ID="TemperatureSensor" Location="M1/MotorParameters" Value="NotUsed" />
+    <Parameter ID="TemperatureModel" Location="M1/MotorParameters" Value="Current" />
+    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel" Value="0" />
+    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="Encoder" Location="M1" Value="NotUsed" />
     <Parameter ID="Gearbox" Location="M1" Value="UsedWithDynamicTorqueLimitation" />
-    <Parameter ID="Input" Location="M1/Gearbox/GearRatio" Value="10" />
-    <Parameter ID="MOTORGEAR_SPEED_MAX" Location="M1/Gearbox" Value="7500" />
-    <Parameter ID="MOTORGEAR_TORQ_NOM" Location="M1/Gearbox" Value="7.0" />
-    <Parameter ID="MOTORGEAR_TORQ_MAX" Location="M1/Gearbox" Value="7.0" />
-    <Parameter ID="MOTORGEAR_INERTIA" Location="M1/Gearbox" Value="0.16" />
-    <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.0038" />
-    <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.07" />
+    <Parameter ID="Input" Location="M1/Gearbox/GearRatio" Value="50" />
+    <Parameter ID="MOTORGEAR_SPEED_MAX" Location="M1/Gearbox" Value="6000" />
+    <Parameter ID="MOTORGEAR_TORQ_NOM" Location="M1/Gearbox" Value="73" />
+    <Parameter ID="MOTORGEAR_TORQ_MAX" Location="M1/Gearbox" Value="73" />
+    <Parameter ID="MOTORGEAR_INERTIA" Location="M1/Gearbox" Value="0.20" />
+    <Parameter ID="MOTORGEAR_VISC_FRIC" Location="M1/Gearbox" Value="0.001198831756609865" />
+    <Parameter ID="MOTORGEAR_STAT_FRIC" Location="M1/Gearbox" Value="0.1" />
+  </Module>
+  <Module Name="SR200M3A-Q3_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" TargetConnector="MT1" />
+    <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
+    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
+    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
+    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="220" />
+    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="1.45" />
+    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="1.45" />
+    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="5.08" />
+    <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="0.48" />
+    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="0.48" />
+    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="1.67" />
+    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="23.7" />
+    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.329" />
+    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="13.6" />
+    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="9.7" />
+    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="0.098" />
+    <Parameter ID="MOTOR_COMMUT_OFFSET" Location="M1/MotorParameters/EncoderMounting/Angle" Value="3.14" />
+    <Parameter ID="TemperatureSensor" Location="M1/MotorParameters" Value="NotUsed" />
+    <Parameter ID="TemperatureModel" Location="M1/MotorParameters" Value="Current" />
+    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel" Value="0" />
+    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="Brake" Location="M1" Value="Used" />
+    <Parameter ID="MOTOR_BRAKE_CURR_RATED" Location="M1/Brake" Value="0" />
+    <Parameter ID="MOTOR_BRAKE_TORQ_RATED" Location="M1/Brake" Value="0.32" />
+    <Parameter ID="MOTOR_BRAKE_ON_TIME" Location="M1/Brake" Value="0.02" />
+    <Parameter ID="MOTOR_BRAKE_OFF_TIME" Location="M1/Brake" Value="0.2" />
+    <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.156" />
+    <Parameter ID="Encoder" Location="M1" Value="NotUsed" />
+  </Module>
+  <Module Name="SR200M4A-Q4_SRr700_1" Type="MotorSynchronous_any" Version="2.2.1.0">
+    <Connection Connector="MT" TargetModule="8EI8X8MWD10.xxxx-1-Q3-Q4_SRr700_1" TargetConnector="MT2" />
+    <Parameter ID="MOTOR_POLEPAIRS" Location="M1/MotorParameters" Value="5" />
+    <Parameter ID="MOTOR_SPEED_RATED" Location="M1/MotorParameters" Value="3000" />
+    <Parameter ID="MOTOR_SPEED_MAX" Location="M1/MotorParameters" Value="6000" />
+    <Parameter ID="MOTOR_VOLTAGE_RATED" Location="M1/MotorParameters" Value="220" />
+    <Parameter ID="MOTOR_CURR_RATED" Location="M1/MotorParameters" Value="1" />
+    <Parameter ID="MOTOR_CURR_STALL" Location="M1/MotorParameters" Value="1" />
+    <Parameter ID="MOTOR_CURR_MAX" Location="M1/MotorParameters" Value="3.4" />
+    <Parameter ID="MOTOR_TORQ_RATED" Location="M1/MotorParameters" Value="0.3" />
+    <Parameter ID="MOTOR_TORQ_STALL" Location="M1/MotorParameters" Value="0.3" />
+    <Parameter ID="MOTOR_TORQ_MAX" Location="M1/MotorParameters" Value="1.1" />
+    <Parameter ID="MOTOR_VOLTAGE_CONST" Location="M1/MotorParameters" Value="21.3" />
+    <Parameter ID="MOTOR_TORQ_CONST" Location="M1/MotorParameters" Value="0.3" />
+    <Parameter ID="MOTOR_STATOR_RESISTANCE" Location="M1/MotorParameters" Value="23.5" />
+    <Parameter ID="MOTOR_STATOR_INDUCTANCE" Location="M1/MotorParameters" Value="18.1" />
+    <Parameter ID="MOTOR_INERTIA" Location="M1/MotorParameters" Value="0.1" />
+    <Parameter ID="MOTOR_COMMUT_OFFSET" Location="M1/MotorParameters/EncoderMounting/Angle" Value="3.14" />
+    <Parameter ID="TemperatureSensor" Location="M1/MotorParameters" Value="NotUsed" />
+    <Parameter ID="TemperatureModel" Location="M1/MotorParameters" Value="Current" />
+    <Parameter ID="MOTOR_WIND_TEMP_MAX" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="MOTOR_WIND_CROSS_SECT" Location="M1/MotorParameters/TemperatureModel" Value="0" />
+    <Parameter ID="MOTOR_TAU_THERM" Location="M1/MotorParameters/TemperatureModel" Value="100" />
+    <Parameter ID="Brake" Location="M1" Value="Used" />
+    <Parameter ID="MOTOR_BRAKE_CURR_RATED" Location="M1/Brake" Value="0" />
+    <Parameter ID="MOTOR_BRAKE_TORQ_RATED" Location="M1/Brake" Value="0.32" />
+    <Parameter ID="MOTOR_BRAKE_ON_TIME" Location="M1/Brake" Value="0.02" />
+    <Parameter ID="MOTOR_BRAKE_OFF_TIME" Location="M1/Brake" Value="0.2" />
+    <Parameter ID="MOTOR_BRAKE_INERTIA" Location="M1/Brake" Value="0.156" />
+    <Parameter ID="Encoder" Location="M1" Value="NotUsed" />
   </Module>
 </Hardware>

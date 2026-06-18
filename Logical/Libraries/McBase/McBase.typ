@@ -72,7 +72,8 @@ TYPE
 	(
 		mcSTOPMODE_JERK_LIMIT,			 (*Takes into account the jerk limit value while stopping*)
 		mcSTOPMODE_NO_JERK_LIMIT,		 (*Ignores the jerk limit value while stopping*)
-		mcSTOPMODE_QUICKSTOP			 (*Considers only velocity and acceleration axis limits, motor and gearbox torques limits and cross section loads limits*)
+		mcSTOPMODE_QUICKSTOP,			 (*Considers only velocity and acceleration axis limits, motor and gearbox torques limits and cross section loads limits*)
+		mcSTOPMODE_ESTOP				 (*Considers only velocity and acceleration axis limits, motor and gearbox torques limits and cross section loads limits. Not delayed by centralized jerk filter*)
 	);
 
 	McIplModeEnum :
@@ -189,11 +190,14 @@ TYPE
 
 	McProcessConfigModeEnum:
 	(
-		mcPCM_LOAD 	:= 0,	 	(*Load from Config*)
-		mcPCM_SAVE	:= 1,	 	(*Save to Config*)
-		mcPCM_CREATE:= 2,	 	(*Create Config*)
-		mcPCM_DELETE:= 3,		(*Delete Config*)
-		mcPCM_DEFAULT_VALUES:= 4(*Default Config Values*)
+		mcPCM_LOAD 	:= 0,	 		(*Load from Config*)
+		mcPCM_SAVE	:= 1,	 		(*Save to Config*)
+		mcPCM_CREATE:= 2,	 		(*Create Config*)
+		mcPCM_DELETE:= 3,			(*Delete Config*)
+		mcPCM_DEFAULT_VALUES:= 4,	(*Default Config Values*)
+		
+		mcPCM_LIST_ALL := 5,		(*Lists all Config*)
+		mcPCM_DELETE_ALL := 6		(*Deletes all Configs*)
 	);
 
 	McCommunicationStateEnum :

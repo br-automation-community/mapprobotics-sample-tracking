@@ -52,6 +52,53 @@ TYPE
 		PowerOnAfterStop : McAGSRQSPwrOnAStopType; (*Controller stays in status on after stop reaction*)
 		PowerOffAfterStop : McAGSRQSPwrOffAStopType; (*Controller is switched off after stop reaction*)
 	END_STRUCT;
+	McAGSRESPwrOnAStopEnum :
+		( (*Power on after stop selector setting*)
+		mcAGSRESPONAS_NOT_USE := 0, (*Not used - EStop functionality is disabled*)
+		mcAGSRESPONAS_USE := 1 (*Used - EStop functionality is enabled*)
+		);
+	McAGSRESPUseSrcEnum :
+		( (*Source selector setting*)
+		mcAGSRESPUS_VAR := 0, (*Variable - Use PV as trigger source*)
+		mcAGSRESPUS_IO_CH := 1 (*I/O channel - Get value from an I/O channel*)
+		);
+	McAGSRESPUseSrcVarType : STRUCT (*Type mcAGSRESPUS_VAR settings*)
+		PVMapping : STRING[250];
+	END_STRUCT;
+	McAGSRESPUseSrcIOChType : STRUCT (*Type mcAGSRESPUS_IO_CH settings*)
+		ChannelMapping : STRING[250]; (*Input source for status input*)
+	END_STRUCT;
+	McAGSRESPUseSrcType : STRUCT (*Source which is used for this functionality*)
+		Type : McAGSRESPUseSrcEnum; (*Source selector setting*)
+		Variable : McAGSRESPUseSrcVarType; (*Type mcAGSRESPUS_VAR settings*)
+		IOChannel : McAGSRESPUseSrcIOChType; (*Type mcAGSRESPUS_IO_CH settings*)
+	END_STRUCT;
+	McAGSRESPUseLvlEnum :
+		( (*Level of the source which leads to an stop reaction*)
+		mcAGSRESPUL_LOW := 0, (*Low - Low level of source triggers the stop reaction*)
+		mcAGSRESPUL_HIGH := 1 (*High - High level of source triggers the stop reaction*)
+		);
+	McAGSRESPUseType : STRUCT (*Type mcAGSRESPONAS_USE settings*)
+		Source : McAGSRESPUseSrcType; (*Source which is used for this functionality*)
+		Level : McAGSRESPUseLvlEnum; (*Level of the source which leads to an stop reaction*)
+	END_STRUCT;
+	McAGSRESPwrOnAStopType : STRUCT (*Controller stays in status on after stop reaction*)
+		Type : McAGSRESPwrOnAStopEnum; (*Power on after stop selector setting*)
+		Used : McAGSRESPUseType; (*Type mcAGSRESPONAS_USE settings*)
+	END_STRUCT;
+	McAGSRESPwrOffAStopEnum :
+		( (*Power off after stop selector setting*)
+		mcAGSRESPOFFAS_NOT_USE := 0, (*Not used - EStop functionality is disabled*)
+		mcAGSRESPOFFAS_USE := 1 (*Used - EStop functionality is enabled*)
+		);
+	McAGSRESPwrOffAStopType : STRUCT (*Controller is switched off after stop reaction*)
+		Type : McAGSRESPwrOffAStopEnum; (*Power off after stop selector setting*)
+		Used : McAGSRESPUseType; (*Type mcAGSRESPOFFAS_USE settings*)
+	END_STRUCT;
+	McAGSRESType : STRUCT (*Enables EStop functionality for the axis group*)
+		PowerOnAfterStop : McAGSRESPwrOnAStopType; (*Controller stays in status on after stop reaction*)
+		PowerOffAfterStop : McAGSRESPwrOffAStopType; (*Controller is switched off after stop reaction*)
+	END_STRUCT;
 	McAGAGFType : STRUCT
 		FeatureReference : McCfgUnboundedArrayType; (*Name of the axes group feature reference (Connect array of type McCfgReferenceType)*)
 	END_STRUCT;

@@ -4,6 +4,5 @@
   <Objects>
     <Object Type="File" Private="true" TransferedForTargetSourceCompare="true">Conveyor.typ</Object>
     <Object Type="Program" Language="IEC" Description="Motion Belt">APP_Conveyor1</Object>
-    <Object Type="Program" Language="IEC">APP_Conveyor2</Object>
   </Objects>
 </Package>

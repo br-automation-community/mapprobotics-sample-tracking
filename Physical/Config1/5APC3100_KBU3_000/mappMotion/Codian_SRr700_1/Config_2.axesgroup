@@ -1,31 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="gAxesGroup_D4r1100R_1" Type="axesgroup">
+  <Element ID="gAxesGroup_SRr700_1" Type="axesgroup" Description="Codian SR200-6/700Z20A [RobotID=&quot;CodianSR200p6r700Z20A&quot; Version=&quot;6.8.0&quot;]">
     <Selector ID="Type" Value="PathGenAxesGroup">
       <Property ID="ProcessingTaskClass" Value="1" />
       <Group ID="PhysicalAxes">
         <Group ID="JointAxes">
           <Group ID="JointAxis[1]">
-            <Property ID="AxisRef" Value="gAxisQ1_D4r1100R_1" />
+            <Property ID="AxisRef" Value="gAxisQ1_SRr700_1" />
           </Group>
           <Group ID="JointAxis[2]">
-            <Property ID="AxisRef" Value="gAxisQ2_D4r1100R_1" />
+            <Property ID="AxisRef" Value="gAxisQ2_SRr700_1" />
           </Group>
           <Group ID="JointAxis[3]">
-            <Property ID="AxisRef" Value="gAxisQ3_D4r1100R_1" />
+            <Property ID="Name" Value="QZ" />
+            <Property ID="AxisRef" Value="gAxisQ3_SRr700_1" />
           </Group>
           <Group ID="JointAxis[4]">
             <Property ID="Name" Value="QC" />
-            <Property ID="AxisRef" Value="gAxisQC_D4r1100R_1" />
+            <Property ID="AxisRef" Value="gAxisQ4_SRr700_1" />
           </Group>
         </Group>
       </Group>
       <Group ID="MechanicalSystem">
-        <Property ID="MechSysRef" Value="MechSys_D4r1100R_1" />
+        <Property ID="MechSysRef" Value="MechSys_SRr700_1" />
       </Group>
       <Group ID="BasicSettings">
         <Group ID="GeometryPlanning">
+          <Group ID="Rounding">
+            <Property ID="SymmetricRounding" Value="No" />
+            <Property ID="LastSegment" Value="Whole" />
+            <Property ID="AvoidZeroCurvature" Value="Yes" />
+            <Property ID="NonCartesianRounding" Value="Yes" />
+          </Group>
           <Property ID="MaxTangentialTransitionDeviation" Value="0.05" />
         </Group>
         <Selector ID="TrajectoryPlanning">
@@ -35,6 +42,7 @@
           <Selector ID="BufferTime">
             <Property ID="Time" Value="0.05" />
           </Selector>
+          <Selector ID="TorqueLimitConsideration" Value="Approximation" />
         </Selector>
         <Group ID="Miscellaneous">
           <Group ID="TimeStretchOverride">
@@ -51,12 +59,12 @@
       </Group>
       <Group ID="AxesGroupFeatures">
         <Property ID="FeatureRef[1]" Value="Feature_Programs" />
-        <Property ID="FeatureRef[2]" Value="Feature_FrameHierachy" />
-        <Property ID="FeatureRef[3]" Value="Feature_MFunctions" />
-        <Property ID="FeatureRef[4]" Value="Feature_PathDefRobot" />
-        <Property ID="FeatureRef[5]" Value="Feature_Selection" />
-        <Property ID="FeatureRef[6]" Value="Feature_TrackingRobot" />
-        <Property ID="FeatureRef[7]" Value="Feature_WorkspaceMonitoring" />
+        <Property ID="FeatureRef[2]" Value="Feature_FeedForward_SRr700_1" />
+        <Property ID="FeatureRef[3]" Value="Feature_SharedBrakesSignals_SRr700_1" />
+        <Property ID="FeatureRef[4]" Value="Feature_MFunctions" />
+        <Property ID="FeatureRef[5]" Value="Feature_PathDefRobot" />
+        <Property ID="FeatureRef[6]" Value="Feature_Selection" />
+        <Property ID="FeatureRef[7]" Value="Feature_TrackingRobot" />
       </Group>
     </Selector>
   </Element>

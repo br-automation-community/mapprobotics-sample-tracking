@@ -993,7 +993,7 @@ FUNCTION_BLOCK  MC_BR_CamAutomatGetPar (*get parameter of configured cam automat
 END_FUNCTION_BLOCK
 
 
-{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK MC_BR_CalcCamFromPoints (*calculate cam data from points*)
+FUNCTION_BLOCK MC_BR_CalcCamFromPoints (*calculate cam data from points*)
 	VAR_INPUT
 		Execute 			: BOOL; 		(*Execution of the function block begins on a rising edge of this input.*) (* *) (*#PAR*)
 		MasterPointsAddress	: REFERENCE TO LREAL;

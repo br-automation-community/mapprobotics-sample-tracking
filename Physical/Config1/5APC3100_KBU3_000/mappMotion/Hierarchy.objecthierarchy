@@ -8,14 +8,15 @@
     <Group ID="GlobalCoordinateSystem">
       <Group ID="Object[1]">
         <Selector ID="Type">
-          <Property ID="AxesGroupRef" Value="gAxesGroup_D4r1100R_1" />
+          <Property ID="AxesGroupRef" Value="gAxesGroup_SRr700_1" />
         </Selector>
       </Group>
       <Group ID="Object[2]">
         <Selector ID="Type" Value="StandardFrame">
           <Property ID="Name" Value="FixedPlace" />
           <Group ID="Translation">
-            <Property ID="Y" Value="450" />
+            <Property ID="X" Value="500" />
+            <Property ID="Y" Value="250" />
           </Group>
         </Selector>
       </Group>
@@ -23,20 +24,8 @@
         <Selector ID="Type" Value="TrackingPath">
           <Property ID="TrackingPathRef" Value="gTrackingPathConveyor_1" />
           <Group ID="Translation">
-            <Property ID="X" Value="-1500" />
-            <Property ID="Y" Value="-200" />
-          </Group>
-        </Selector>
-      </Group>
-      <Group ID="Object[4]">
-        <Selector ID="Type" Value="TrackingPath">
-          <Property ID="TrackingPathRef" Value="gTrackingPathConveyor_2" />
-          <Group ID="Translation">
-            <Property ID="X" Value="1500" />
-            <Property ID="Y" Value="200" />
-          </Group>
-          <Group ID="Orientation">
-            <Property ID="Angle3" Value="180" />
+            <Property ID="X" Value="-500" />
+            <Property ID="Y" Value="-250" />
           </Group>
         </Selector>
       </Group>

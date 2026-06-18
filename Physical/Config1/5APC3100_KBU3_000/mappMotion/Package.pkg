@@ -6,6 +6,6 @@
     <Object Type="File">Config.mappmotioncfg</Object>
     <Object Type="File" Description="Migrated from ComRobot.axesgroupfeature (mapp Motion Version 5)">ComRobot.axesgroupfeature</Object>
     <Object Type="Package">Conveyor</Object>
-    <Object Type="Package">Codian_D4r1100R_1</Object>
+    <Object Type="Package">Codian_SRr700_1</Object>
   </Objects>
 </Package>

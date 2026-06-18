@@ -1935,12 +1935,31 @@ TYPE
 		Type : McACELCPosTzEnum; (*Transition zone selector setting*)
 		TzUser : McACELCPosTzTzUserType; (*Type mcACELCPT_TZUSER settings*)
 	END_STRUCT;
+	McACELCStalDetEnum :
+		( (*Stall detection selector setting*)
+		mcACELCSD_NOT_USE := 0, (*Not used - Stall detection is inactive*)
+		mcACELCSD_USE := 1 (*Used - Stall detection is active after given stall detection time*)
+		);
+	McACELCStalDetUseType : STRUCT (*Type mcACELCSD_USE settings*)
+		StallDetectionTime : REAL; (*Encoderless control: Stall detection time [s]*)
+	END_STRUCT;
+	McACELCStalDetType : STRUCT (*Encoderless control: Stall detection*)
+		Type : McACELCStalDetEnum; (*Stall detection selector setting*)
+		Used : McACELCStalDetUseType; (*Type mcACELCSD_USE settings*)
+	END_STRUCT;
+	McACELCInvAdjType : STRUCT (*Encoderless control: Inverter parameters of characteristic current-voltage curve*)
+		GainFactor : REAL; (*Encoderless control: Inverter Amplification factor*)
+		Exponent : REAL; (*Encoderless control: Inverter Exponent [1/A]*)
+	END_STRUCT;
 	McACELCPosType : STRUCT (*Type mcAELNEECM_EL_POS_CTRL settings*)
 		SetCurrent : McACELCSetCurType; (*Encoderless control: Set current direct component*)
 		Tl : McACELCPosTlType; (*Encoderless control: Transition level*)
 		Tz : McACELCPosTzType; (*Encoderless control: Transition zone*)
 		KeepHoming : McACELCKeepHomeType; (*Keep homing status when controller is switched off*)
 		KeepPhasing : McACELCKeepPhaseType; (*Keep phasing status when controller is switched off*)
+		TransferTime : REAL; (*Encoderless control: Transfer time [s]*)
+		StallDetection : McACELCStalDetType; (*Encoderless control: Stall detection*)
+		InverterAdjustment : McACELCInvAdjType; (*Encoderless control: Inverter parameters of characteristic current-voltage curve*)
 	END_STRUCT;
 	McAELNoEncELCtrlModType : STRUCT (*Encoderless control mode*)
 		Type : McAELNoEncELCtrlModEnum; (*Encoderless control mode selector setting*)
@@ -2371,12 +2390,18 @@ TYPE
 		mcAHMKD_NO := 0, (*No - mcSWITCH_OFF*)
 		mcAHMKD_YES := 1 (*Yes - mcSWITCH_ON*)
 		);
+	McAHRPUBDUEnum :
+		( (*Unit of reference pulse blocking distance*)
+		mcAHRPUBDU_MEAS_UNIT := 0, (*Measurement units - Reference pulse blocking distance in measurement units*)
+		mcAHRPUBDU_ENC_REV := 1 (*Encoder revolutions - Reference pulse blocking distance in encoder revolutions*)
+		);
 	McAHModDirRefPUseType : STRUCT (*Type mcAHMDRP_USE settings*)
 		HomingVelocity : REAL; (*Speed which is used while searching for the homing event (e.g. after reference switch has been reached) [measurement units/s]*)
 		Acceleration : REAL; (*Acceleration for homing movement [measurement units/s²]*)
 		HomingDirection : McAHModHomeDirEnum; (*Movement direction in which the homing event is evaluated*)
 		KeepDirection : McAHModKeepDirEnum; (*Keep direction (move only in one direction)*)
-		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [measurement units]*)
+		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse*)
+		BlockingDistanceUnit : McAHRPUBDUEnum; (*Unit of reference pulse blocking distance*)
 	END_STRUCT;
 	McAHModDirRefPType : STRUCT (*Use reference pulse of encoder*)
 		Type : McAHModDirRefPEnum; (*Reference pulse selector setting*)
@@ -2397,7 +2422,8 @@ TYPE
 		mcAHMRP_USE := 1 (*Used - Reference pulse is used*)
 		);
 	McAHModRefPUseType : STRUCT (*Type mcAHMRP_USE settings*)
-		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [measurement units]*)
+		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse*)
+		BlockingDistanceUnit : McAHRPUBDUEnum; (*Unit of reference pulse blocking distance*)
 	END_STRUCT;
 	McAHModRefPType : STRUCT (*Use reference pulse of encoder*)
 		Type : McAHModRefPEnum; (*Reference pulse selector setting*)
@@ -2463,7 +2489,8 @@ TYPE
 		MinimumReturnDistance : LREAL; (*Minimum return distance after the blockade is reached [measurement units]*)
 	END_STRUCT;
 	McAHModBlkRefPUseType : STRUCT (*Type mcAHMRP_USE settings*)
-		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [measurement units]*)
+		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse*)
+		BlockingDistanceUnit : McAHRPUBDUEnum; (*Unit of reference pulse blocking distance*)
 	END_STRUCT;
 	McAHModBlkRefPType : STRUCT (*Use reference pulse of encoder*)
 		Type : McAHModRefPEnum; (*Reference pulse selector setting*)
@@ -2957,6 +2984,11 @@ TYPE
 	McCfgAcpZeroVibFltrType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_ZERO_VIB_FLTR*)
 		ZeroVibrationFilter : McAZVFType; (*Zero vibration filter*)
 	END_STRUCT;
+	McAPSMActAcpSimOnPLCEnum :
+		( (*Activates or deactivates the ACOPOS simulation on the PLC*)
+		mcAPSMAASOP_OFF := 0, (*Off - The drive is not simulated on the PLC*)
+		mcAPSMAASOP_ON := 1 (*On - The drive is simulated on the PLC*)
+		);
 	McAPSMOutParEnum :
 		( (*Output parameters selector setting*)
 		mcAPSMOP_ACPMOT_CMPCT := 0, (*ACOPOSmotor compact - Output parameters for ACOPOSmotor compact modules*)
@@ -3015,6 +3047,7 @@ TYPE
 	END_STRUCT;
 	McCfgAcpAuxPwrSupModType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_AUX_PWR_SUP_MOD*)
 		AxisReference : STRING[250]; (*Name of the power supply module component*)
+		ActivateACOPOSSimulationOnPLC : McAPSMActAcpSimOnPLCEnum; (*Activates or deactivates the ACOPOS simulation on the PLC*)
 		OutputParameters : McAPSMOutParType; (*Output parameters selection*)
 		OutputVoltageOn : McAPSMOutVOnType; (*Output voltage is on after start-up and error reset*)
 	END_STRUCT;
@@ -4411,6 +4444,9 @@ TYPE
 	END_STRUCT;
 	McCfgAcpExtEncAxEncLinkType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_ENC_LINK*)
 		EncoderLink : McAEEAUseEncLinkType;
+	END_STRUCT;
+	McCfgAcpExtEncAxEncLinkPosFType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_ENC_LINK_P*)
+		PositionFilter : McAEEAUELOneEncPosFltrType; (*Filter for the encoder position*)
 	END_STRUCT;
 	McCfgAcpExtEncAxMechElmType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_MECH_ELM*)
 		MechanicalElements : McAMEType; (*Parameter of hardware elements situated between motor encoder and load which influence the scaling*)

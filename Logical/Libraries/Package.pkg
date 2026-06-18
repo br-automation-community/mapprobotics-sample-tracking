@@ -25,8 +25,15 @@
     <Object Type="Library" Language="Binary" Description="This library contains FBKs to use semaphores.">AsSem</Object>
     <Object Type="Library" Language="binary" Description="The AsZip library offers compressing archive-support">AsZip</Object>
     <Object Type="Library" Language="Binary">AcpInvLib</Object>
-    <Object Type="Library" Language="binary" Description="[mapp Motion] Base library">McBase</Object>
+    <Object Type="Library" Language="Binary" Description="mapp components diagnosis,hierarchy and unit handling">MpCom</Object>
+    <Object Type="Library" Language="Binary" Description="User management based on user role system">MpUserX</Object>
+    <Object Type="Library" Language="Binary" Description="File explorer for B+R file devices">MpFile</Object>
+    <Object Type="Library" Language="Binary" Description="Recipe management">MpRecipe</Object>
+    <Object Type="Library" Language="Binary" Description="Advanced alarm management">MpAlarmX</Object>
     <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
+    <Object Type="Library" Language="binary" Description="This library contains functionality to execute traces (to sample numeric values periodically for a defined time-span)">CoTrace</Object>
+    <Object Type="Library" Language="Binary" Description="Communication library for mappView widgets">MpServer</Object>
+    <Object Type="Library" Language="binary" Description="[mapp Motion] Base library">McBase</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] PLCopen axes group library">McAxGroup</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] ACOPOS axis library">McAcpAx</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] PLCopen axis library">McAxis</Object>
@@ -36,14 +43,7 @@
     <Object Type="Library" Language="binary" Description="[mapp Motion] Program interpreter library">McProgInt</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] Purely virtual axis library">McPureVAx</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] DS402 axis library">McDS402Ax</Object>
-    <Object Type="Library" Language="Binary" Description="mapp components diagnosis,hierarchy and unit handling">MpCom</Object>
-    <Object Type="Library" Language="Binary" Description="User management based on user role system">MpUserX</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] Robotics library">MpRobotics</Object>
-    <Object Type="Library" Language="Binary" Description="File explorer for B+R file devices">MpFile</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] CNC library">MpCnc</Object>
-    <Object Type="Library" Language="Binary" Description="Recipe management">MpRecipe</Object>
-    <Object Type="Library" Language="Binary" Description="Advanced alarm management">MpAlarmX</Object>
-    <Object Type="Library" Language="binary" Description="This library contains functionality to execute traces (to sample numeric values periodically for a defined time-span)">CoTrace</Object>
-    <Object Type="Library" Language="Binary" Description="Communication library for mappView widgets">MpServer</Object>
   </Objects>
 </Package>

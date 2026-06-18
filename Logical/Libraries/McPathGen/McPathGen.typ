@@ -181,6 +181,14 @@ TYPE
 		Loads : ARRAY [0..249] OF LREAL; (**)
 	END_STRUCT;
 
+	McPathGenMonElemBRLoadsType : STRUCT (*Monitoring Element: Base reaction loads*)
+		Loads : ARRAY [0..6] OF LREAL; (**)
+	END_STRUCT;
+
+	McPathGenMonElemPRLoadsType : STRUCT (*Monitoring Element: Product reaction loads*)
+		Loads : ARRAY [0..8] OF LREAL; (**)
+	END_STRUCT;
+
 	McPathGenMonElemDynamicDecType : STRUCT (*Monitoring Element: Dynamic decelerations*)
 		Decelerations : ARRAY [0..14] OF LREAL; (**)
 	END_STRUCT;
@@ -210,11 +218,12 @@ TYPE
 		(	(*Monitoring Element: Active limit - Type*)
 		mcPATHGEN_AL_UNDEFINED_TYPE := 0, (*Default value*)
 		mcPATHGEN_AL_VELOCITY := 10, (*Velocity limit*)
+		mcPATHGEN_AL_RED_VELOCITY := 11, (*Reduced Velocity limit*)
 		mcPATHGEN_AL_ACCELERATION := 20, (*Acceleration limit*)
 		mcPATHGEN_AL_JERK := 30, (*Jerk limit*)
 		mcPATHGEN_AL_TORQUE := 40, (*Torque limit*)
 		mcPATHGEN_AL_PROCESS := 50, (*Process limit*)
-		mcPATHGEN_AL_INTERNAL := 60 (*Internal limitation*)
+		mcPATHGEN_AL_ADD_LIMIT := 60 (*Additional limitation*)
 		);
 
 	McPathGenMonElemActLimSourceEnum : 
@@ -228,12 +237,13 @@ TYPE
 		mcPATHGEN_AL_JOINT_GEARBOX := 60, (*Joint axis gearbox limit*)
 		mcPATHGEN_AL_CS := 70, (*Cross section load limit*)
 		mcPATHGEN_AL_CCS := 71, (*Composed cross section load limit*)
+		mcPATHGEN_AL_PRL := 72, (*Product reaction load limit*)
+		mcPATHGEN_AL_CPRL := 73, (*Composed product reaction load limit*)
 		mcPATHGEN_AL_PROC_OUT_OF_WS := 80, (*Process limit - Tracking out of workspace*)
 		mcPATHGEN_AL_PROC_ONLINE_MOD := 81, (*Process limit - online modification*)
 		mcPATHGEN_AL_VIRTUAL_JOINT_AXIS := 90, (*Virtual joint axis limit*)
 		mcPATHGEN_AL_MON_POINTS := 100, (*Monitoring point velocity limit*)
-		mcPATHGEN_AL_JOGGING_VELOCITY := 110, (*Jogging velocity limit*)
-		mcPATHGEN_AL_INT := 120 (*Internal limit*)
+		mcPATHGEN_AL_JOGGING_VELOCITY := 110 (*Jogging velocity limit*)
 		);
 
 	McPathGenMonElemActLimType : STRUCT (*Monitoring Element: Active limit*)
